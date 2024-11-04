@@ -5,6 +5,7 @@ import org.apache.commons.dbcp2.BasicDataSource;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class ConnectionJDBC {
@@ -27,11 +28,25 @@ public class ConnectionJDBC {
         return ds;
     }
 
-    public static Connection getConnection() throws SQLException {
-        return getDataSource().getConnection();
+    public static Connection getConnection()  {
+        try {
+            return getDataSource().getConnection();
+        } catch (SQLException e) {
+            System.out.println("Something went wrong");
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
+
+
+
+
 
     public static void closeConecction(Connection connection) throws SQLException {
         connection.close();
     }
+    public static void closeConecction(PreparedStatement connection) throws SQLException {
+        connection.close();
+    }
+
 }
