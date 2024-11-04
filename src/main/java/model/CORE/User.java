@@ -1,13 +1,27 @@
 package model.CORE;
 
+import model.DTO.userDTO.CreateUserDTO;
+
 public class User {
     private int id;
     private String name;
+    private String lastName;
     private String password;
     private String email;
     private String career;
     private String idUser;
     private int points;
+
+    public User() {
+    }
+
+    public User(CreateUserDTO createUserDTO) {
+        this.name = createUserDTO.name();
+        this.lastName = createUserDTO.lastName();
+        this.email = createUserDTO.email();
+        this.career = createUserDTO.career();
+        this.idUser = createUserDTO.idUser();
+    }
 
     public int getId() {
         return id;
@@ -27,6 +41,14 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -66,6 +88,7 @@ public class User {
         final StringBuilder sb = new StringBuilder("User{");
         sb.append("id=").append(id);
         sb.append(", name='").append(name).append('\'');
+        sb.append(", lastName='").append(lastName).append('\'');
         sb.append(", password='").append(password).append('\'');
         sb.append(", email='").append(email).append('\'');
         sb.append(", career='").append(career).append('\'');
