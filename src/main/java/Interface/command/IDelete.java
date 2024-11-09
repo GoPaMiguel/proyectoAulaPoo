@@ -1,5 +1,7 @@
 package Interface.command;
 
-public interface IDelete {
-    public void Delete(int id);
+import java.sql.SQLException;
+
+public interface IDelete<I> {
+    public void Delete(I id) throws SQLException;
 }
