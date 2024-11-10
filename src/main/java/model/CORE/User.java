@@ -1,6 +1,7 @@
 package model.CORE;
 
 import model.DTO.userDTO.CreateUserDTO;
+import model.DTO.userDTO.ShowUserDTO;
 
 public class User {
     private int id;
@@ -21,6 +22,15 @@ public class User {
         this.email = createUserDTO.email();
         this.career = createUserDTO.career();
         this.idUser = createUserDTO.idUser();
+    }
+
+    public User(ShowUserDTO showUserDTO) {
+        this.name = showUserDTO.name();
+        this.lastName = showUserDTO.lastName();
+        this.email = showUserDTO.email();
+        this.career = showUserDTO.career();
+        this.idUser = showUserDTO.idUser();
+        this.points = showUserDTO.points();
     }
 
     public int getId() {

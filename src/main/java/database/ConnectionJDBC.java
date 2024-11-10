@@ -6,6 +6,7 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ConnectionJDBC {
@@ -46,6 +47,9 @@ public class ConnectionJDBC {
         connection.close();
     }
     public static void closeConecction(PreparedStatement connection) throws SQLException {
+        connection.close();
+    }
+    public static void closeConecction(ResultSet connection) throws SQLException {
         connection.close();
     }
 
