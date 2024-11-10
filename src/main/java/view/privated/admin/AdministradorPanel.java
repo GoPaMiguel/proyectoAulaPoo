@@ -32,7 +32,7 @@ public class AdministradorPanel extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         btnEstudiante = new javax.swing.JButton();
-        btnEstudiante1 = new javax.swing.JButton();
+        btnObjects = new javax.swing.JButton();
         btnEstudiante2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -84,14 +84,14 @@ public class AdministradorPanel extends javax.swing.JFrame {
             }
         });
 
-        btnEstudiante1.setBackground(new java.awt.Color(85, 140, 54));
-        btnEstudiante1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        btnEstudiante1.setForeground(new java.awt.Color(255, 255, 255));
-        btnEstudiante1.setText("Objects");
-        btnEstudiante1.setBorder(null);
-        btnEstudiante1.addActionListener(new java.awt.event.ActionListener() {
+        btnObjects.setBackground(new java.awt.Color(85, 140, 54));
+        btnObjects.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        btnObjects.setForeground(new java.awt.Color(255, 255, 255));
+        btnObjects.setText("Objects");
+        btnObjects.setBorder(null);
+        btnObjects.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEstudiante1ActionPerformed(evt);
+                btnObjectsActionPerformed(evt);
             }
         });
 
@@ -110,7 +110,7 @@ public class AdministradorPanel extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnEstudiante1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnObjects, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnEstudiante2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
@@ -128,7 +128,7 @@ public class AdministradorPanel extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(btnEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEstudiante1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnObjects, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEstudiante2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
@@ -197,12 +197,20 @@ public class AdministradorPanel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstudianteActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        AdministradorStudent student = new AdministradorStudent();
+        student.setLocationRelativeTo(null);
+        student.setVisible(true);
+        
     }//GEN-LAST:event_btnEstudianteActionPerformed
 
-    private void btnEstudiante1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstudiante1ActionPerformed
+    private void btnObjectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObjectsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEstudiante1ActionPerformed
+        this.dispose();
+        AdministradorResiduo object = new AdministradorResiduo();
+        object.setLocationRelativeTo(null);
+        object.setVisible(true);
+    }//GEN-LAST:event_btnObjectsActionPerformed
 
     private void btnEstudiante2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstudiante2ActionPerformed
         // TODO add your handling code here:
@@ -254,8 +262,8 @@ public class AdministradorPanel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEstudiante;
-    private javax.swing.JButton btnEstudiante1;
     private javax.swing.JButton btnEstudiante2;
+    private javax.swing.JButton btnObjects;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

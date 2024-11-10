@@ -92,7 +92,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnEstudiante1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnObjects" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnEstudiante2" alignment="0" max="32767" attributes="0"/>
                   <Component id="jPanel4" pref="250" max="32767" attributes="0"/>
                   <Component id="jPanel3" alignment="0" pref="250" max="32767" attributes="0"/>
@@ -112,7 +112,7 @@
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="btnEstudiante" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnEstudiante1" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="btnObjects" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnEstudiante2" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
@@ -190,7 +190,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEstudianteActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnEstudiante1">
+            <Component class="javax.swing.JButton" name="btnObjects">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="36" green="8c" red="55" type="rgb"/>
@@ -207,7 +207,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEstudiante1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnObjectsActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnEstudiante2">
