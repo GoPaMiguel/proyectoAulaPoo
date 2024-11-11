@@ -65,5 +65,29 @@ public class UserController {
         }
     }
 
+    public User GetUserController(int idUser) {
+        Connection connection = null;
+        FindUserById findUserById = new FindUserById();
+        User user = null;
+        try {
+            connection = ConnectionJDBC.getConnection();
+            connection.setAutoCommit(false);
+             user = findUserById.findById(idUser);
+            connection.commit();
+        } catch (SQLException e) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al hacer el rollback");
+            }
+        } finally {
 
+            try {
+                ConnectionJDBC.closeConecction(connection);
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error al cerrar la conexion");
+            }
+        }
+        return user;
+    }
 }
