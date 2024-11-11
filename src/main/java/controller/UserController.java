@@ -7,10 +7,12 @@ import model.DTO.userDTO.ShowUserDTO;
 import service.user.command.DeleteUserHandler;
 import service.user.command.InsertUserHandler;
 import service.user.query.FindUserById;
+import service.user.query.SelectAllUserHandler;
 
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 public class UserController {
 
@@ -89,5 +91,32 @@ public class UserController {
             }
         }
         return user;
+    }
+
+    public List<User> GetAllUserController() {
+        Connection connection = null;
+        SelectAllUserHandler selectAllUserHandler = new SelectAllUserHandler(connection);
+        List<User> users = null;
+
+        try{
+            connection = ConnectionJDBC.getConnection();
+            connection.setAutoCommit(false);
+            users = selectAllUserHandler.selectAll();
+            connection.commit();
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null, "No se logro traer todos los usuarios");
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al hacer el rollback");
+            }finally {
+                try {
+                    ConnectionJDBC.closeConecction(connection);
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Error al cerrar la conexion");
+                }
+            }
+        }
+        return users;
     }
 }
