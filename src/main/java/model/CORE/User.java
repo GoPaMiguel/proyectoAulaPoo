@@ -3,7 +3,7 @@ package model.CORE;
 import model.DTO.userDTO.CreateUserDTO;
 import model.DTO.userDTO.FindUserDto;
 import model.DTO.userDTO.ShowUserDTO;
-import service.user.query.FindUserById;
+
 
 public class User {
     private int id;

@@ -3,10 +3,9 @@ package controller;
 import database.ConnectionJDBC;
 import model.CORE.User;
 import model.DTO.userDTO.CreateUserDTO;
-import model.DTO.userDTO.ShowUserDTO;
 import service.user.command.DeleteUserHandler;
 import service.user.command.InsertUserHandler;
-import service.user.query.FindUserById;
+import service.user.query.FindUserByIdHandler;
 import service.user.query.SelectAllUserHandler;
 
 import javax.swing.*;
@@ -67,9 +66,9 @@ public class UserController {
         }
     }
 
-    public User GetUserController(int idUser) {
+    public User GetUserController(User idUser) {
         Connection connection = null;
-        FindUserById findUserById = new FindUserById();
+        FindUserByIdHandler findUserById = new FindUserByIdHandler();
         User user = null;
         try {
             connection = ConnectionJDBC.getConnection();
