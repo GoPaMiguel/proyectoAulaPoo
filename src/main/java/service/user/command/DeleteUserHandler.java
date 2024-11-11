@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 public class DeleteUserHandler implements IDelete<User> {
 
-    private static final String DELETE = "DELETE FROM people WHERE id=?";
+    private static final String DELETE = "DELETE FROM people WHERE cedual=?";
     private  Connection connection;
     private ExistUserHandler existUserHandler;
 
@@ -29,13 +29,13 @@ public class DeleteUserHandler implements IDelete<User> {
         PreparedStatement ps = null;
         Boolean ok = existUserHandler.exist(user, connection);
         if (!ok) {
-            JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+            JOptionPane.showMessageDialog(null, "can't delete, IdUser: "+user.getIdUser()+" does not exist");
             return;
         }
         try {
             cx = (connection != null) ? connection : ConnectionJDBC.getConnection();
             ps = cx.prepareCall(DELETE);
-            ps.setInt(1, user.getId());
+            ps.setString(1, user.getIdUser());
             ps.executeUpdate();
         }finally {
             if(ps != null) ConnectionJDBC.closeConecction(ps);

@@ -36,7 +36,6 @@ public class User {
     }
 
     public User(FindUserDto findUserDTO) {
-        this.id = findUserDTO.id();
         this.idUser = findUserDTO.idUser();
     }
 

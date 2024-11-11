@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class ExistUserHandler implements IExistRegister<User> {
 
-    private static final String SELECT_COUNT = "SELECT COUNT(*) FROM user WHERE id=? AND cedula=?";
+    private static final String SELECT_COUNT = "SELECT COUNT(*) FROM user WHERE cedula=?";
 
     @Override
     public boolean exist(User user, Connection cx) throws SQLException {
@@ -21,8 +21,7 @@ public class ExistUserHandler implements IExistRegister<User> {
         ResultSet rs = null;
         try {
             ps = cx.prepareStatement(SELECT_COUNT);
-            ps.setInt(1, user.getId());
-            ps.setString(2, user.getIdUser());
+            ps.setString(1, user.getIdUser());
             rs = ps.executeQuery();
             if (rs.next()) {
                 int count = rs.getInt(1);
