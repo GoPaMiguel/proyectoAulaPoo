@@ -12,17 +12,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class FindUserById implements IFindById<User> {
+public class FindUserByIdHandler implements IFindById<User> {
 
     private static final String SELECT_QUERY = "select * from people where cedula = ?";
     private Connection connection;
     private ExistUserHandler existUserHandler;
 
-    public FindUserById(Connection connection) {
+    public FindUserByIdHandler(Connection connection) {
         this.connection = connection;
     }
 
-    public FindUserById() {
+    public FindUserByIdHandler() {
     }
 
     @Override
@@ -44,6 +44,7 @@ public class FindUserById implements IFindById<User> {
             ps.setString(1, userId.getIdUser());
             rs = ps.executeQuery();
             if (rs.next()) {
+                int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String lastname = rs.getString("lastname");
                 String email = rs.getString("email");
