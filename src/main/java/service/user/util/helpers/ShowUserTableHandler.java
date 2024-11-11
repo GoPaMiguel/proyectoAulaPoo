@@ -7,7 +7,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
-public class ShowUserTable implements IShowElementTable<User> {
+public class ShowUserTableHandler implements IShowElementTable<User> {
     @Override
     public void showTable(JTable table, List<User> list) {
         String[] dataList = new String[7];

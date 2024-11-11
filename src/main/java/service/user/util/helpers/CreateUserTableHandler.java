@@ -5,7 +5,7 @@ import Interface.utils.helpers.ICreateTable;
 import javax.swing.*;
 import javax.swing.table.*;
 
-public class CreateUserTable implements ICreateTable {
+public class CreateUserTableHandler implements ICreateTable {
 
     @Override
     public void createTable(JTable table) {
