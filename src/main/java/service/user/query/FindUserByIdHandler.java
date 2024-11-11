@@ -4,7 +4,9 @@ import Interface.query.IFindById;
 import database.ConnectionJDBC;
 import model.CORE.User;
 import model.DTO.userDTO.ShowUserDTO;
+import service.user.util.validations.ExistUserHandler;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,8 +14,9 @@ import java.sql.SQLException;
 
 public class FindUserById implements IFindById<User> {
 
-    private static final String SELECT_QUERY = "select * from people where id = ?";
+    private static final String SELECT_QUERY = "select * from people where cedula = ?";
     private Connection connection;
+    private ExistUserHandler existUserHandler;
 
     public FindUserById(Connection connection) {
         this.connection = connection;
@@ -23,7 +26,14 @@ public class FindUserById implements IFindById<User> {
     }
 
     @Override
-    public User findById(int id) throws SQLException {
+    public User findById(User userId) throws SQLException {
+
+        Boolean ok = existUserHandler.exist(userId, connection);
+
+        if (!ok){
+            JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+            return null;
+        }
         User user = null;
         Connection con = null;
         PreparedStatement ps = null;
@@ -31,7 +41,7 @@ public class FindUserById implements IFindById<User> {
         try {
             con = connection != null ? connection : ConnectionJDBC.getConnection();
             ps = con.prepareCall(SELECT_QUERY);
-            ps.setInt(1, id);
+            ps.setString(1, userId.getIdUser());
             rs = ps.executeQuery();
             if (rs.next()) {
                 String name = rs.getString("name");
