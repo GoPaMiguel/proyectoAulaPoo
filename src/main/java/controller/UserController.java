@@ -3,7 +3,10 @@ package controller;
 import database.ConnectionJDBC;
 import model.CORE.User;
 import model.DTO.userDTO.CreateUserDTO;
+import model.DTO.userDTO.ShowUserDTO;
+import service.user.command.DeleteUserHandler;
 import service.user.command.InsertUserHandler;
+import service.user.query.FindUserById;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -37,12 +40,15 @@ public class UserController {
         }
     }
 
-    public void DeleteUserController(int idUser){
+    public void DeleteUserController(User user) {
         Connection connection = null;
-        InsertUserHandler insertUserHandler = new InsertUserHandler(connection);
+        DeleteUserHandler deleteUserHandler = new DeleteUserHandler(connection);
         try {
             connection = ConnectionJDBC.getConnection();
             connection.setAutoCommit(false);
+            deleteUserHandler.Delete(user);
+            connection.commit();
+            JOptionPane.showMessageDialog(null, "Usuario eliminado correctamente");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Cannot delete user");
             try {
@@ -58,4 +64,6 @@ public class UserController {
             }
         }
     }
+
+
 }
