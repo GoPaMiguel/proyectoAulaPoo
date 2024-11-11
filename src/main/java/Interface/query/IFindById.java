@@ -1,7 +1,8 @@
 package Interface.query;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface IFindById<T> {
-    public ArrayList<T> findById(int id);
+    public T findById(T id) throws SQLException;
 }

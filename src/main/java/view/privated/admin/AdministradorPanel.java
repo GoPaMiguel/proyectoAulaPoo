@@ -45,7 +45,7 @@ public class AdministradorPanel extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(10, 49, 48));
 
-        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/LogoInicial.png"))); // NOI18N
+        label.setIcon(new javax.swing.ImageIcon("C:\\Users\\Miguel\\Desktop\\ProyectoAulaPoo\\src\\main\\resources.admin\\LogoInicial.png")); // NOI18N
 
         jPanel3.setPreferredSize(new java.awt.Dimension(0, 5));
 
@@ -136,7 +136,7 @@ public class AdministradorPanel extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagePanel.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Miguel\\Desktop\\ProyectoAulaPoo\\src\\main\\resources.admin\\ImagePanel.png")); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel2.setText("ADMINISTRADOR PANEL");

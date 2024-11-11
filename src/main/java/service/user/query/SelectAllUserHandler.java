@@ -17,6 +17,13 @@ public class SelectAllUserHandler implements ISelectAll<User> {
     private static final String SELECT_ALL = "select * from user";
     private Connection connection;
 
+    public SelectAllUserHandler(Connection connection) {
+        this.connection = connection;
+    }
+
+    public SelectAllUserHandler() {
+    }
+
     @Override
     public List<User> selectAll() throws SQLException {
         Connection cx = null;

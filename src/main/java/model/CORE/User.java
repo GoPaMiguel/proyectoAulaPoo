@@ -1,7 +1,9 @@
 package model.CORE;
 
 import model.DTO.userDTO.CreateUserDTO;
+import model.DTO.userDTO.FindUserDto;
 import model.DTO.userDTO.ShowUserDTO;
+
 
 public class User {
     private int id;
@@ -31,6 +33,10 @@ public class User {
         this.career = showUserDTO.career();
         this.idUser = showUserDTO.idUser();
         this.points = showUserDTO.points();
+    }
+
+    public User(FindUserDto findUserDTO) {
+        this.idUser = findUserDTO.idUser();
     }
 
     public int getId() {
