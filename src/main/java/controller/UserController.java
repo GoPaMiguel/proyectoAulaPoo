@@ -24,12 +24,38 @@ public class UserController {
             JOptionPane.showMessageDialog(null, e.getMessage());
             try {
                 connection.rollback();
-                ConnectionJDBC.closeConecction(connection);
             } catch (SQLException ex) {
                JOptionPane.showMessageDialog(null, ex.getMessage());
             }
+        }finally {
+            try {
+                ConnectionJDBC.closeConecction(connection);
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error al cerrar conexion");
+            }
+
         }
     }
 
-
+    public void DeleteUserController(int idUser){
+        Connection connection = null;
+        InsertUserHandler insertUserHandler = new InsertUserHandler(connection);
+        try {
+            connection = ConnectionJDBC.getConnection();
+            connection.setAutoCommit(false);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Cannot delete user");
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }finally {
+                try {
+                    ConnectionJDBC.closeConecction(connection);
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Error al cerrar conexion");
+                }
+            }
+        }
+    }
 }
