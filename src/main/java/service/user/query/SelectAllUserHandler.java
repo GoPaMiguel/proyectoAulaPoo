@@ -46,8 +46,10 @@ public class SelectAllUserHandler implements ISelectAll<User> {
                 users.add(new User(showUserDTO));
             }
         } finally {
+            if (rs != null && ps != null) {
             ConnectionJDBC.closeConecction(ps);
             ConnectionJDBC.closeConecction(rs);
+            }
         }
             return users;
     }
