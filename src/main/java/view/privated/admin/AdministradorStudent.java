@@ -4,6 +4,10 @@
  */
 package view.privated.admin;
 
+import controller.UserController;
+import model.DTO.userDTO.CreateUserDTO;
+import service.user.util.helpers.CreateUserTableHandler;
+
 public class AdministradorStudent extends javax.swing.JFrame {
 
 
@@ -12,8 +16,10 @@ public class AdministradorStudent extends javax.swing.JFrame {
      */
     public AdministradorStudent() {
         this.setLocationRelativeTo(null);
-
         initComponents();
+        CreateUserTableHandler createUserTableHandler = new CreateUserTableHandler();
+        createUserTableHandler.createTable(TBListar);
+        UserController.ShowUserController(TBListar);
         txtID.setEnabled(false);
         id.setEnabled(false);
         txtApellidoM.setEnabled(false);
@@ -76,7 +82,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtId = new javax.swing.JTextField();
+        txtCarrera = new javax.swing.JTextField();
         txtCedula = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
@@ -84,7 +90,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
         btnLimpiar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        CBGenero = new javax.swing.JComboBox<>();
+        txtEmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -338,7 +344,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tbModificar);
 
-        btnBusqueda.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\resources.admin\\search.png")); // NOI18N
         btnBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBusquedaActionPerformed(evt);
@@ -582,7 +587,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
         pnRegistrar.setRequestFocusEnabled(false);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("ID:");
+        jLabel5.setText("Carrera:");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Cedula:");
@@ -593,11 +598,11 @@ public class AdministradorStudent extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("Apellido:");
 
-        txtId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtId.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtId.addActionListener(new java.awt.event.ActionListener() {
+        txtCarrera.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCarrera.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtCarrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdActionPerformed(evt);
+                txtCarreraActionPerformed(evt);
             }
         });
 
@@ -656,12 +661,21 @@ public class AdministradorStudent extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\resources.admin\\ecology (2).png")); // NOI18N
-
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setText("Genero:");
+        jLabel10.setText("Email:");
 
-        CBGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Masculino", "Femenino" }));
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEmailKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnRegistrarLayout = new javax.swing.GroupLayout(pnRegistrar);
         pnRegistrar.setLayout(pnRegistrarLayout);
@@ -669,12 +683,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
             pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnRegistrarLayout.createSequentialGroup()
                 .addGroup(pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnRegistrarLayout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(84, 84, 84)
-                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pnRegistrarLayout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addGroup(pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -685,22 +693,27 @@ public class AdministradorStudent extends javax.swing.JFrame {
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtNombre)
-                                    .addComponent(txtCedula)
-                                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(CBGenero, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtNombre)
+                                .addComponent(txtCedula)
+                                .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 26, Short.MAX_VALUE)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnRegistrarLayout.createSequentialGroup()
+                        .addGap(119, 119, 119)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(84, 84, 84)
+                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnRegistrarLayout.setVerticalGroup(
             pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnRegistrarLayout.createSequentialGroup()
-                .addContainerGap(123, Short.MAX_VALUE)
+                .addContainerGap(131, Short.MAX_VALUE)
                 .addGroup(pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnRegistrarLayout.createSequentialGroup()
                         .addComponent(jLabel9)
@@ -708,7 +721,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnRegistrarLayout.createSequentialGroup()
                         .addGroup(pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addComponent(txtId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtCarrera, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
@@ -724,8 +737,8 @@ public class AdministradorStudent extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
-                            .addComponent(CBGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(45, 45, 45)))
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(88, 88, 88)))
                 .addGroup(pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -752,26 +765,28 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
         // TODO add your handling code here:
-
-        
-        pnCambiante.setSelectedIndex(1);
+        CreateUserTableHandler createUserTableHandler = new CreateUserTableHandler();
+        createUserTableHandler.createTable(TBListar);
+        pnCambiante.setSelectedIndex(0);
     }//GEN-LAST:event_btnListarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:        
-        pnCambiante.setSelectedIndex(0);
+        pnCambiante.setSelectedIndex(3);
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        
-        pnCambiante.setSelectedIndex(3);
+        CreateUserTableHandler createUserTableHandler = new CreateUserTableHandler();
+        createUserTableHandler.createTable(tbEliminar);
+        pnCambiante.setSelectedIndex(2);
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-        
-        pnCambiante.setSelectedIndex(2);
+        CreateUserTableHandler createUserTableHandler = new CreateUserTableHandler();
+        createUserTableHandler.createTable(tbModificar);
+        pnCambiante.setSelectedIndex(1);
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarInternoActionPerformed
@@ -810,14 +825,22 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         // TODO add your handling code here:
-        txtId.setText("");
+        txtCarrera.setText("");
         txtCedula.setText("");
         txtNombre.setText("");
         txtApellido.setText("");
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:        
+        // TODO add your handling code here:
+        String name = txtNombre.getText();
+        String lastName = txtApellido.getText();
+        String email = txtEmail.getText();
+        String career = txtCarrera.getText();
+        String cedula = txtCedula.getText();
+
+        CreateUserDTO createUserDTO  = new CreateUserDTO(name, lastName, email, career, cedula);
+        UserController.CreateUserController(createUserDTO);
         
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -832,7 +855,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreKeyTyped
 
     public void limpiar() {
-        txtId.setText("");
+        txtCarrera.setText("");
         txtCedula.setText("");
         txtNombre.setText("");
         txtApellido.setText("");
@@ -852,9 +875,9 @@ public class AdministradorStudent extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCedulaActionPerformed
 
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+    private void txtCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarreraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdActionPerformed
+    }//GEN-LAST:event_txtCarreraActionPerformed
 
     private void tbModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbModificarMouseClicked
         // TODO add your handling code here:
@@ -883,6 +906,14 @@ public class AdministradorStudent extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidoActionPerformed
 
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -902,7 +933,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> CBGenero;
     private javax.swing.JComboBox<String> CbGeneroM;
     private javax.swing.JTable TBListar;
     private javax.swing.JButton btnBusqueda;
@@ -952,11 +982,12 @@ public class AdministradorStudent extends javax.swing.JFrame {
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtApellidoM;
     private javax.swing.JTextField txtBusqueda;
+    private javax.swing.JTextField txtCarrera;
     private javax.swing.JTextField txtCarreraM;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtCedulaM;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtID;
-    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreM;
     // End of variables declaration//GEN-END:variables
