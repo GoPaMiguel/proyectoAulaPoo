@@ -14,7 +14,7 @@ import java.util.List;
 
 public class SelectAllUserHandler implements ISelectAll<User> {
 
-    private static final String SELECT_ALL = "select * from user";
+    private static final String SELECT_ALL = "select * from people";
     private Connection connection;
 
     public SelectAllUserHandler(Connection connection) {

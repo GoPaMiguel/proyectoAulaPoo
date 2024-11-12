@@ -1,17 +1,33 @@
 package service.user.util.helpers;
 
-import Interface.utils.helpers.IShowElementTable;
+import Interface.utils.helpers.IShowElementAndCreateTable;
 import model.CORE.User;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import java.util.List;
 
-public class ShowUserTableHandler implements IShowElementTable<User> {
+public class ShowUserAndCreateTableHandler implements IShowElementAndCreateTable<User> {
     @Override
     public void showTable(JTable table, List<User> list) {
-        String[] dataList = new String[7];
+
+        //table structure
         DefaultTableModel model = new DefaultTableModel();
+        TableRowSorter<TableModel> alphabeticOrder = new TableRowSorter<TableModel>(model);
+        table.setRowSorter(alphabeticOrder);
+        model.addColumn("ID");
+        model.addColumn("Nombre");
+        model.addColumn("Apellido");
+        model.addColumn("Email");
+        model.addColumn("Carrera");
+        model.addColumn("Cedula");
+        model.addColumn("Puntos");
+        table.setModel(model);
+
+        //Almacena datos
+        String[] dataList = new String[7];
 
         try {
             if (list.isEmpty()) {

@@ -6,7 +6,6 @@ package view.privated.admin;
 
 import controller.UserController;
 import model.DTO.userDTO.CreateUserDTO;
-import service.user.util.helpers.CreateUserTableHandler;
 
 public class AdministradorStudent extends javax.swing.JFrame {
 
@@ -17,9 +16,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
     public AdministradorStudent() {
         this.setLocationRelativeTo(null);
         initComponents();
-        CreateUserTableHandler createUserTableHandler = new CreateUserTableHandler();
-        createUserTableHandler.createTable(TBListar);
-        UserController.ShowUserController(TBListar);
         txtID.setEnabled(false);
         id.setEnabled(false);
         txtApellidoM.setEnabled(false);
@@ -765,27 +761,26 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
         // TODO add your handling code here:
-        CreateUserTableHandler createUserTableHandler = new CreateUserTableHandler();
-        createUserTableHandler.createTable(TBListar);
+        UserController.ShowUserController(TBListar);
+
         pnCambiante.setSelectedIndex(0);
+
     }//GEN-LAST:event_btnListarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        // TODO add your handling code here:        
+        // TODO add your handling code here:
         pnCambiante.setSelectedIndex(3);
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        CreateUserTableHandler createUserTableHandler = new CreateUserTableHandler();
-        createUserTableHandler.createTable(tbEliminar);
+        UserController.ShowUserController(tbEliminar);
         pnCambiante.setSelectedIndex(2);
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-        CreateUserTableHandler createUserTableHandler = new CreateUserTableHandler();
-        createUserTableHandler.createTable(tbModificar);
+        UserController.ShowUserController(tbModificar);
         pnCambiante.setSelectedIndex(1);
     }//GEN-LAST:event_btnModificarActionPerformed
 
@@ -841,6 +836,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
         CreateUserDTO createUserDTO  = new CreateUserDTO(name, lastName, email, career, cedula);
         UserController.CreateUserController(createUserDTO);
+        limpiar();
         
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -859,6 +855,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
         txtCedula.setText("");
         txtNombre.setText("");
         txtApellido.setText("");
+        txtEmail.setText("");
     }
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed

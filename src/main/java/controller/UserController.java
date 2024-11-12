@@ -7,7 +7,7 @@ import service.user.command.DeleteUserHandler;
 import service.user.command.InsertUserHandler;
 import service.user.query.FindUserByIdHandler;
 import service.user.query.SelectAllUserHandler;
-import service.user.util.helpers.ShowUserTableHandler;
+import service.user.util.helpers.ShowUserAndCreateTableHandler;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -122,7 +122,7 @@ public class UserController {
 
     public static void ShowUserController(JTable table) {
         List<User> users = GetAllUserController();
-        ShowUserTableHandler showUserTableHandler = new ShowUserTableHandler();
+        ShowUserAndCreateTableHandler showUserTableHandler = new ShowUserAndCreateTableHandler();
         showUserTableHandler.showTable(table, users);
     }
 }
