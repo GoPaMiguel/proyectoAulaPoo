@@ -2,6 +2,7 @@ package model.CORE;
 
 public class Residue {
     private int id;
+    private String code;
     private String type;
     private int points;
 
@@ -11,6 +12,14 @@ public class Residue {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getType() {
@@ -33,6 +42,7 @@ public class Residue {
     public String toString() {
         final StringBuilder sb = new StringBuilder("Residue{");
         sb.append("id=").append(id);
+        sb.append(", code='").append(code).append('\'');
         sb.append(", type='").append(type).append('\'');
         sb.append(", points=").append(points);
         sb.append('}');
