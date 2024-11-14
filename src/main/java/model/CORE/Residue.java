@@ -1,10 +1,16 @@
 package model.CORE;
 
+import model.DTO.ResiduoDTO.FindResidueDTO;
+
 public class Residue {
     private int id;
     private String code;
     private String type;
     private int points;
+
+    public Residue(FindResidueDTO findResidueDto) {
+        this.code = findResidueDto.code();
+    }
 
     public int getId() {
         return id;
