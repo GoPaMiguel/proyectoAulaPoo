@@ -2,6 +2,7 @@ package model.CORE;
 
 public class Award {
     private int id;
+    private String code;
     private String name;
     private int points;
 
@@ -11,6 +12,14 @@ public class Award {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public int getPoints() {
