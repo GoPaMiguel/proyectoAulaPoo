@@ -1,6 +1,7 @@
 package model.CORE;
 
 import model.DTO.ResiduoDTO.FindResidueDTO;
+import model.DTO.ResiduoDTO.ShowResidueDTO;
 
 public class Residue {
     private int id;
@@ -10,6 +11,13 @@ public class Residue {
 
     public Residue(FindResidueDTO findResidueDto) {
         this.code = findResidueDto.code();
+    }
+
+    public Residue(ShowResidueDTO showResidueDto) {
+        this.id = showResidueDto.id();
+        this.code = showResidueDto.code();
+        this.type = showResidueDto.type();
+        this.points = showResidueDto.points();
     }
 
     public int getId() {
