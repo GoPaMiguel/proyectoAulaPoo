@@ -15,10 +15,13 @@ import java.sql.SQLException;
 public class DeleteResidueHandler implements IDelete<Residue> {
 
     private static final String DELETE = "DELETE FROM residue WHERE code=?";
-    private Connection connection;
+    private  Connection connection;
 
     public DeleteResidueHandler(Connection connection) {
         this.connection = connection;
+    }
+
+    public DeleteResidueHandler() {
     }
 
     @Override
