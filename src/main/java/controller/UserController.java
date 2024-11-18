@@ -95,11 +95,11 @@ public class UserController {
 
     public static List<User> GetAllUserController() {
         Connection connection = null;
-        SelectAllUserHandler selectAllUserHandler = new SelectAllUserHandler(connection);
         List<User> users = null;
 
-        try{
+        try {
             connection = ConnectionJDBC.getConnection();
+        SelectAllUserHandler selectAllUserHandler = new SelectAllUserHandler(connection);
             connection.setAutoCommit(false);
             users = selectAllUserHandler.selectAll();
             connection.commit();
