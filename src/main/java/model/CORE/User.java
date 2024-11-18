@@ -27,6 +27,7 @@ public class User {
     }
 
     public User(ShowUserDTO showUserDTO) {
+        this.id = showUserDTO.id();
         this.name = showUserDTO.name();
         this.lastName = showUserDTO.lastName();
         this.email = showUserDTO.email();

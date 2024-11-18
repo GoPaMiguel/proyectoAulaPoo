@@ -194,6 +194,10 @@ public class AdministradorPanel extends javax.swing.JFrame {
 
     private void btnEstudiante2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstudiante2ActionPerformed
         // TODO add your handling code here:
+       this.dispose();
+       AdministradorPrizes prizes = new AdministradorPrizes();
+       prizes.setLocationRelativeTo(null);
+       prizes.setVisible(true);
     }//GEN-LAST:event_btnEstudiante2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

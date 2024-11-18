@@ -805,9 +805,7 @@ public class AdministradorResiduo extends javax.swing.JFrame {
     }//GEN-LAST:event_txtObjetoActionPerformed
 
     private void txtMaterialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaterialKeyTyped
-        if (!Character.isLetter(evt.getKeyChar())) {
-            evt.consume();
-        }
+        
     }//GEN-LAST:event_txtMaterialKeyTyped
 
     private void txtMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaterialActionPerformed

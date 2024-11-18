@@ -1,5 +1,7 @@
 package Interface.utils.validations;
 
+import java.sql.SQLException;
+
 public interface IValidationField<T> {
-    public T validate(T t);
+    public Boolean validate(T t) throws SQLException;
 }

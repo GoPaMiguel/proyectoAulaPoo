@@ -7,6 +7,7 @@ import service.user.command.DeleteUserHandler;
 import service.user.command.InsertUserHandler;
 import service.user.query.FindUserByIdHandler;
 import service.user.query.SelectAllUserHandler;
+import service.user.util.helpers.ShowUserAndCreateTableHandler;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -15,33 +16,33 @@ import java.util.List;
 
 public class UserController {
 
-    public void CreateUserController(CreateUserDTO createUserDTO){
+    public static void CreateUserController(CreateUserDTO createUserDTO) {
         Connection connection = null;
-        InsertUserHandler insertUserHandler = new InsertUserHandler(connection);
         try {
             connection = ConnectionJDBC.getConnection();
+            InsertUserHandler insertUserHandler = new InsertUserHandler(connection);
             connection.setAutoCommit(false);
             insertUserHandler.insert(new User(createUserDTO));
             connection.commit();
             JOptionPane.showMessageDialog(null, "Usuario creado correctamente");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            JOptionPane.showMessageDialog(null, "Cannot create the user because:" + e.getMessage());
             try {
                 connection.rollback();
             } catch (SQLException ex) {
-               JOptionPane.showMessageDialog(null, ex.getMessage());
+                JOptionPane.showMessageDialog(null, "Cannot make rollback" + ex.getMessage());
             }
         }finally {
             try {
                 ConnectionJDBC.closeConecction(connection);
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Error al cerrar conexion");
+                JOptionPane.showMessageDialog(null, "Error al cerrar conexion" + e.getMessage());
             }
 
         }
     }
 
-    public void DeleteUserController(User user) {
+    public static void DeleteUserController(User user) {
         Connection connection = null;
         DeleteUserHandler deleteUserHandler = new DeleteUserHandler(connection);
         try {
@@ -66,7 +67,7 @@ public class UserController {
         }
     }
 
-    public User GetUserController(User idUser) {
+    public static User GetUserController(User idUser) {
         Connection connection = null;
         FindUserByIdHandler findUserById = new FindUserByIdHandler();
         User user = null;
@@ -92,7 +93,7 @@ public class UserController {
         return user;
     }
 
-    public List<User> GetAllUserController() {
+    public static List<User> GetAllUserController() {
         Connection connection = null;
         SelectAllUserHandler selectAllUserHandler = new SelectAllUserHandler(connection);
         List<User> users = null;
@@ -103,7 +104,7 @@ public class UserController {
             users = selectAllUserHandler.selectAll();
             connection.commit();
         }catch (SQLException e){
-            JOptionPane.showMessageDialog(null, "No se logro traer todos los usuarios");
+            JOptionPane.showMessageDialog(null, "No se logro traer todos los usuarios" + e.getMessage());
             try {
                 connection.rollback();
             } catch (SQLException ex) {
@@ -117,5 +118,11 @@ public class UserController {
             }
         }
         return users;
+    }
+
+    public static void ShowUserController(JTable table) {
+        List<User> users = GetAllUserController();
+        ShowUserAndCreateTableHandler showUserTableHandler = new ShowUserAndCreateTableHandler();
+        showUserTableHandler.showTable(table, users);
     }
 }
