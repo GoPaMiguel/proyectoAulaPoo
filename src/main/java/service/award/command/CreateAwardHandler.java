@@ -15,6 +15,13 @@ public class CreateAwardHandler implements IInsert<Award> {
     private static final String INSERT = "INSERT INTO awards (code, name, points) VALUES (?, ?, ?);";
     private Connection connection;
 
+    public CreateAwardHandler(Connection connection) {
+        this.connection = connection;
+    }
+
+    public CreateAwardHandler() {
+    }
+
     @Override
     public void insert(Award award) throws SQLException {
         Connection conn = null;
