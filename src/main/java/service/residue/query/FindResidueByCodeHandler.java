@@ -13,12 +13,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class FindResidueByCode implements IFindById<Residue> {
+public class FindResidueByCodeHandler implements IFindById<Residue> {
 
     private static final String SELECT_ONE = "SELECT * FROM Residue where code=?";
     private Connection con;
 
-    public FindResidueByCode(Connection con) {
+    public FindResidueByCodeHandler(Connection con) {
         this.con = con;
     }
 
