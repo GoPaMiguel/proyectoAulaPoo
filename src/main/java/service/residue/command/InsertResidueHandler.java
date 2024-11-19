@@ -21,6 +21,12 @@ public class InsertResidueHandler implements IInsert<Residue> {
 
     private Connection connection;
 
+    public InsertResidueHandler(Connection con) {
+        connection = con;
+    }
+
+    public InsertResidueHandler() {}
+
     @Override
     public void insert(Residue residue) throws SQLException {
         Connection conn = null;

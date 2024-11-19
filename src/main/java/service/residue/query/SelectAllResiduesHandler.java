@@ -12,9 +12,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelectAllResidues implements ISelectAll<Residue> {
+public class SelectAllResiduesHandler implements ISelectAll<Residue> {
 
     private static final String SELECT_ALL = "SELECT * FROM residue";
+    Connection conexion;
+
+    public SelectAllResiduesHandler() {
+    }
+
+    public SelectAllResiduesHandler(Connection conexion) {
+        this.conexion = conexion;
+    }
 
     @Override
     public List<Residue> selectAll() throws SQLException {
@@ -25,7 +33,7 @@ public class SelectAllResidues implements ISelectAll<Residue> {
         ResultSet rs = null;
 
         try {
-            cx = ConnectionJDBC.getConnection();
+            cx = conexion != null ? conexion : ConnectionJDBC.getConnection();
             ps = cx.prepareStatement(SELECT_ALL);
             rs = ps.executeQuery();
             while (rs.next()) {
