@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 public class DeleteResidueHandler implements IDelete<Residue> {
 
-    private static final String DELETE = "DELETE FROM residue WHERE code=?";
+    private static final String DELETE = "DELETE FROM residues WHERE code=?";
     private  Connection connection;
 
     public DeleteResidueHandler(Connection connection) {

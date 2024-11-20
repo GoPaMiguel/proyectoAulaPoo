@@ -29,7 +29,7 @@ public class ResidueController {
             con.commit();
             JOptionPane.showMessageDialog(null, "Residue created");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al crear residue");
+            JOptionPane.showMessageDialog(null, "Error al crear residue"+e.getMessage());
             try {
                 con.rollback();
             } catch (SQLException ex) {
@@ -108,11 +108,11 @@ public class ResidueController {
             residues = selectAllResiduesHandler.selectAll();
             con.commit();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al consultar residues");
+            JOptionPane.showMessageDialog(null, "Error al consultar residues"+e.getMessage());
             try {
                 con.rollback();
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error al rollback");
+                JOptionPane.showMessageDialog(null, "Error al rollback"+e.getMessage());
             }
         }finally {
             if (con != null) {
@@ -128,8 +128,13 @@ public class ResidueController {
 
     public static void ShowResidueController(JTable table) {
         List<Residue> residues = GetResiduesController();
-        ShowAndCreateResidueTable showUserAndResidueTableHandler = new ShowAndCreateResidueTable();
-        showUserAndResidueTableHandler.showTable(table, residues);
+        if (!residues.isEmpty() && residues != null) {
+            ShowAndCreateResidueTable showUserAndResidueTableHandler = new ShowAndCreateResidueTable();
+            showUserAndResidueTableHandler.showTable(table, residues);
+        } else {
+            JOptionPane.showMessageDialog(null, "No residues found");
+            return;
+        }
     }
 
 }

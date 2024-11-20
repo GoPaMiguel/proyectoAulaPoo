@@ -24,7 +24,7 @@ public class ShowAndCreateResidueTable implements IShowElementAndCreateTable<Res
         String[] dataList = new String[4];
 
         try {
-            if (list != null || list.isEmpty()) {
+            if (list == null || list.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Cannot get any residues");
                 return;
             }

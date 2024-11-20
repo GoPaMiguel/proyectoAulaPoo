@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 public class FindResidueByCodeHandler implements IFindById<Residue> {
 
-    private static final String SELECT_ONE = "SELECT * FROM Residue where code=?";
+    private static final String SELECT_ONE = "SELECT * FROM Residues where code=?";
     private Connection con;
 
     public FindResidueByCodeHandler(Connection con) {

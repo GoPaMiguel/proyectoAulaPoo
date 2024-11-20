@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 public class ExistResidueHandler implements IExistRegister<FindResidueDTO> {
 
-    private static final String SELECT_COUNT = "SELECT COUNT(*) FROM residue WHERE code=?";
+    private static final String SELECT_COUNT = "SELECT COUNT(*) FROM residues WHERE code=?";
 
     @Override
     public boolean exist(FindResidueDTO residue, Connection cx) throws SQLException {

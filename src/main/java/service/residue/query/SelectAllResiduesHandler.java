@@ -5,6 +5,7 @@ import database.ConnectionJDBC;
 import model.CORE.Residue;
 import model.DTO.ResiduoDTO.ShowResidueDTO;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class SelectAllResiduesHandler implements ISelectAll<Residue> {
 
-    private static final String SELECT_ALL = "SELECT * FROM residue";
+    private static final String SELECT_ALL = "SELECT * FROM residues";
     Connection conexion;
 
     public SelectAllResiduesHandler() {
@@ -50,7 +51,6 @@ public class SelectAllResiduesHandler implements ISelectAll<Residue> {
                 ConnectionJDBC.closeConecction(rs);
             }
         }
-
         return residues;
     }
 }
