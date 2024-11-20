@@ -3,6 +3,7 @@ package controller;
 import database.ConnectionJDBC;
 import model.CORE.User;
 import model.DTO.userDTO.CreateUserDTO;
+import model.DTO.userDTO.FindUserDto;
 import service.user.command.DeleteUserHandler;
 import service.user.command.InsertUserHandler;
 import service.user.query.FindUserByIdHandler;
@@ -42,13 +43,13 @@ public class UserController {
         }
     }
 
-    public static void DeleteUserController(User user) {
+    public static void DeleteUserController(FindUserDto userCode) {
         Connection connection = null;
         DeleteUserHandler deleteUserHandler = new DeleteUserHandler(connection);
         try {
             connection = ConnectionJDBC.getConnection();
             connection.setAutoCommit(false);
-            deleteUserHandler.Delete(user);
+            deleteUserHandler.Delete(new User(userCode));
             connection.commit();
             JOptionPane.showMessageDialog(null, "Usuario eliminado correctamente");
         } catch (SQLException e) {
