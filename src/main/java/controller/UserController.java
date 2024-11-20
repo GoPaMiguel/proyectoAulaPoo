@@ -4,9 +4,12 @@ import database.ConnectionJDBC;
 import model.CORE.User;
 import model.DTO.userDTO.CreateUserDTO;
 import model.DTO.userDTO.FindUserDto;
+import model.DTO.userDTO.LoginUserDTO;
+import service.auth.LoginAuth;
 import service.user.command.DeleteUserHandler;
 import service.user.command.InsertUserHandler;
 import service.user.query.FindUserByIdHandler;
+import service.user.query.LoginUserHandler;
 import service.user.query.SelectAllUserHandler;
 import service.user.util.helpers.ShowUserAndCreateTableHandler;
 
@@ -125,5 +128,35 @@ public class UserController {
         List<User> users = GetAllUserController();
         ShowUserAndCreateTableHandler showUserTableHandler = new ShowUserAndCreateTableHandler();
         showUserTableHandler.showTable(table, users);
+    }
+
+    public static String LoginController(LoginUserDTO dto) {
+
+        Connection connection = null;
+        User user = new User(dto);
+        String login = null;
+        try {
+            connection = ConnectionJDBC.getConnection();
+            connection.setAutoCommit(false);
+            login = LoginAuth.login(user, connection);
+            connection.commit();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al validar los usuarios, " + e.getMessage());
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al hacer el rollback, " + ex.getMessage());
+            }
+        } finally {
+            if (connection != null) {
+                try {
+                    ConnectionJDBC.closeConecction(connection);
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error al cerrar la conexion, " + e.getMessage());
+                }
+            }
+        }
+        return login;
+
     }
 }
