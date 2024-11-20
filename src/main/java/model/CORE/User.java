@@ -2,6 +2,7 @@ package model.CORE;
 
 import model.DTO.userDTO.CreateUserDTO;
 import model.DTO.userDTO.FindUserDto;
+import model.DTO.userDTO.LoginUserDTO;
 import model.DTO.userDTO.ShowUserDTO;
 
 
@@ -34,6 +35,11 @@ public class User {
         this.career = showUserDTO.career();
         this.idUser = showUserDTO.idUser();
         this.points = showUserDTO.points();
+    }
+
+    public User(LoginUserDTO loginUserDTO) {
+        this.idUser = loginUserDTO.idUser();
+        this.password = loginUserDTO.password();
     }
 
     public User(FindUserDto findUserDTO) {
