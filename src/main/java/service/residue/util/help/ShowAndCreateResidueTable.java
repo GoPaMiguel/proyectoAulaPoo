@@ -1,4 +1,4 @@
-package service.award.util.help;
+package service.residue.util.help;
 
 import Interface.utils.helpers.IShowElementAndCreateTable;
 import model.CORE.Residue;

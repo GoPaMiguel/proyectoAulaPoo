@@ -4,12 +4,11 @@ import database.ConnectionJDBC;
 import model.CORE.Residue;
 import model.DTO.ResiduoDTO.CreateResidueDTO;
 import model.DTO.ResiduoDTO.FindResidueDTO;
-import service.award.util.help.ShowAndCreateResidueTable;
+import service.residue.util.help.ShowAndCreateResidueTable;
 import service.residue.command.DeleteResidueHandler;
 import service.residue.command.InsertResidueHandler;
 import service.residue.query.FindResidueByCodeHandler;
 import service.residue.query.SelectAllResiduesHandler;
-import service.user.util.helpers.ShowUserAndCreateTableHandler;
 
 import javax.swing.*;
 import java.sql.Connection;
