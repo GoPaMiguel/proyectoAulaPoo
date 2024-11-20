@@ -12,6 +12,7 @@ public class LoginAuth {
         if (user.getIdUser().equals("sudo") && user.getPassword().equals("sudo")) return "admin";
         LoginUserHandler handler = new LoginUserHandler(con);
         User userDB = handler.login(user);
+        if (userDB == null) return "NN";
         if (user.getIdUser().equals(userDB.getIdUser()) && user.getPassword().equals(userDB.getPassword())) return "user";
 
         return "NN";
