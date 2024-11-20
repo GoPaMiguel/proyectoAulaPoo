@@ -11,15 +11,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class CreateAwardHandler implements IInsert<Award> {
+public class InsertAwardHandler implements IInsert<Award> {
     private static final String INSERT = "INSERT INTO awards (code, name, points) VALUES (?, ?, ?);";
     private Connection connection;
 
-    public CreateAwardHandler(Connection connection) {
+    public InsertAwardHandler(Connection connection) {
         this.connection = connection;
     }
 
-    public CreateAwardHandler() {
+    public InsertAwardHandler() {
     }
 
     @Override

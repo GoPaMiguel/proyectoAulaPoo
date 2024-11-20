@@ -17,6 +17,9 @@ public class SelectAllAwardsHandler implements ISelectAll<Award> {
     private static final String SELECT_ALL_AWARDS_SQL = "SELECT * FROM awards";
     private Connection connection;
 
+    public SelectAllAwardsHandler(Connection connection) { this.connection = connection;}
+    public SelectAllAwardsHandler() {}
+
     @Override
     public List<Award> selectAll() throws SQLException {
         List<Award> awards = new ArrayList<Award>();
