@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 public class FindAwardByIdHandler implements IFindById<Award> {
 
-    private static final String SELECT_AWARD_BY_ID = "SELECT * FROM award WHERE code = ?";
+    private static final String SELECT_AWARD_BY_ID = "SELECT * FROM awards WHERE code = ?";
     private Connection connection;
     public FindAwardByIdHandler(Connection connection) {}
     public FindAwardByIdHandler(){};
