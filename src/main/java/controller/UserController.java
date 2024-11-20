@@ -70,10 +70,10 @@ public class UserController {
 
     public static User GetUserController(User idUser) {
         Connection connection = null;
-        FindUserByIdHandler findUserById = new FindUserByIdHandler();
         User user = null;
         try {
             connection = ConnectionJDBC.getConnection();
+            FindUserByIdHandler findUserById = new FindUserByIdHandler(connection);
             connection.setAutoCommit(false);
              user = findUserById.findById(idUser);
             connection.commit();
