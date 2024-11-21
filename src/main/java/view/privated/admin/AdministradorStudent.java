@@ -5,6 +5,7 @@
 package view.privated.admin;
 
 import controller.UserController;
+import javax.swing.JOptionPane;
 import model.DTO.userDTO.CreateUserDTO;
 import model.DTO.userDTO.FindUserOnlyByIdDTO;
 
@@ -263,9 +264,9 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
         txtName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNameKeyTyped(evt);
             }
         });
 
@@ -684,7 +685,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtIDe, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtIDe, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnEliminarLayout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addComponent(TableDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -798,12 +799,22 @@ public class AdministradorStudent extends javax.swing.JFrame {
         String email = txtEmail.getText();
         String career = JBoxCarrer.getSelectedItem().toString();
         String id = txtID.getText();
-        UserController.CreateUserController(new CreateUserDTO(name, lastName, email, career, id));
-        limpiar();
+        
+        if(id.length()>7 && id.length()<11){
+            UserController.CreateUserController(new CreateUserDTO(name, lastName, email, career, id));
+            limpiar();
+        }else{
+            JOptionPane.showMessageDialog(null, "The ID cannot have less than 8 numbers or more than 10");
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyTyped
-       
+        int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57;
+
+        if (!numero) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtIDKeyTyped
 
     private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
@@ -833,10 +844,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLastNameActionPerformed
 
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
-
     private void tbUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbUpdateMouseClicked
         // TODO add your handling code here:
         
@@ -858,6 +865,12 @@ public class AdministradorStudent extends javax.swing.JFrame {
     private void tbDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDeleteMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tbDeleteMouseClicked
+
+    private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
+        if (!Character.isLetter(evt.getKeyChar())) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNameKeyTyped
 
     /**
      * @param args the command line arguments

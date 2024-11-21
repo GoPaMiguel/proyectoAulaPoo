@@ -5,6 +5,7 @@
 package view.privated.admin;
 
 import controller.ResidueController;
+import javax.swing.JOptionPane;
 import model.DTO.ResiduoDTO.CreateResidueDTO;
 import model.DTO.ResiduoDTO.FindResidueDTO;
 
@@ -333,7 +334,7 @@ public class AdministradorResiduo extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -788,11 +789,20 @@ public class AdministradorResiduo extends javax.swing.JFrame {
         String code = txtCodigo.getText();
         String type = txtMaterial.getText();
         int points = Integer.parseInt(txtPuntos.getText()) ;
-        ResidueController.CreateResidueController(new CreateResidueDTO(code, type, points));
+        if(points >0){
+            ResidueController.CreateResidueController(new CreateResidueDTO(code, type, points));
+        }else{
+            JOptionPane.showMessageDialog(null, "Points must be greater than 0");
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtPuntosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPuntosKeyTyped
+        int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57;
 
+        if (!numero) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtPuntosKeyTyped
 
     private void txtMaterialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaterialKeyTyped
