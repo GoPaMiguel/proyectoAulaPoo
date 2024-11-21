@@ -2,6 +2,7 @@ package model.CORE;
 
 import model.DTO.ResiduoDTO.CreateResidueDTO;
 import model.DTO.ResiduoDTO.FindResidueDTO;
+import model.DTO.ResiduoDTO.PointsResidueDTO;
 import model.DTO.ResiduoDTO.ShowResidueDTO;
 
 public class Residue {
@@ -25,6 +26,10 @@ public class Residue {
         this.code = createResidueDto.code();
         this.type = createResidueDto.type();
         this.points = createResidueDto.points();
+    }
+
+    public Residue(PointsResidueDTO pointsResidueDto) {
+        this.points = pointsResidueDto.points();
     }
 
     public int getId() {
