@@ -25,7 +25,6 @@ public class UserController {
             connection = ConnectionJDBC.getConnection();
             InsertUserHandler insertUserHandler = new InsertUserHandler(connection);
             connection.setAutoCommit(false);
-            JOptionPane.showMessageDialog(null,createUserDTO.toString());
             insertUserHandler.insert(new User(createUserDTO));
             connection.commit();
         } catch (SQLException e) {
