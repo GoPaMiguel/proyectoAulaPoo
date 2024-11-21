@@ -8,6 +8,8 @@ package view.publico;
 import controller.UserController;
 import model.DTO.userDTO.CreateUserDTO;
 
+import javax.swing.*;
+
 /**
  *
  * @author Breiner
@@ -215,7 +217,9 @@ public class SignUp extends javax.swing.JFrame {
         String career = JBoxCarrer.getSelectedItem().toString() == null ? "default" : JBoxCarrer.getSelectedItem().toString();
         String idUser = txtID.getText();
 
-        UserController.CreateUserController(new CreateUserDTO(name, lastName, email, career, idUser));
+        CreateUserDTO createUserDTO = new CreateUserDTO(name, lastName, email, career, idUser);
+
+        UserController.CreateUserController(createUserDTO);
 
     }//GEN-LAST:event_btnSingUpActionPerformed
 

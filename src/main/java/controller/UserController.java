@@ -25,9 +25,9 @@ public class UserController {
             connection = ConnectionJDBC.getConnection();
             InsertUserHandler insertUserHandler = new InsertUserHandler(connection);
             connection.setAutoCommit(false);
+            JOptionPane.showMessageDialog(null,createUserDTO.toString());
             insertUserHandler.insert(new User(createUserDTO));
             connection.commit();
-            JOptionPane.showMessageDialog(null, "Usuario creado correctamente");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Cannot create the user because:" + e.getMessage());
             try {

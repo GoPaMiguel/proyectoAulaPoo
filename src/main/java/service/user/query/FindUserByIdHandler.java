@@ -5,6 +5,7 @@ import database.ConnectionJDBC;
 import model.CORE.User;
 import model.DTO.userDTO.FindUserOnlyByIdDTO;
 import model.DTO.userDTO.ShowUserDTO;
+import model.DTO.userDTO.UserEmailAndIdUserDTO;
 import service.user.util.validations.ExistUserHandler;
 
 import javax.swing.*;
@@ -29,7 +30,7 @@ public class FindUserByIdHandler implements IFindById<User> {
     @Override
     public User findById(User userId) throws SQLException {
 
-        Boolean ok = existUserHandler.exist(new FindUserOnlyByIdDTO(userId.getIdUser()), connection);
+        Boolean ok = existUserHandler.exist(new UserEmailAndIdUserDTO(userId.getIdUser(), userId.getEmail()), connection);
 
         if (!ok){
             JOptionPane.showMessageDialog(null, "Usuario no encontrado");

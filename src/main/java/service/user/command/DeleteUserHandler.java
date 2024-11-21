@@ -4,6 +4,7 @@ import Interface.command.IDelete;
 import database.ConnectionJDBC;
 import model.CORE.User;
 import model.DTO.userDTO.FindUserOnlyByIdDTO;
+import model.DTO.userDTO.UserEmailAndIdUserDTO;
 import service.user.util.validations.ExistUserHandler;
 
 import javax.swing.*;
@@ -28,7 +29,7 @@ public class DeleteUserHandler implements IDelete<User> {
     public void Delete(User user) throws SQLException {
         Connection cx = null;
         PreparedStatement ps = null;
-        Boolean ok = existUserHandler.exist(new FindUserOnlyByIdDTO(user.getIdUser()), connection);
+        Boolean ok = existUserHandler.exist(new UserEmailAndIdUserDTO(user.getIdUser(), user.getEmail()), connection);
         if (!ok) {
             JOptionPane.showMessageDialog(null, "can't delete, IdUser: "+user.getIdUser()+" does not exist");
             return;

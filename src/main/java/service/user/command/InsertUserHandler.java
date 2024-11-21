@@ -4,6 +4,7 @@ import Interface.command.IInsert;
 import database.ConnectionJDBC;
 import model.CORE.User;
 import model.DTO.userDTO.FindUserOnlyByIdDTO;
+import model.DTO.userDTO.UserEmailAndIdUserDTO;
 import service.user.util.validations.ExistUserHandler;
 import service.user.util.validations.ValidationUserFieldHandler;
 
@@ -33,10 +34,10 @@ public class InsertUserHandler implements IInsert<User> {
         PreparedStatement preparedStatement = null;
         try {
             connection = connection_transactional != null ? connection_transactional : ConnectionJDBC.getConnection();
-            boolean UserExists = existUserHandler.exist(new FindUserOnlyByIdDTO(user.getIdUser()), ConnectionJDBC.getConnection());
+            boolean UserExists = existUserHandler.exist(new UserEmailAndIdUserDTO(user.getIdUser(), user.getEmail()), ConnectionJDBC.getConnection());
             boolean validationField = validationUserFieldHandler.validate(user);
         if (UserExists) {
-            JOptionPane.showMessageDialog(null, "Ya existe un usuario con ese id");
+            JOptionPane.showMessageDialog(null, "Ya existe un usuario con ese id o email");
             return;
         }else if (!validationField) return;
             preparedStatement = connection.prepareStatement(INSERT);
@@ -47,6 +48,7 @@ public class InsertUserHandler implements IInsert<User> {
             preparedStatement.setString(5, user.getIdUser());
             preparedStatement.setString(6, user.getEmail());
             preparedStatement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Usuario registrado con exito");
         } finally {
             if (preparedStatement != null) ConnectionJDBC.closeConecction(preparedStatement);
 

@@ -1,4 +1,4 @@
 package model.DTO.userDTO;
 
-public record UserEmailAndIdUserDTO(String email, String idUser) {
+public record UserEmailAndIdUserDTO(String idUser, String email) {
 }
