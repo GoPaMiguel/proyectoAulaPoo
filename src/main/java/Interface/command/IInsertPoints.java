@@ -1,4 +1,4 @@
-package Interface.utils.helpers;
+package Interface.command;
 
 import java.sql.SQLException;
 
