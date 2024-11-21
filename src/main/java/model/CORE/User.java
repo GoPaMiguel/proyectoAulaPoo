@@ -1,9 +1,6 @@
 package model.CORE;
 
-import model.DTO.userDTO.CreateUserDTO;
-import model.DTO.userDTO.FindUserOnlyByIdDTO;
-import model.DTO.userDTO.LoginUserDTO;
-import model.DTO.userDTO.ShowUserDTO;
+import model.DTO.userDTO.*;
 
 
 public class User {
@@ -40,6 +37,11 @@ public class User {
     public User(LoginUserDTO loginUserDTO) {
         this.idUser = loginUserDTO.idUser();
         this.password = loginUserDTO.password();
+    }
+
+    public User(UserEmailAndIdUserDTO emailAndIdUserDTO) {
+        this.idUser = emailAndIdUserDTO.idUser();
+        this.email = emailAndIdUserDTO.email();
     }
 
     public User(FindUserOnlyByIdDTO findUserOnlyByIdDTO) {
