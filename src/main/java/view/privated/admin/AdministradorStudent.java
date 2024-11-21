@@ -5,6 +5,7 @@
 package view.privated.admin;
 
 import controller.UserController;
+import model.DTO.userDTO.CreateUserDTO;
 import model.DTO.userDTO.FindUserOnlyByIdDTO;
 
 public class AdministradorStudent extends javax.swing.JFrame {
@@ -318,11 +319,10 @@ public class AdministradorStudent extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\resources.admin\\ecology (2).png")); // NOI18N
-
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Carrer:");
 
+        JBoxCarrer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ing", "Calidad" }));
         JBoxCarrer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout pnRegistrarLayout = new javax.swing.GroupLayout(pnRegistrar);
@@ -728,8 +728,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
         // TODO add your handling code here:
-
-        
+        UserController.ShowUserController(TBList);
         pnCambiante.setSelectedIndex(1);
     }//GEN-LAST:event_btnListarActionPerformed
 
@@ -740,13 +739,13 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        
+        UserController.ShowUserController(tbDelete);
         pnCambiante.setSelectedIndex(3);
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
-        
+        UserController.ShowUserController(tbUpdate);
         pnCambiante.setSelectedIndex(2);
     }//GEN-LAST:event_btnModificarActionPerformed
 
@@ -759,7 +758,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
     private void btnModificarInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarInternoActionPerformed
         // TODO add your handling code here:
-        
     }//GEN-LAST:event_btnModificarInternoActionPerformed
 
     private void puntosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_puntosKeyTyped
@@ -795,7 +793,13 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:        
-        
+        String name = txtName.getText();
+        String lastName = txtLastName.getText();
+        String email = txtEmail.getText();
+        String career = JBoxCarrer.getSelectedItem().toString();
+        String id = txtID.getText();
+        UserController.CreateUserController(new CreateUserDTO(name, lastName, email, career, id));
+        limpiar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyTyped
