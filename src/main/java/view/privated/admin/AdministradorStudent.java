@@ -8,6 +8,7 @@ import controller.UserController;
 import javax.swing.JOptionPane;
 import model.DTO.userDTO.CreateUserDTO;
 import model.DTO.userDTO.FindUserOnlyByIdDTO;
+import model.DTO.userDTO.ShowUserDTO;
 
 public class AdministradorStudent extends javax.swing.JFrame {
 
@@ -285,16 +286,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
         txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
-            }
-        });
-        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtEmailKeyTyped(evt);
-            }
-        });
 
         txtID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -817,22 +808,12 @@ public class AdministradorStudent extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtIDKeyTyped
 
-    private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
-        if (!Character.isLetter(evt.getKeyChar())) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtEmailKeyTyped
-
     public void limpiar() {
         txtName.setText("");
         txtLastName.setText("");
         txtEmail.setText("");
         txtID.setText("");
     }
-
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailActionPerformed
 
     private void txtLastNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLastNameKeyTyped
         if (!Character.isLetter(evt.getKeyChar())) {
