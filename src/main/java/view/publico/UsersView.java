@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package view.privated.admin;
+package view.publico;
 
 /**
  *
@@ -31,13 +31,13 @@ public class UsersView extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        btnEstudiante = new javax.swing.JButton();
-        btnObjects = new javax.swing.JButton();
-        btnEstudiante2 = new javax.swing.JButton();
+        btnProfile = new javax.swing.JButton();
+        btnRecycle = new javax.swing.JButton();
+        btnRedeemPoints = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -76,54 +76,54 @@ public class UsersView extends javax.swing.JFrame {
             .addGap(0, 6, Short.MAX_VALUE)
         );
 
-        btnEstudiante.setBackground(new java.awt.Color(85, 140, 54));
-        btnEstudiante.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        btnEstudiante.setForeground(new java.awt.Color(255, 255, 255));
-        btnEstudiante.setText("Profile");
-        btnEstudiante.setBorder(null);
-        btnEstudiante.addActionListener(new java.awt.event.ActionListener() {
+        btnProfile.setBackground(new java.awt.Color(85, 140, 54));
+        btnProfile.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btnProfile.setForeground(new java.awt.Color(255, 255, 255));
+        btnProfile.setText("Profile");
+        btnProfile.setBorder(null);
+        btnProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEstudianteActionPerformed(evt);
+                btnProfileActionPerformed(evt);
             }
         });
 
-        btnObjects.setBackground(new java.awt.Color(85, 140, 54));
-        btnObjects.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        btnObjects.setForeground(new java.awt.Color(255, 255, 255));
-        btnObjects.setText("Recycle");
-        btnObjects.setBorder(null);
-        btnObjects.addActionListener(new java.awt.event.ActionListener() {
+        btnRecycle.setBackground(new java.awt.Color(85, 140, 54));
+        btnRecycle.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        btnRecycle.setForeground(new java.awt.Color(255, 255, 255));
+        btnRecycle.setText("Recycle");
+        btnRecycle.setBorder(null);
+        btnRecycle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnObjectsActionPerformed(evt);
+                btnRecycleActionPerformed(evt);
             }
         });
 
-        btnEstudiante2.setBackground(new java.awt.Color(85, 140, 54));
-        btnEstudiante2.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        btnEstudiante2.setForeground(new java.awt.Color(255, 255, 255));
-        btnEstudiante2.setText("Redeem Points");
-        btnEstudiante2.setBorder(null);
-        btnEstudiante2.addActionListener(new java.awt.event.ActionListener() {
+        btnRedeemPoints.setBackground(new java.awt.Color(85, 140, 54));
+        btnRedeemPoints.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        btnRedeemPoints.setForeground(new java.awt.Color(255, 255, 255));
+        btnRedeemPoints.setText("Redeem Points");
+        btnRedeemPoints.setBorder(null);
+        btnRedeemPoints.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEstudiante2ActionPerformed(evt);
+                btnRedeemPointsActionPerformed(evt);
             }
         });
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/boceto/user2.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\resources.admin\\user4.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnObjects, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnRecycle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-            .addComponent(btnEstudiante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnEstudiante2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnRedeemPoints, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addGap(30, 30, 30))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,11 +133,11 @@ public class UsersView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnObjects, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRecycle, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEstudiante2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRedeemPoints, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(82, Short.MAX_VALUE))
@@ -154,15 +154,15 @@ public class UsersView extends javax.swing.JFrame {
         jLabel3.setText("CLOSE");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, 30));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setBackground(new java.awt.Color(255, 255, 255));
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setBorderPainted(false);
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, 90, 33));
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, 90, 33));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel4.setText("WELCOME TO");
@@ -185,27 +185,30 @@ public class UsersView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstudianteActionPerformed
-        /*this.dispose();
-        AdministradorStudent student = new AdministradorStudent();
-        student.setLocationRelativeTo(null);
-        student.setVisible(true);
-        */
+    private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
+        this.dispose();
+        ProfileUser profile = new ProfileUser();
+        profile.setLocationRelativeTo(null);
+        profile.setVisible(true);
         
-    }//GEN-LAST:event_btnEstudianteActionPerformed
+    }//GEN-LAST:event_btnProfileActionPerformed
 
-    private void btnObjectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObjectsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnObjectsActionPerformed
+    private void btnRecycleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecycleActionPerformed
+        Recycle recycle = new Recycle();
+        recycle.setLocationRelativeTo(null);
+        recycle.setVisible(true);
+    }//GEN-LAST:event_btnRecycleActionPerformed
 
-    private void btnEstudiante2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstudiante2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEstudiante2ActionPerformed
+    private void btnRedeemPointsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedeemPointsActionPerformed
+        RedeemPoints redeem = new RedeemPoints();
+        redeem.setLocationRelativeTo(null);
+        redeem.setVisible(true);
+    }//GEN-LAST:event_btnRedeemPointsActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
    
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,10 +258,10 @@ public class UsersView extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEstudiante;
-    private javax.swing.JButton btnEstudiante2;
-    private javax.swing.JButton btnObjects;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnProfile;
+    private javax.swing.JButton btnRecycle;
+    private javax.swing.JButton btnRedeemPoints;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
