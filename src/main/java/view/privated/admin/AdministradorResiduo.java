@@ -295,6 +295,8 @@ public class AdministradorResiduo extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\resources.admin\\ecology (3).png")); // NOI18N
+
         javax.swing.GroupLayout pnRegistrarLayout = new javax.swing.GroupLayout(pnRegistrar);
         pnRegistrar.setLayout(pnRegistrarLayout);
         pnRegistrarLayout.setHorizontalGroup(
@@ -314,18 +316,15 @@ public class AdministradorResiduo extends javax.swing.JFrame {
                     .addComponent(txtCodigo)
                     .addComponent(txtMaterial)
                     .addComponent(txtPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addGap(28, 28, 28))
         );
         pnRegistrarLayout.setVerticalGroup(
             pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnRegistrarLayout.createSequentialGroup()
-                .addContainerGap(160, Short.MAX_VALUE)
+                .addContainerGap(111, Short.MAX_VALUE)
                 .addGroup(pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnRegistrarLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(34, 34, 34))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnRegistrarLayout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(4, 4, 4)
@@ -338,7 +337,10 @@ public class AdministradorResiduo extends javax.swing.JFrame {
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(94, 94, 94)))
+                        .addGap(94, 94, 94))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnRegistrarLayout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(49, 49, 49)))
                 .addGroup(pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
