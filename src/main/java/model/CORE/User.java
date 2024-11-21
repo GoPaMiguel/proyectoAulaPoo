@@ -44,6 +44,10 @@ public class User {
         this.email = emailAndIdUserDTO.email();
     }
 
+    public User(UserPointsDTO userPointsDTO) {
+        this.points = userPointsDTO.points();
+    }
+
     public User(FindUserOnlyByIdDTO findUserOnlyByIdDTO) {
         this.idUser = findUserOnlyByIdDTO.idUser();
     }
