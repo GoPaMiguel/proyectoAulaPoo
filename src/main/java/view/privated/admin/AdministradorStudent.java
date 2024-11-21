@@ -5,6 +5,7 @@
 package view.privated.admin;
 
 import controller.UserController;
+import model.CORE.User;
 import model.DTO.userDTO.CreateUserDTO;
 import model.DTO.userDTO.FindUserOnlyByIdDTO;
 
@@ -73,7 +74,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
         txtNameM = new javax.swing.JTextField();
         txtLastNameM = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        puntos = new javax.swing.JTextField();
+        txtCareerM = new javax.swing.JTextField();
         btnModificarInterno = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         txtIDM = new javax.swing.JTextField();
@@ -514,9 +515,9 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
         jLabel17.setText("Carrer:");
 
-        puntos.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtCareerM.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                puntosKeyTyped(evt);
+                txtCareerMKeyTyped(evt);
             }
         });
 
@@ -562,7 +563,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
                                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(4, 4, 4)))
                         .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(puntos, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCareerM, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtEmailM, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(105, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnModificarLayout.createSequentialGroup()
@@ -612,7 +613,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
                             .addGroup(pnModificarLayout.createSequentialGroup()
                                 .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel17)
-                                    .addComponent(puntos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtCareerM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(35, 35, 35)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TableUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -760,9 +761,9 @@ public class AdministradorStudent extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnModificarInternoActionPerformed
 
-    private void puntosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_puntosKeyTyped
-       
-    }//GEN-LAST:event_puntosKeyTyped
+    private void txtCareerMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCareerMKeyTyped
+
+    }//GEN-LAST:event_txtCareerMKeyTyped
 
     private void txtLastNameMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLastNameMKeyTyped
         
@@ -839,7 +840,13 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
     private void tbUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbUpdateMouseClicked
         // TODO add your handling code here:
-        
+        User userDto = UserController.SelectUserController(tbUpdate);
+        txtIDM.setText(userDto.getIdUser());
+        txtNameM.setText(userDto.getLastName());
+        txtEmailM.setText(userDto.getEmail());
+        txtLastNameM.setText(userDto.getLastName());
+        txtCareerM.setText(userDto.getCareer());
+
     }//GEN-LAST:event_tbUpdateMouseClicked
 
     private void txtIDeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIDeMouseClicked
@@ -972,10 +979,10 @@ public class AdministradorStudent extends javax.swing.JFrame {
     private javax.swing.JPanel pnListar;
     private javax.swing.JPanel pnModificar;
     private javax.swing.JPanel pnRegistrar;
-    private javax.swing.JTextField puntos;
     private javax.swing.JTable tbDelete;
     private javax.swing.JTable tbUpdate;
     private javax.swing.JTextField txtBusqueda;
+    private javax.swing.JTextField txtCareerM;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEmailM;
     private javax.swing.JTextField txtID;

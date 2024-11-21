@@ -700,7 +700,7 @@
                                       </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="puntos" min="-2" pref="90" max="-2" attributes="0"/>
+                                      <Component id="txtCareerM" min="-2" pref="90" max="-2" attributes="0"/>
                                       <Component id="txtEmailM" min="-2" pref="90" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -766,7 +766,7 @@
                                       <Group type="102" alignment="1" attributes="0">
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="puntos" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtCareerM" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                       </Group>
@@ -885,9 +885,9 @@
                     <Property name="text" type="java.lang.String" value="Carrer:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="puntos">
+                <Component class="javax.swing.JTextField" name="txtCareerM">
                   <Events>
-                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="puntosKeyTyped"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCareerMKeyTyped"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnModificarInterno">

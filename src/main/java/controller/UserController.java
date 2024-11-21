@@ -5,7 +5,6 @@ import model.CORE.User;
 import model.DTO.userDTO.CreateUserDTO;
 import model.DTO.userDTO.FindUserOnlyByIdDTO;
 import model.DTO.userDTO.LoginUserDTO;
-import model.DTO.userDTO.ShowUserDTO;
 import service.auth.LoginAuth;
 import service.user.command.DeleteUserHandler;
 import service.user.command.InsertUserHandler;
@@ -160,10 +159,9 @@ public class UserController {
 
     }
 
-    public static ShowUserDTO SelectUserController(JTable table) {
+    public static User SelectUserController(JTable table) {
         SelectUserTableHandler selectUserTableHandler = new SelectUserTableHandler();
         User user = selectUserTableHandler.selectElement(table);
-
-        return new ShowUserDTO(user.getId(), user.getName(), user.getLastName(), user.getEmail(), user.getCareer(), user.getIdUser(), user.getPoints());
+        return user;
     }
 }
