@@ -3,7 +3,7 @@ package service.user.query;
 import Interface.query.IFindById;
 import database.ConnectionJDBC;
 import model.CORE.User;
-import model.DTO.userDTO.FindUserDto;
+import model.DTO.userDTO.FindUserOnlyByIdDTO;
 import model.DTO.userDTO.ShowUserDTO;
 import service.user.util.validations.ExistUserHandler;
 
@@ -29,7 +29,7 @@ public class FindUserByIdHandler implements IFindById<User> {
     @Override
     public User findById(User userId) throws SQLException {
 
-        Boolean ok = existUserHandler.exist(new FindUserDto(userId.getIdUser()), connection);
+        Boolean ok = existUserHandler.exist(new FindUserOnlyByIdDTO(userId.getIdUser()), connection);
 
         if (!ok){
             JOptionPane.showMessageDialog(null, "Usuario no encontrado");

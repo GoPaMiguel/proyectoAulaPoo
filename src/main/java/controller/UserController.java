@@ -3,13 +3,12 @@ package controller;
 import database.ConnectionJDBC;
 import model.CORE.User;
 import model.DTO.userDTO.CreateUserDTO;
-import model.DTO.userDTO.FindUserDto;
+import model.DTO.userDTO.FindUserOnlyByIdDTO;
 import model.DTO.userDTO.LoginUserDTO;
 import service.auth.LoginAuth;
 import service.user.command.DeleteUserHandler;
 import service.user.command.InsertUserHandler;
 import service.user.query.FindUserByIdHandler;
-import service.user.query.LoginUserHandler;
 import service.user.query.SelectAllUserHandler;
 import service.user.util.helpers.ShowUserAndCreateTableHandler;
 
@@ -46,7 +45,7 @@ public class UserController {
         }
     }
 
-    public static void DeleteUserController(FindUserDto userCode) {
+    public static void DeleteUserController(FindUserOnlyByIdDTO userCode) {
         Connection connection = null;
         DeleteUserHandler deleteUserHandler = new DeleteUserHandler(connection);
         try {

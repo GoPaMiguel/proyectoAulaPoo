@@ -3,7 +3,7 @@ package service.user.command;
 import Interface.command.IInsert;
 import database.ConnectionJDBC;
 import model.CORE.User;
-import model.DTO.userDTO.FindUserDto;
+import model.DTO.userDTO.FindUserOnlyByIdDTO;
 import service.user.util.validations.ExistUserHandler;
 import service.user.util.validations.ValidationUserFieldHandler;
 
@@ -33,7 +33,7 @@ public class InsertUserHandler implements IInsert<User> {
         PreparedStatement preparedStatement = null;
         try {
             connection = connection_transactional != null ? connection_transactional : ConnectionJDBC.getConnection();
-            boolean UserExists = existUserHandler.exist(new FindUserDto(user.getIdUser()), ConnectionJDBC.getConnection());
+            boolean UserExists = existUserHandler.exist(new FindUserOnlyByIdDTO(user.getIdUser()), ConnectionJDBC.getConnection());
             boolean validationField = validationUserFieldHandler.validate(user);
         if (UserExists) {
             JOptionPane.showMessageDialog(null, "Ya existe un usuario con ese id");

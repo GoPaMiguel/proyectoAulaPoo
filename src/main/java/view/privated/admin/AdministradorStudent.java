@@ -5,8 +5,7 @@
 package view.privated.admin;
 
 import controller.UserController;
-import model.CORE.User;
-import model.DTO.userDTO.FindUserDto;
+import model.DTO.userDTO.FindUserOnlyByIdDTO;
 
 public class AdministradorStudent extends javax.swing.JFrame {
 
@@ -758,7 +757,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
     private void btnEliminarInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarInternoActionPerformed
         // TODO add your handling code here:        
         String idUser = txtIDe.getText();
-        UserController.DeleteUserController(new FindUserDto(idUser));
+        UserController.DeleteUserController(new FindUserOnlyByIdDTO(idUser));
         UserController.ShowUserController(tbDelete);
     }//GEN-LAST:event_btnEliminarInternoActionPerformed
 
