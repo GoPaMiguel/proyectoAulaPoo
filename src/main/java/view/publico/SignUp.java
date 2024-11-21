@@ -5,6 +5,9 @@ package view.publico;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import controller.UserController;
+import model.DTO.userDTO.CreateUserDTO;
+
 /**
  *
  * @author Breiner
@@ -39,7 +42,7 @@ public class SignUp extends javax.swing.JFrame {
         txtID = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtLastName = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnSingUp = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         JBoxCarrer = new javax.swing.JComboBox<>();
@@ -51,17 +54,15 @@ public class SignUp extends javax.swing.JFrame {
 
         jPanel3.setPreferredSize(new java.awt.Dimension(400, 500));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\resources.admin\\signup3.png")); // NOI18N
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 48)); // NOI18N
@@ -89,10 +90,15 @@ public class SignUp extends javax.swing.JFrame {
 
         txtLastName.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(85, 140, 54));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Sign Up");
+        btnSingUp.setBackground(new java.awt.Color(85, 140, 54));
+        btnSingUp.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnSingUp.setForeground(new java.awt.Color(255, 255, 255));
+        btnSingUp.setText("Sign Up");
+        btnSingUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSingUpActionPerformed(evt);
+            }
+        });
 
         btnBack.setBackground(new java.awt.Color(85, 140, 54));
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
@@ -105,6 +111,9 @@ public class SignUp extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         jLabel8.setText("Carrer:");
+
+        JBoxCarrer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hola", "Ing" }));
+        JBoxCarrer.setSelectedIndex(1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -124,7 +133,7 @@ public class SignUp extends javax.swing.JFrame {
                             .addComponent(txtID)
                             .addComponent(jLabel6)
                             .addComponent(txtLastName)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSingUp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
                             .addComponent(JBoxCarrer, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -162,7 +171,7 @@ public class SignUp extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(JBoxCarrer, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSingUp, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
 
@@ -196,6 +205,19 @@ public class SignUp extends javax.swing.JFrame {
         login.setVisible(true);
         
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnSingUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSingUpActionPerformed
+        // TODO add your handling code here:
+
+        String name = txtName.getText();
+        String lastName = txtLastName.getText();
+        String email = txtEmail.getText();
+        String career = JBoxCarrer.getSelectedItem().toString() == null ? "default" : JBoxCarrer.getSelectedItem().toString();
+        String idUser = txtID.getText();
+
+        UserController.CreateUserController(new CreateUserDTO(name, lastName, email, career, idUser));
+
+    }//GEN-LAST:event_btnSingUpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,7 +258,7 @@ public class SignUp extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> JBoxCarrer;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSingUp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -66,7 +66,7 @@
                               <Component id="txtID" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="txtLastName" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnSingUp" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtEmail" alignment="0" pref="294" max="32767" attributes="0"/>
                               <Component id="JBoxCarrer" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel2" max="32767" attributes="0"/>
@@ -110,7 +110,7 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="JBoxCarrer" min="-2" pref="28" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="44" max="-2" attributes="0"/>
+                  <Component id="btnSingUp" min="-2" pref="44" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -127,22 +127,17 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jLabel1" alignment="0" pref="400" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jLabel1" alignment="0" pref="500" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel1">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Breiner\OneDrive\Escritorio\PRO-AULA-2024-2\proyectoAulaPoo\src\main\resources.admin\signup3.png"/>
-                </Property>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -218,7 +213,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btnSingUp">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="36" green="8c" red="55" type="rgb"/>
@@ -231,6 +226,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Sign Up"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSingUpActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnBack">
           <Properties>
@@ -257,8 +255,12 @@
         <Component class="javax.swing.JComboBox" name="JBoxCarrer">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
+              <StringArray count="2">
+                <StringItem index="0" value="Hola"/>
+                <StringItem index="1" value="Ing"/>
+              </StringArray>
             </Property>
+            <Property name="selectedIndex" type="int" value="1"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
