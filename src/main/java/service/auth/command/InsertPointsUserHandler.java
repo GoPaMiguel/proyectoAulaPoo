@@ -1,6 +1,6 @@
 package service.auth.command;
 
-import Interface.utils.helpers.IInsertPoints;
+import Interface.command.IInsertPoints;
 import database.ConnectionJDBC;
 import model.CORE.User;
 

@@ -26,7 +26,6 @@ public class ResidueController {
             con.setAutoCommit(false);
             insertResidueHandler.insert(new Residue(createResidueDTO));
             con.commit();
-            JOptionPane.showMessageDialog(null, "Residue created");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al crear residue"+e.getMessage());
             try {
