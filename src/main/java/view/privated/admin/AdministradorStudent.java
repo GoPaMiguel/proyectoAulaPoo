@@ -184,7 +184,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
         btnVolver.setBackground(new java.awt.Color(45, 106, 79));
         btnVolver.setForeground(new java.awt.Color(255, 255, 255));
-        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoaula/igu/GestionDeResiduos/Iconos/previous.png"))); // NOI18N
         btnVolver.setText("VOLVER");
         btnVolver.setBorderPainted(false);
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
