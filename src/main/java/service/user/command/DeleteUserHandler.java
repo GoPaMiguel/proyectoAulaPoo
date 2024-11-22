@@ -6,6 +6,7 @@ import model.CORE.User;
 import model.DTO.userDTO.FindUserOnlyByIdDTO;
 import model.DTO.userDTO.UserEmailAndIdUserDTO;
 import service.user.util.validations.ExistUserHandler;
+import service.user.util.validations.ValidationExistUserById;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -14,9 +15,9 @@ import java.sql.SQLException;
 
 public class DeleteUserHandler implements IDelete<User> {
 
-    private static final String DELETE = "DELETE FROM people WHERE cedual=?";
+    private static final String DELETE = "DELETE FROM people WHERE cedula=?";
     private  Connection connection;
-    private ExistUserHandler existUserHandler;
+    private ValidationExistUserById validation = new ValidationExistUserById();
 
     public DeleteUserHandler() {
     }
@@ -29,13 +30,13 @@ public class DeleteUserHandler implements IDelete<User> {
     public void Delete(User user) throws SQLException {
         Connection cx = null;
         PreparedStatement ps = null;
-        Boolean ok = existUserHandler.exist(new UserEmailAndIdUserDTO(user.getIdUser(), user.getEmail()), connection);
-        if (!ok) {
-            JOptionPane.showMessageDialog(null, "can't delete, IdUser: "+user.getIdUser()+" does not exist");
-            return;
-        }
         try {
             cx = (connection != null) ? connection : ConnectionJDBC.getConnection();
+            boolean ok = validation.exist(new FindUserOnlyByIdDTO(user.getIdUser()), cx);
+            if (!ok) {
+                JOptionPane.showMessageDialog(null, "can't delete, IdUser: " + user.getIdUser() + " does not exist");
+                return;
+            }
             ps = cx.prepareCall(DELETE);
             ps.setString(1, user.getIdUser());
             ps.executeUpdate();

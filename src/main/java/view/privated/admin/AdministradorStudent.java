@@ -750,6 +750,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
         String idUser = txtIDe.getText();
         UserController.DeleteUserController(new FindUserOnlyByIdDTO(idUser));
         UserController.ShowUserController(tbDelete);
+        txtIDe.setText("");
     }//GEN-LAST:event_btnEliminarInternoActionPerformed
 
     private void btnModificarInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarInternoActionPerformed
@@ -761,7 +762,19 @@ public class AdministradorStudent extends javax.swing.JFrame {
         String career = CareerUpdate.getSelectedItem().toString();
         UpdateUserAdminDTO userAdminDTO = new UpdateUserAdminDTO(name,lastName,email,idUser,career);
         UserController.UpdateUserController(new User(userAdminDTO), new FindUserOnlyByIdDTO(IDCurrent.getText()));
+        UserController.ShowUserController(tbUpdate);
+
     }//GEN-LAST:event_btnModificarInternoActionPerformed
+
+    private void updateM(){
+        User userDto = UserController.SelectUserController(tbUpdate);
+        txtIDM.setText("");
+        txtNameM.setText("");
+        txtEmailM.setText("");
+        txtLastNameM.setText("");
+        CareerUpdate.setSelectedItem("");
+        IDCurrent.setText("");
+    }
 
     private void txtLastNameMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLastNameMKeyTyped
     if (!Character.isLetter(evt.getKeyChar())) {
@@ -835,7 +848,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
         // TODO add your handling code here:
         User userDto = UserController.SelectUserController(tbUpdate);
         txtIDM.setText(userDto.getIdUser());
-        txtNameM.setText(userDto.getLastName());
+        txtNameM.setText(userDto.getName());
         txtEmailM.setText(userDto.getEmail());
         txtLastNameM.setText(userDto.getLastName());
         CareerUpdate.setSelectedItem(userDto.getCareer());
@@ -857,6 +870,8 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
     private void tbDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDeleteMouseClicked
         // TODO add your handling code here:
+        User userDto = UserController.SelectUserController(tbDelete);
+        txtIDe.setText(userDto.getIdUser());
     }//GEN-LAST:event_tbDeleteMouseClicked
 
     private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped

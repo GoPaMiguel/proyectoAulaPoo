@@ -56,7 +56,7 @@ public class UserController {
             connection.commit();
             JOptionPane.showMessageDialog(null, "Usuario eliminado correctamente");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Cannot delete user");
+            JOptionPane.showMessageDialog(null, "Cannot delete user, because:" + e.getMessage());
             try {
                 connection.rollback();
             } catch (SQLException ex) {

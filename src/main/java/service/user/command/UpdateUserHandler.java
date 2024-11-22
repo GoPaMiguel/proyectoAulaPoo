@@ -43,8 +43,7 @@ public class UpdateUserHandler implements IUpdate<User, FindUserOnlyByIdDTO> {
             ps.setString(4, user.getCareer());
             ps.setString(5, user.getIdUser());
             ps.setString(6, dto.idUser());
-            JOptionPane.showMessageDialog(null, ps.toString());
-//            ps.executeUpdate();
+            ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "User Update successful");
         }finally {
             if(ps != null) ps.close();
