@@ -8,6 +8,7 @@ import model.DTO.userDTO.LoginUserDTO;
 import service.auth.LoginAuth;
 import service.user.command.DeleteUserHandler;
 import service.user.command.InsertUserHandler;
+import service.user.command.UpdateUserHandler;
 import service.user.query.FindUserByIdHandler;
 import service.user.query.SelectAllUserHandler;
 import service.user.util.helpers.SelectUserTableHandler;
@@ -35,7 +36,7 @@ public class UserController {
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Cannot make rollback" + ex.getMessage());
             }
-        }finally {
+        } finally {
             try {
                 ConnectionJDBC.closeConecction(connection);
             } catch (SQLException e) {
@@ -60,7 +61,7 @@ public class UserController {
                 connection.rollback();
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
-            }finally {
+            } finally {
                 try {
                     ConnectionJDBC.closeConecction(connection);
                 } catch (SQLException ex) {
@@ -68,6 +69,33 @@ public class UserController {
                 }
             }
         }
+    }
+
+    public static void UpdateUserController(User user, FindUserOnlyByIdDTO userCode) {
+        Connection connection = null;
+        try {
+            connection = ConnectionJDBC.getConnection();
+            connection.setAutoCommit(false);
+            UpdateUserHandler updateUserHandler = new UpdateUserHandler(connection);
+            updateUserHandler.Update(user, userCode);
+            connection.commit();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Cannot update user");
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+        } finally {
+            if (connection != null) {
+                try {
+                    ConnectionJDBC.closeConecction(connection);
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, e.getMessage());
+                }
+            }
+        }
+
     }
 
     public static User GetUserController(User idUser) {

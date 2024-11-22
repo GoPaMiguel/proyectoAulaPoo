@@ -44,6 +44,14 @@ public class User {
         this.email = emailAndIdUserDTO.email();
     }
 
+    public User(UpdateUserAdminDTO updateUserAdminDTO) {
+        this.name = updateUserAdminDTO.name();
+        this.lastName = updateUserAdminDTO.lastName();
+        this.email = updateUserAdminDTO.email();
+        this.career = updateUserAdminDTO.career();
+        this.idUser = updateUserAdminDTO.idUser();
+    }
+
     public User(UserPointsDTO userPointsDTO) {
         this.points = userPointsDTO.points();
     }

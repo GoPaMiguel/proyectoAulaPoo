@@ -13,6 +13,7 @@ import javax.swing.table.TableRowSorter;
 import model.CORE.User;
 import model.DTO.userDTO.CreateUserDTO;
 import model.DTO.userDTO.FindUserOnlyByIdDTO;
+import model.DTO.userDTO.UpdateUserAdminDTO;
 
 public class AdministradorStudent extends javax.swing.JFrame {
 
@@ -79,12 +80,13 @@ public class AdministradorStudent extends javax.swing.JFrame {
         txtNameM = new javax.swing.JTextField();
         txtLastNameM = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        txtCareerM = new javax.swing.JTextField();
         btnModificarInterno = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         txtIDM = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         txtEmailM = new javax.swing.JTextField();
+        CareerUpdate = new javax.swing.JComboBox<>();
+        IDCurrent = new javax.swing.JLabel();
         pnEliminar = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         btnEliminarInterno = new javax.swing.JButton();
@@ -510,12 +512,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
         jLabel17.setText("Carrer:");
 
-        txtCareerM.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtCareerMKeyTyped(evt);
-            }
-        });
-
         btnModificarInterno.setText("Modificar");
         btnModificarInterno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -527,10 +523,18 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
         jLabel23.setText("Email:");
 
+        CareerUpdate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ing ", "Turismo", "Linc" }));
+
+        IDCurrent.setText("NN");
+
         javax.swing.GroupLayout pnModificarLayout = new javax.swing.GroupLayout(pnModificar);
         pnModificar.setLayout(pnModificarLayout);
         pnModificarLayout.setHorizontalGroup(
             pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnModificarLayout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(TableUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
             .addGroup(pnModificarLayout.createSequentialGroup()
                 .addGap(92, 92, 92)
                 .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -547,43 +551,38 @@ public class AdministradorStudent extends javax.swing.JFrame {
                             .addComponent(txtNameM)
                             .addComponent(txtIDM, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(37, 37, 37)
-                .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnModificarInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnModificarLayout.createSequentialGroup()
                         .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnModificarLayout.createSequentialGroup()
-                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnModificarLayout.createSequentialGroup()
-                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4)))
-                        .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCareerM, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEmailM, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(105, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnModificarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnModificarLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSearch)
-                        .addGap(75, 75, 75))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnModificarLayout.createSequentialGroup()
-                        .addComponent(TableUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62))))
+                        .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEmailM, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CareerUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(pnModificarLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(IDCurrent, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(136, 136, 136)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(txtSearch)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSearch)
+                .addGap(75, 75, 75))
         );
         pnModificarLayout.setVerticalGroup(
             pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnModificarLayout.createSequentialGroup()
-                .addContainerGap(116, Short.MAX_VALUE)
+                .addContainerGap(104, Short.MAX_VALUE)
                 .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3)))
+                        .addComponent(jLabel3)
+                        .addComponent(IDCurrent)))
                 .addGap(18, 18, 18)
                 .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnModificarLayout.createSequentialGroup()
@@ -599,20 +598,21 @@ public class AdministradorStudent extends javax.swing.JFrame {
                             .addComponent(jLabel16)
                             .addComponent(txtLastNameM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnModificarLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
                         .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel23)
-                            .addComponent(txtEmailM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtEmailM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel23))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnModificarInterno)
                             .addGroup(pnModificarLayout.createSequentialGroup()
                                 .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel17)
-                                    .addComponent(txtCareerM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(35, 35, 35)))))
+                                    .addComponent(CareerUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(34, 34, 34)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TableUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         pnCambiante.addTab("", pnModificar);
@@ -754,13 +754,14 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
     private void btnModificarInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarInternoActionPerformed
         // TODO add your handling code here:
+        String name = txtNameM.getText();
+        String lastName = txtLastNameM.getText();
+        String email = txtEmailM.getText();
+        String idUser = txtIDM.getText();
+        String career = CareerUpdate.getSelectedItem().toString();
+        UpdateUserAdminDTO userAdminDTO = new UpdateUserAdminDTO(name,lastName,email,idUser,career);
+        UserController.UpdateUserController(new User(userAdminDTO), new FindUserOnlyByIdDTO(IDCurrent.getText()));
     }//GEN-LAST:event_btnModificarInternoActionPerformed
-
-    private void txtCareerMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCareerMKeyTyped
-        if (!Character.isLetter(evt.getKeyChar())) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtCareerMKeyTyped
 
     private void txtLastNameMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLastNameMKeyTyped
     if (!Character.isLetter(evt.getKeyChar())) {
@@ -837,8 +838,8 @@ public class AdministradorStudent extends javax.swing.JFrame {
         txtNameM.setText(userDto.getLastName());
         txtEmailM.setText(userDto.getEmail());
         txtLastNameM.setText(userDto.getLastName());
-        txtCareerM.setText(userDto.getCareer());
-
+        CareerUpdate.setSelectedItem(userDto.getCareer());
+        IDCurrent.setText(userDto.getIdUser());
     }//GEN-LAST:event_tbUpdateMouseClicked
 
     private void txtIDeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIDeMouseClicked
@@ -972,6 +973,8 @@ public class AdministradorStudent extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CareerUpdate;
+    private javax.swing.JLabel IDCurrent;
     private javax.swing.JComboBox<String> JBoxCarrer;
     private javax.swing.JTable TBList;
     private javax.swing.JScrollPane TableDelete;
@@ -1016,7 +1019,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
     private javax.swing.JPanel pnRegistrar;
     private javax.swing.JTable tbDelete;
     private javax.swing.JTable tbUpdate;
-    private javax.swing.JTextField txtCareerM;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEmailM;
     private javax.swing.JTextField txtID;
