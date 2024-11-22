@@ -97,16 +97,18 @@ public class AdministradorResiduo extends javax.swing.JFrame {
 
         JText.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         JText.setForeground(new java.awt.Color(255, 255, 255));
+        JText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         JText.setText("REGISTER");
+        JText.setToolTipText("");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(204, Short.MAX_VALUE)
-                .addComponent(JText, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(183, 183, 183))
+                .addContainerGap(45, Short.MAX_VALUE)
+                .addComponent(JText, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -685,18 +687,21 @@ public class AdministradorResiduo extends javax.swing.JFrame {
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:        
         pnChanging.setSelectedIndex(0);
+        JText.setText("REGISTER");
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         ResidueController.ShowResidueController(tbEliminar);
         pnChanging.setSelectedIndex(3);
+        JText.setText("DELETE");
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
         ResidueController.ShowResidueController(tbUpdate);
         pnChanging.setSelectedIndex(2);
+        JText.setText("UPDATE");
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnInterDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInterDeleteActionPerformed
@@ -708,13 +713,32 @@ public class AdministradorResiduo extends javax.swing.JFrame {
 
     private void btnInterUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInterUpdateActionPerformed
         // TODO add your handling code here:
-        String code = txtCodeU.getText();
-       String type = TxtType.getText();
-        int points =  Integer.parseInt(txtPointsU.getText());
-        FindResidueDTO dto = new FindResidueDTO(CodeCurrent.getText());
+        String code = txtCodeU.getText().trim();
+        String type = TxtType.getText().trim();
+        String pointsText = txtPointsU.getText().trim();
+
+        if (code.isEmpty() || type.isEmpty() || pointsText.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "All fields must be filled, and points must be greater than 0.");
+        } else {
+            try {
+                
+        int points = Integer.parseInt(pointsText);
+
+        if (points <= 0) {
+            JOptionPane.showMessageDialog(null, "Points must be greater than 0.");
+        } else {
+            FindResidueDTO dto = new FindResidueDTO(CodeCurrent.getText());
         UpdateResidueDTO dtoUpdate = new UpdateResidueDTO(code, type, points);
         ResidueController.UpdateResidueController(new Residue(dtoUpdate), dto);
         ResidueController.ShowResidueController(tbUpdate);
+        limpiarU();
+            }
+        } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "The points field must contain a valid integer.");
+            }
+}
+        
+        
     }//GEN-LAST:event_btnInterUpdateActionPerformed
 
     private void txtPointsUKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPointsUKeyTyped
@@ -737,6 +761,12 @@ public class AdministradorResiduo extends javax.swing.JFrame {
         txtCode.setText("");
         txtMaterial.setText("");
         txtPoints.setText("");
+    }
+    
+    public void limpiarU() {
+        txtCodeU.setText("");
+        TxtType.setText("");
+        txtPointsU.setText("");
     }
 
     private void tbUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbUpdateMouseClicked
