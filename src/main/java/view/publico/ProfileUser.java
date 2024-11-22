@@ -38,7 +38,6 @@ public class ProfileUser extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtLastName = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtCarrer = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -46,6 +45,7 @@ public class ProfileUser extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         cedulaC = new javax.swing.JLabel();
+        BoxCarrer = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -126,6 +126,8 @@ public class ProfileUser extends javax.swing.JFrame {
         cedulaC.setForeground(new java.awt.Color(255, 255, 255));
         cedulaC.setText("CEDULA");
 
+        BoxCarrer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Tec. en Sistemas", "Tec. en Gestión de Calidad", "Adm. Turística y Hotelera", "Ing. en Sistemas", "Ing. Industrial", "Derecho", "Adm. de Empresas", "Contaduría", "Lic. en Bilingüismo", "Inglés Diario", "Inglés Intensivo", "Inglés Semestral", "Inglés Sábados", "Inglés Niños y Adolescentes", "Prog. de Traducción", "Prog. Aux. Administrativo", "Especializacion" }));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -150,13 +152,13 @@ public class ProfileUser extends javax.swing.JFrame {
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPassword)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtCarrer, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtLastName)
-                            .addComponent(txtName)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BoxCarrer, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPassword)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(cedulaC)))
@@ -186,7 +188,7 @@ public class ProfileUser extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txtCarrer, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BoxCarrer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -327,6 +329,7 @@ public class ProfileUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> BoxCarrer;
     private javax.swing.JButton btnBack;
     private javax.swing.JLabel cedulaC;
     private javax.swing.JButton jButton1;
@@ -344,7 +347,6 @@ public class ProfileUser extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField txtCarrer;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtLastName;

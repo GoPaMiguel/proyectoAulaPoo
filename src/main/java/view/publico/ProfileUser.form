@@ -131,13 +131,13 @@
                                   <Component id="jLabel3" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtPassword" max="32767" attributes="0"/>
-                                  <Component id="txtEmail" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="txtCarrer" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="txtLastName" alignment="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtID" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtName" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtID" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
+                                  <Component id="txtLastName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="BoxCarrer" alignment="0" min="-2" pref="128" max="-2" attributes="0"/>
+                                  <Component id="txtPassword" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -176,7 +176,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCarrer" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="BoxCarrer" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -284,8 +284,6 @@
                 <Property name="text" type="java.lang.String" value="Carrer:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtCarrer">
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -349,6 +347,35 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="CEDULA"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="BoxCarrer">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="18">
+                    <StringItem index="0" value="Select"/>
+                    <StringItem index="1" value="Tec. en Sistemas"/>
+                    <StringItem index="2" value="Tec. en Gesti&#xf3;n de Calidad"/>
+                    <StringItem index="3" value="Adm. Tur&#xed;stica y Hotelera"/>
+                    <StringItem index="4" value="Ing. en Sistemas"/>
+                    <StringItem index="5" value="Ing. Industrial"/>
+                    <StringItem index="6" value="Derecho"/>
+                    <StringItem index="7" value="Adm. de Empresas"/>
+                    <StringItem index="8" value="Contadur&#xed;a"/>
+                    <StringItem index="9" value="Lic. en Biling&#xfc;ismo"/>
+                    <StringItem index="10" value="Ingl&#xe9;s Diario"/>
+                    <StringItem index="11" value="Ingl&#xe9;s Intensivo"/>
+                    <StringItem index="12" value="Ingl&#xe9;s Semestral"/>
+                    <StringItem index="13" value="Ingl&#xe9;s S&#xe1;bados"/>
+                    <StringItem index="14" value="Ingl&#xe9;s Ni&#xf1;os y Adolescentes"/>
+                    <StringItem index="15" value="Prog. de Traducci&#xf3;n"/>
+                    <StringItem index="16" value="Prog. Aux. Administrativo"/>
+                    <StringItem index="17" value="Especializacion"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
