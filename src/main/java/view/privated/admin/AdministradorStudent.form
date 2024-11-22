@@ -454,7 +454,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNameActionPerformed"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNameKeyTyped"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtLastName">
@@ -469,7 +469,6 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLastNameActionPerformed"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtLastNameKeyTyped"/>
                   </Events>
                 </Component>
@@ -713,9 +712,9 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="txtBusqueda" min="-2" pref="271" max="-2" attributes="0"/>
+                                  <Component id="txtSearch" min="-2" pref="271" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnBusqueda" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnSearch" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -731,9 +730,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace pref="116" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnBusqueda" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="btnSearch" min="-2" pref="22" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                  <Component id="txtBusqueda" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -786,9 +785,9 @@
                     <Property name="text" type="java.lang.String" value="Busqueda :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtBusqueda">
+                <Component class="javax.swing.JTextField" name="txtSearch">
                   <Events>
-                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBusquedaKeyTyped"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSearchKeyTyped"/>
                   </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="TableUpdate">
@@ -854,9 +853,9 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="btnBusqueda">
+                <Component class="javax.swing.JButton" name="btnSearch">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBusquedaActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSearchActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel15">
@@ -876,7 +875,6 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtLastNameM">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLastNameMActionPerformed"/>
                     <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtLastNameMKeyTyped"/>
                   </Events>
                 </Component>
