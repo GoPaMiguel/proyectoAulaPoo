@@ -96,7 +96,7 @@ public class ViewInicial extends javax.swing.JFrame {
         });
         jPanel1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, 190, 40));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\java\\resources\\logo4.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/logo4.png"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 80, 100));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
@@ -114,7 +114,7 @@ public class ViewInicial extends javax.swing.JFrame {
         jLabel9.setText("CODE");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 50, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\java\\resources\\fondo5.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/fondo5.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
