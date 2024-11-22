@@ -1,4 +1,4 @@
-package service.auth;
+package service.auth.util.validation;
 
 import model.CORE.User;
 import service.user.query.LoginUserHandler;
