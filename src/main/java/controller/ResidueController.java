@@ -4,6 +4,7 @@ import database.ConnectionJDBC;
 import model.CORE.Residue;
 import model.DTO.ResiduoDTO.CreateResidueDTO;
 import model.DTO.ResiduoDTO.FindResidueDTO;
+import service.residue.util.help.SelectResidueTableHandler;
 import service.residue.util.help.ShowAndCreateResidueTable;
 import service.residue.command.DeleteResidueHandler;
 import service.residue.command.InsertResidueHandler;
@@ -133,6 +134,12 @@ public class ResidueController {
             JOptionPane.showMessageDialog(null, "No residues found");
             return;
         }
+    }
+
+    public static Residue SelectResidueController(JTable table) {
+        SelectResidueTableHandler selectResidueTableHandler = new SelectResidueTableHandler();
+
+        return selectResidueTableHandler.selectElement(table);
     }
 
 }
