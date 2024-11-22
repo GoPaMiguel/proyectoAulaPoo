@@ -5,6 +5,7 @@
 package view.privated.admin;
 
 import controller.UserController;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
@@ -292,11 +293,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
                 txtEmailActionPerformed(evt);
             }
         });
-        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtEmailKeyTyped(evt);
-            }
-        });
 
         txtID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -325,7 +321,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Carrer:");
 
-        JBoxCarrer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ing", "Calidad" }));
+        JBoxCarrer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Tec. en Sistemas", "Tec. en Gestión de Calidad", "Adm. Turística y Hotelera", "Ing. en Sistemas", "Ing. Industrial", "Derecho", "Adm. de Empresas", "Contaduría", "Lic. en Bilingüismo", "Inglés Diario", "Inglés Intensivo", "Inglés Semestral", "Inglés Sábados", "Inglés Niños y Adolescentes", "Prog. de Traducción", "Prog. Aux. Administrativo", "Especializacion" }));
         JBoxCarrer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout pnRegistrarLayout = new javax.swing.GroupLayout(pnRegistrar);
@@ -523,7 +519,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
         jLabel23.setText("Email:");
 
-        CareerUpdate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ing ", "Turismo", "Linc" }));
+        CareerUpdate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Tec. en Sistemas", "Tec. en Gestión de Calidad", "Adm. Turística y Hotelera", "Ing. en Sistemas", "Ing. Industrial", "Derecho", "Adm. de Empresas", "Contaduría", "Lic. en Bilingüismo", "Inglés Diario", "Inglés Intensivo", "Inglés Semestral", "Inglés Sábados", "Inglés Niños y Adolescentes", "Prog. de Traducción", "Prog. Aux. Administrativo", "Especializacion" }));
 
         IDCurrent.setText("NN");
 
@@ -531,52 +527,54 @@ public class AdministradorStudent extends javax.swing.JFrame {
         pnModificar.setLayout(pnModificarLayout);
         pnModificarLayout.setHorizontalGroup(
             pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnModificarLayout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(TableUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62))
             .addGroup(pnModificarLayout.createSequentialGroup()
-                .addGap(92, 92, 92)
+                .addGap(66, 66, 66)
                 .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnModificarLayout.createSequentialGroup()
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtLastNameM, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtLastNameM, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)
+                        .addComponent(btnModificarInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnModificarLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(TableUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62))
                     .addGroup(pnModificarLayout.createSequentialGroup()
-                        .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNameM)
-                            .addComponent(txtIDM, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(37, 37, 37)
-                .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnModificarInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnModificarLayout.createSequentialGroup()
+                        .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(pnModificarLayout.createSequentialGroup()
+                                .addComponent(IDCurrent, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3))
+                            .addGroup(pnModificarLayout.createSequentialGroup()
+                                .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNameM)
+                                    .addComponent(txtIDM, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
                         .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtEmailM, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CareerUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pnModificarLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(IDCurrent, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(136, 136, 136)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(txtSearch)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSearch)
-                .addGap(75, 75, 75))
+                            .addGroup(pnModificarLayout.createSequentialGroup()
+                                .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtEmailM)
+                                    .addComponent(CareerUpdate, 0, 1, Short.MAX_VALUE)))
+                            .addGroup(pnModificarLayout.createSequentialGroup()
+                                .addComponent(txtSearch)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSearch)))
+                        .addGap(75, 75, 75))))
         );
         pnModificarLayout.setVerticalGroup(
             pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnModificarLayout.createSequentialGroup()
-                .addContainerGap(104, Short.MAX_VALUE)
+                .addContainerGap(94, Short.MAX_VALUE)
                 .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -598,21 +596,18 @@ public class AdministradorStudent extends javax.swing.JFrame {
                             .addComponent(jLabel16)
                             .addComponent(txtLastNameM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnModificarLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
                         .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtEmailM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel23))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnModificarInterno)
-                            .addGroup(pnModificarLayout.createSequentialGroup()
-                                .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel17)
-                                    .addComponent(CareerUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(34, 34, 34)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel17)
+                            .addComponent(CareerUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnModificarInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TableUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(TableUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pnCambiante.addTab("", pnModificar);
@@ -759,8 +754,19 @@ public class AdministradorStudent extends javax.swing.JFrame {
         String email = txtEmailM.getText();
         String idUser = txtIDM.getText();
         String career = CareerUpdate.getSelectedItem().toString();
+        
+        if(career.equals("Select")){
+            JOptionPane.showMessageDialog(null, "Debes de seleccionar una carrera");
+        }else{
+        if(EmailValid(email)){
         UpdateUserAdminDTO userAdminDTO = new UpdateUserAdminDTO(name,lastName,email,idUser,career);
         UserController.UpdateUserController(new User(userAdminDTO), new FindUserOnlyByIdDTO(IDCurrent.getText()));
+        limpiar();
+        }else{
+           JOptionPane.showMessageDialog(null, "Email es Invalido");
+           txtEmail.requestFocus();
+        }
+        }
     }//GEN-LAST:event_btnModificarInternoActionPerformed
 
     private void txtLastNameMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLastNameMKeyTyped
@@ -793,8 +799,20 @@ public class AdministradorStudent extends javax.swing.JFrame {
         String email = txtEmail.getText();
         String career = JBoxCarrer.getSelectedItem().toString();
         String id = txtID.getText();
-        UserController.CreateUserController(new CreateUserDTO(name, lastName, email, career, id));
+        
+        if(career.equals("Select")){
+            JOptionPane.showMessageDialog(null, "Debes de seleccionar una carrera");
+        }else{
+        if(EmailValid(email)){
+            
+        CreateUserDTO createUserDTO = new CreateUserDTO(name, lastName, email, career, id);
+        UserController.CreateUserController(createUserDTO);
         limpiar();
+        }else{
+           JOptionPane.showMessageDialog(null, "Email es Invalido");
+           txtEmail.requestFocus();
+        }
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyTyped
@@ -806,17 +824,12 @@ public class AdministradorStudent extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtIDKeyTyped
 
-    private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
-        if (!Character.isLetter(evt.getKeyChar())) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtEmailKeyTyped
-
     public void limpiar() {
         txtName.setText("");
         txtLastName.setText("");
         txtEmail.setText("");
         txtID.setText("");
+        JBoxCarrer.setSelectedIndex(0);
     }
     
     
@@ -935,6 +948,15 @@ public class AdministradorStudent extends javax.swing.JFrame {
                 new AdministradorStudent().setVisible(true);
             }
         });
+    }
+    
+    public boolean EmailValid(String email) {
+        int cantidadArrobas = email.length() - email.replace("@", "").length();
+        if (cantidadArrobas != 1) {
+        return false;
+    }
+        String regex = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
+        return email.matches(regex);
     }
     
     public void agregarFiltroTiempoReal(JTable table, JTextField textField, int columnIndex) {

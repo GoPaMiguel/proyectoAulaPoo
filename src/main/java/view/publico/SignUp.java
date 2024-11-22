@@ -56,17 +56,15 @@ public class SignUp extends javax.swing.JFrame {
 
         jPanel3.setPreferredSize(new java.awt.Dimension(400, 500));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\java\\resources\\signup3.png")); // NOI18N
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 48)); // NOI18N
@@ -77,22 +75,41 @@ public class SignUp extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         jLabel3.setText("Email:");
 
-        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         jLabel4.setText("Name:");
 
-        txtName.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtName.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNameKeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         jLabel5.setText("ID:");
 
-        txtID.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtID.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIDKeyTyped(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         jLabel6.setText("Last Name:");
 
-        txtLastName.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        txtLastName.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtLastName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtLastName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtLastNameKeyTyped(evt);
+            }
+        });
 
         btnSingUp.setBackground(new java.awt.Color(85, 140, 54));
         btnSingUp.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -116,8 +133,7 @@ public class SignUp extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         jLabel8.setText("Carrer:");
 
-        JBoxCarrer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hola", "Ing" }));
-        JBoxCarrer.setSelectedIndex(1);
+        JBoxCarrer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Tec. en Sistemas", "Tec. en Gestión de Calidad", "Adm. Turística y Hotelera", "Ing. en Sistemas", "Ing. Industrial", "Derecho", "Adm. de Empresas", "Contaduría", "Lic. en Bilingüismo", "Inglés Diario", "Inglés Intensivo", "Inglés Semestral", "Inglés Sábados", "Inglés Niños y Adolescentes", "Prog. de Traducción", "Prog. Aux. Administrativo", "Especializacion" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -218,13 +234,44 @@ public class SignUp extends javax.swing.JFrame {
         String email = txtEmail.getText();
         String career = JBoxCarrer.getSelectedItem().toString() == null ? "default" : JBoxCarrer.getSelectedItem().toString();
         String idUser = txtID.getText();
-
-        CreateUserDTO createUserDTO = new CreateUserDTO(name, lastName, email, career, idUser);
+        
+        if(career.equals("Select")){
+            JOptionPane.showMessageDialog(null, "Debes de seleccionar una carrera");
+        }else{
+        if(EmailValid(email)){
+            CreateUserDTO createUserDTO = new CreateUserDTO(name, lastName, email, career, idUser);
 
         UserController.CreateUserController(createUserDTO);
+        limpiar();
+        }else{
+           JOptionPane.showMessageDialog(null, "Email es Invalido");
+           txtEmail.requestFocus();
+        }
+        }
 
     }//GEN-LAST:event_btnSingUpActionPerformed
 
+    private void txtIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyTyped
+        int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57;
+
+        if (!numero) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtIDKeyTyped
+
+    private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
+        if (!Character.isLetter(evt.getKeyChar())) {
+            evt.consume();
+        }   
+    }//GEN-LAST:event_txtNameKeyTyped
+
+    private void txtLastNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLastNameKeyTyped
+        if (!Character.isLetter(evt.getKeyChar())) {
+            evt.consume();
+        }    
+    }//GEN-LAST:event_txtLastNameKeyTyped
+    
     /**
      * @param args the command line arguments
      */
@@ -259,6 +306,23 @@ public class SignUp extends javax.swing.JFrame {
                 new SignUp().setVisible(true);
             }
         });
+    }
+    public void limpiar() {
+        txtID.setText("");
+        txtName.setText("");
+        txtLastName.setText("");
+        txtEmail.setText("");
+        JBoxCarrer.setSelectedIndex(0);
+        
+    }
+    
+    public boolean EmailValid(String email) {
+        int cantidadArrobas = email.length() - email.replace("@", "").length();
+        if (cantidadArrobas != 1) {
+        return false;
+    }
+        String regex = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
+        return email.matches(regex);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
