@@ -39,6 +39,7 @@ public class UpdateUserHandler implements IUpdate<User, FindUserOnlyByIdDTO> {
             ps = cx.prepareCall(UPDATE);
             ps.setString(1, user.getName());
             ps.setString(2, user.getLastName());
+            JOptionPane.showMessageDialog(null, ps.toString());
             ps.setString(3, user.getEmail());
             ps.setString(4, user.getCareer());
             ps.setString(5, user.getIdUser());

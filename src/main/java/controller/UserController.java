@@ -80,7 +80,7 @@ public class UserController {
             updateUserHandler.Update(user, userCode);
             connection.commit();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Cannot update user");
+            JOptionPane.showMessageDialog(null, "Cannot update user"+e.getMessage());
             try {
                 connection.rollback();
             } catch (SQLException ex) {

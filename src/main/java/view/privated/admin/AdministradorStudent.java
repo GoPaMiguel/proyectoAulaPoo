@@ -12,6 +12,7 @@ import javax.swing.RowFilter;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import model.CORE.User;
+import model.DTO.ResiduoDTO.FindResidueDTO;
 import model.DTO.userDTO.CreateUserDTO;
 import model.DTO.userDTO.FindUserOnlyByIdDTO;
 import model.DTO.userDTO.UpdateUserAdminDTO;
@@ -753,13 +754,14 @@ public class AdministradorStudent extends javax.swing.JFrame {
         String email = txtEmailM.getText();
         String idUser = txtIDM.getText();
         String career = CareerUpdate.getSelectedItem().toString();
-        
+        String cedula = IDCurrent.getText();
+        FindUserOnlyByIdDTO dto = new FindUserOnlyByIdDTO(cedula);
         if(career.equals("Select")){
             JOptionPane.showMessageDialog(null, "Debes de seleccionar una carrera");
         }else{
         if(EmailValid(email)){
         UpdateUserAdminDTO userAdminDTO = new UpdateUserAdminDTO(name,lastName,email,idUser,career);
-        UserController.UpdateUserController(new User(userAdminDTO), new FindUserOnlyByIdDTO(IDCurrent.getText()));
+        UserController.UpdateUserController(new User(userAdminDTO), dto) ;
 
         limpiar();
         }else{
