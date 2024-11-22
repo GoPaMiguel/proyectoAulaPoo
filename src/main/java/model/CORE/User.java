@@ -56,6 +56,24 @@ public class User {
         this.points = userPointsDTO.points();
     }
 
+    public User(UpdateProfileDTO updateProfileDTO) {
+        this.name = updateProfileDTO.name();
+        this.lastName = updateProfileDTO.lastName();
+        this.email = updateProfileDTO.email();
+        this.career = updateProfileDTO.career();
+        this.password = updateProfileDTO.password();
+        this.idUser = updateProfileDTO.cedula();
+    }
+    public User(ShowProfileDTO dto) {
+        this.name = dto.name();
+        this.lastName = dto.lastName();
+        this.email = dto.email();
+        this.career = dto.career();
+        this.password = dto.password();
+        this.idUser = dto.cedula();
+        this.points = dto.points();
+    }
+
     public User(FindUserOnlyByIdDTO findUserOnlyByIdDTO) {
         this.idUser = findUserOnlyByIdDTO.idUser();
     }
