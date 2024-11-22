@@ -199,7 +199,7 @@
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Breiner\OneDrive\Escritorio\PRO-AULA-2024-2\proyectoAulaPoo\src\main\java\resources\user4.png"/>
+                  <Image iconType="2" name="C:\Users\Breiner\OneDrive\Escritorio\PRO-AULA-2024-2\proyectoAulaPoo\src\main\java\images\user4.png"/>
                 </Property>
               </Properties>
             </Component>
@@ -269,7 +269,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Breiner\OneDrive\Escritorio\PRO-AULA-2024-2\proyectoAulaPoo\src\main\java\resources\user3.png"/>
+              <Image iconType="2" name="C:\Users\Breiner\OneDrive\Escritorio\PRO-AULA-2024-2\proyectoAulaPoo\src\main\java\images\user3.png"/>
             </Property>
           </Properties>
           <Constraints>
