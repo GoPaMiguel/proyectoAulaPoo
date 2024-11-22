@@ -762,24 +762,21 @@ public class AdministradorResiduo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void btnKeepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeepActionPerformed
-        // TODO add your handling code here:
+
         String code = txtCode.getText().trim();
         String type = txtMaterial.getText().trim();
         String pointsText = txtPoints.getText().trim();
 
-// Verificar que ningún campo esté vacío
         if (code.isEmpty() || type.isEmpty() || pointsText.isEmpty()) {
             JOptionPane.showMessageDialog(null, "All fields must be filled, and points must be greater than 0.");
         } else {
             try {
-        // Intentar convertir el campo de puntos a un entero
+                
         int points = Integer.parseInt(pointsText);
 
-        // Validar que los puntos sean mayores a 0
         if (points <= 0) {
             JOptionPane.showMessageDialog(null, "Points must be greater than 0.");
         } else {
-            // Todo es válido, realizar la creación del residuo
             ResidueController.CreateResidueController(new CreateResidueDTO(code, type, points));
             limpiar();
             }
