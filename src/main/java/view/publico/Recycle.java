@@ -60,7 +60,7 @@ public class Recycle extends javax.swing.JFrame {
         jPanel2.setPreferredSize(new java.awt.Dimension(467, 117));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\resources.admin\\logo4_1.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\java\\resources\\logo4.png")); // NOI18N
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 80, 110));
 
         btnBack.setBackground(new java.awt.Color(85, 140, 54));
@@ -158,7 +158,7 @@ public class Recycle extends javax.swing.JFrame {
         btnRecycle.setText("RECYCLE");
         jPanel1.add(btnRecycle, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, 144, 45));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\resources.admin\\recicle.jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\java\\resources\\recicle.jpg")); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 250, 241));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
