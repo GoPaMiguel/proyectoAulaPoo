@@ -1,9 +1,6 @@
 package model.CORE;
 
-import model.DTO.AwardDTO.CreateAwardDTO;
-import model.DTO.AwardDTO.FindAwardDTO;
-import model.DTO.AwardDTO.PointsAwardDTO;
-import model.DTO.AwardDTO.ShowAwardDTO;
+import model.DTO.AwardDTO.*;
 
 public class Award {
     private int id;
@@ -23,6 +20,12 @@ public class Award {
         this.name = showAwardDTO.name();
         this.points = showAwardDTO.points();
         this.id = showAwardDTO.id();
+    }
+
+    public Award(UpdateAwardDTO updateAwardDTO) {
+        this.code = updateAwardDTO.code();
+        this.name = updateAwardDTO.name();
+        this.points = updateAwardDTO.points();
     }
 
     public Award(PointsAwardDTO pointsAwardDTO) {

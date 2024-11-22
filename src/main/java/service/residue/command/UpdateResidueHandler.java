@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 public class UpdateResidueHandler implements IUpdate<Residue, FindResidueDTO> {
 
-    private static final String UPDATE = "UPDATE awards SET code=?, type=?, points=? WHERE code=?";
+    private static final String UPDATE = "UPDATE residues SET code=?, type=?, points=? WHERE code=?";
     private Connection connection;
 
     public UpdateResidueHandler(Connection connection) {
@@ -29,7 +29,7 @@ public class UpdateResidueHandler implements IUpdate<Residue, FindResidueDTO> {
         PreparedStatement ps = null;
         try {
             con = connection != null ? connection : ConnectionJDBC.getConnection();
-            if (residue.getCode().equalsIgnoreCase(dto.code())) {
+            if (!residue.getCode().equalsIgnoreCase(dto.code())) {
                 ExistResidueHandler ex = new ExistResidueHandler();
                 boolean ok = ex.exist(new FindResidueDTO(residue.getCode()), con);
                 if (ok) {

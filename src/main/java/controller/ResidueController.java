@@ -55,7 +55,7 @@ public class ResidueController {
             updateResidueHandler.Update(residue, dto);
             con.commit();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al actualizar residue"+e.getMessage());
+            JOptionPane.showMessageDialog(null, "Cannot update residue because: "+e.getMessage());
             try {
                 con.rollback();
             } catch (SQLException ex) {
