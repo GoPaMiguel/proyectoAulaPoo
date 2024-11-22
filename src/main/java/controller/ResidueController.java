@@ -4,6 +4,7 @@ import database.ConnectionJDBC;
 import model.CORE.Residue;
 import model.DTO.ResiduoDTO.CreateResidueDTO;
 import model.DTO.ResiduoDTO.FindResidueDTO;
+import service.residue.command.UpdateResidueHandler;
 import service.residue.util.help.SelectResidueTableHandler;
 import service.residue.util.help.ShowAndCreateResidueTable;
 import service.residue.command.DeleteResidueHandler;
@@ -41,6 +42,24 @@ public class ResidueController {
                 } catch (SQLException e) {
                     JOptionPane.showMessageDialog(null, "Error al cerrar conexion");
                 }
+            }
+        }
+    }
+
+    public static void UpdateResidueController(Residue residue, FindResidueDTO dto){
+        Connection con = null;
+        try {
+            con = ConnectionJDBC.getConnection();
+            con.setAutoCommit(false);
+            UpdateResidueHandler updateResidueHandler = new UpdateResidueHandler(con);
+            updateResidueHandler.Update(residue, dto);
+            con.commit();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar residue"+e.getMessage());
+            try {
+                con.rollback();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al rollback"+ex.getMessage());
             }
         }
     }
@@ -138,7 +157,6 @@ public class ResidueController {
 
     public static Residue SelectResidueController(JTable table) {
         SelectResidueTableHandler selectResidueTableHandler = new SelectResidueTableHandler();
-
         return selectResidueTableHandler.selectElement(table);
     }
 
