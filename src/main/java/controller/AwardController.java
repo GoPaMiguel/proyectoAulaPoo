@@ -7,6 +7,7 @@ import model.DTO.AwardDTO.CreateAwardDTO;
 import model.DTO.AwardDTO.FindAwardDTO;
 import service.award.command.DeleteAwardHandler;
 import service.award.command.InsertAwardHandler;
+import service.award.command.UpdateAwardHandler;
 import service.award.query.FindAwardByIdHandler;
 import service.award.query.SelectAllAwardsHandler;
 import service.award.util.help.SelectAwardTableHandler;
@@ -47,6 +48,32 @@ public class AwardController {
 
         }
 
+    }
+
+    public static void UpdateAwardController(Award award, FindAwardDTO findAwardDTO) {
+        Connection con = null;
+        try {
+            con = ConnectionJDBC.getConnection();
+            con.setAutoCommit(false);
+            UpdateAwardHandler updateAwardHandler = new UpdateAwardHandler(con);
+            updateAwardHandler.Update(award, findAwardDTO);
+            con.commit();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Cannot update Award, because: " + e.getMessage());
+            try {
+                con.rollback();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+        }finally {
+            if (con != null) {
+                try {
+                    ConnectionJDBC.closeConecction(con);
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, e.getMessage());
+                }
+            }
+        }
     }
 
     public static void DeleteAwardController(FindAwardDTO findAwardDTO) {
