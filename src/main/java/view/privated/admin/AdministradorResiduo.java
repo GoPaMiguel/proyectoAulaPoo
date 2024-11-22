@@ -11,6 +11,8 @@ import model.DTO.ResiduoDTO.CreateResidueDTO;
 import model.DTO.ResiduoDTO.FindResidueDTO;
 
 import javax.swing.*;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 public class AdministradorResiduo extends javax.swing.JFrame {
 
@@ -20,9 +22,9 @@ public class AdministradorResiduo extends javax.swing.JFrame {
     public AdministradorResiduo() {
         this.setLocationRelativeTo(null);
         initComponents();
-        ID.setEnabled(false);
+        txtIDU.setEnabled(false);
         txtCodeD.setEnabled(false);
-        Codigo.setEnabled(false);
+        txtCodeU.setEnabled(false);
     }
 
     /**
@@ -36,51 +38,51 @@ public class AdministradorResiduo extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        JText = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        btnRegistrar = new javax.swing.JButton();
-        btnListar = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
+        btnRegister = new javax.swing.JButton();
+        btnList = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        btnVolver = new javax.swing.JButton();
-        pnCambiante = new javax.swing.JTabbedPane();
-        pnRegistrar = new javax.swing.JPanel();
+        btnBack = new javax.swing.JButton();
+        pnChanging = new javax.swing.JTabbedPane();
+        pnRegister = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
+        txtCode = new javax.swing.JTextField();
         txtMaterial = new javax.swing.JTextField();
-        txtPuntos = new javax.swing.JTextField();
+        txtPoints = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        pnListar = new javax.swing.JPanel();
+        pnList = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TBListar = new javax.swing.JTable();
-        pnModificar = new javax.swing.JPanel();
+        pnUpdate = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        txtBusqueda = new javax.swing.JTextField();
+        txtSearch = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tbModificar = new javax.swing.JTable();
-        btnBusqueda = new javax.swing.JButton();
+        tbUpdate = new javax.swing.JTable();
+        btnSearch = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
-        Material = new javax.swing.JTextField();
+        txtMaterialU = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        puntos = new javax.swing.JTextField();
-        btnModificarInterno = new javax.swing.JButton();
+        txtPointsU = new javax.swing.JTextField();
+        btnInterUpdate = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
-        ID = new javax.swing.JTextField();
+        txtIDU = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
-        Codigo = new javax.swing.JTextField();
-        pnEliminar = new javax.swing.JPanel();
+        txtCodeU = new javax.swing.JTextField();
+        pnDelete = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tbEliminar = new javax.swing.JTable();
         jLabel14 = new javax.swing.JLabel();
-        btnEliminarInterno = new javax.swing.JButton();
+        btnInterDelete = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
         txtCodeD = new javax.swing.JTextField();
 
@@ -94,9 +96,9 @@ public class AdministradorResiduo extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(85, 140, 54));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("REGISTRAR");
+        JText.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        JText.setForeground(new java.awt.Color(255, 255, 255));
+        JText.setText("REGISTER");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -104,14 +106,14 @@ public class AdministradorResiduo extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(204, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JText, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(183, 183, 183))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(25, Short.MAX_VALUE)
-                .addComponent(jLabel4)
+                .addComponent(JText)
                 .addGap(22, 22, 22))
         );
 
@@ -120,49 +122,53 @@ public class AdministradorResiduo extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(10, 49, 48));
         jPanel2.setPreferredSize(new java.awt.Dimension(250, 500));
 
-        btnRegistrar.setBackground(new java.awt.Color(85, 140, 54));
-        btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrar.setText("REGISTRAR");
-        btnRegistrar.setBorder(null);
-        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        btnRegister.setBackground(new java.awt.Color(85, 140, 54));
+        btnRegister.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnRegister.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegister.setText("REGISTER");
+        btnRegister.setBorder(null);
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
+                btnRegisterActionPerformed(evt);
             }
         });
 
-        btnListar.setBackground(new java.awt.Color(85, 140, 54));
-        btnListar.setForeground(new java.awt.Color(255, 255, 255));
-        btnListar.setText("LISTAR");
-        btnListar.setBorder(null);
-        btnListar.addActionListener(new java.awt.event.ActionListener() {
+        btnList.setBackground(new java.awt.Color(85, 140, 54));
+        btnList.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnList.setForeground(new java.awt.Color(255, 255, 255));
+        btnList.setText("LIST");
+        btnList.setBorder(null);
+        btnList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListarActionPerformed(evt);
+                btnListActionPerformed(evt);
             }
         });
 
-        btnModificar.setBackground(new java.awt.Color(85, 140, 54));
-        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
-        btnModificar.setText("MODIFICAR");
-        btnModificar.setBorder(null);
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdate.setBackground(new java.awt.Color(85, 140, 54));
+        btnUpdate.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpdate.setText("UPDATE");
+        btnUpdate.setBorder(null);
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
+                btnUpdateActionPerformed(evt);
             }
         });
 
-        btnEliminar.setBackground(new java.awt.Color(85, 140, 54));
-        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar.setText("ELIMINAR");
-        btnEliminar.setBorder(null);
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setBackground(new java.awt.Color(85, 140, 54));
+        btnDelete.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
+        btnDelete.setText("DELETE");
+        btnDelete.setBorder(null);
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
         jLabel19.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 24)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("DE RESIDUOS");
+        jLabel19.setText("MANAGAMENT");
 
         jLabel20.setFont(new java.awt.Font("Yu Gothic", 1, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
@@ -174,15 +180,15 @@ public class AdministradorResiduo extends javax.swing.JFrame {
 
         jLabel18.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 24)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setText("GESTION");
+        jLabel18.setText("WASTE");
 
-        btnVolver.setBackground(new java.awt.Color(45, 106, 79));
-        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
-        btnVolver.setText("VOLVER");
-        btnVolver.setBorderPainted(false);
-        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setBackground(new java.awt.Color(45, 106, 79));
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("BACK");
+        btnBack.setBorderPainted(false);
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -190,15 +196,15 @@ public class AdministradorResiduo extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnVolver)
+                        .addComponent(btnBack)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel19)
@@ -220,42 +226,42 @@ public class AdministradorResiduo extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
-                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnList, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVolver)
+                .addComponent(btnBack)
                 .addGap(23, 23, 23))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 500));
 
-        pnCambiante.setBackground(new java.awt.Color(255, 255, 255));
+        pnChanging.setBackground(new java.awt.Color(255, 255, 255));
 
-        pnRegistrar.setBackground(new java.awt.Color(255, 255, 255));
-        pnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        pnRegistrar.setRequestFocusEnabled(false);
+        pnRegister.setBackground(new java.awt.Color(255, 255, 255));
+        pnRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        pnRegister.setRequestFocusEnabled(false);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("Codigo :");
+        jLabel5.setText("Code :");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Material:");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setText("Puntos:");
+        jLabel8.setText("Points:");
 
-        txtCodigo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtCodigo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
+        txtCode.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtCode.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoActionPerformed(evt);
+                txtCodeActionPerformed(evt);
             }
         });
 
@@ -272,15 +278,15 @@ public class AdministradorResiduo extends javax.swing.JFrame {
             }
         });
 
-        txtPuntos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtPuntos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtPuntos.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtPoints.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtPoints.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtPoints.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPuntosKeyTyped(evt);
+                txtPointsKeyTyped(evt);
             }
         });
 
-        btnGuardar.setText("Guardar");
+        btnGuardar.setText("KEEP");
         btnGuardar.setBorder(null);
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,7 +294,7 @@ public class AdministradorResiduo extends javax.swing.JFrame {
             }
         });
 
-        btnLimpiar.setText("Limpiar");
+        btnLimpiar.setText("CLEAN");
         btnLimpiar.setBorder(null);
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -296,59 +302,62 @@ public class AdministradorResiduo extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout pnRegistrarLayout = new javax.swing.GroupLayout(pnRegistrar);
-        pnRegistrar.setLayout(pnRegistrarLayout);
-        pnRegistrarLayout.setHorizontalGroup(
-            pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnRegistrarLayout.createSequentialGroup()
-                .addGap(117, 117, 117)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71)
-                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(119, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnRegistrarLayout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
-                .addGroup(pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCodigo)
-                    .addComponent(txtMaterial)
-                    .addComponent(txtPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/ecology (4).png"))); // NOI18N
+
+        javax.swing.GroupLayout pnRegisterLayout = new javax.swing.GroupLayout(pnRegister);
+        pnRegister.setLayout(pnRegisterLayout);
+        pnRegisterLayout.setHorizontalGroup(
+            pnRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnRegisterLayout.createSequentialGroup()
+                .addContainerGap(38, Short.MAX_VALUE)
+                .addGroup(pnRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnRegisterLayout.createSequentialGroup()
+                        .addGroup(pnRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMaterial)
+                            .addComponent(txtPoints, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                            .addComponent(txtCode))
+                        .addGap(32, 32, 32))
+                    .addGroup(pnRegisterLayout.createSequentialGroup()
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
-        pnRegistrarLayout.setVerticalGroup(
-            pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnRegistrarLayout.createSequentialGroup()
-                .addContainerGap(111, Short.MAX_VALUE)
-                .addGroup(pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnRegistrarLayout.createSequentialGroup()
+        pnRegisterLayout.setVerticalGroup(
+            pnRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnRegisterLayout.createSequentialGroup()
+                .addContainerGap(130, Short.MAX_VALUE)
+                .addGroup(pnRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnRegisterLayout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(4, 4, 4)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPuntos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(94, 94, 94))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnRegistrarLayout.createSequentialGroup()
+                        .addComponent(txtPoints, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addGroup(pnRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(73, 73, 73))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnRegisterLayout.createSequentialGroup()
                         .addComponent(jLabel9)
-                        .addGap(49, 49, 49)))
-                .addGroup(pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33))
+                        .addGap(114, 114, 114))))
         );
 
-        pnCambiante.addTab("", pnRegistrar);
+        pnChanging.addTab("", pnRegister);
 
-        pnListar.setBackground(new java.awt.Color(255, 255, 255));
+        pnList.setBackground(new java.awt.Color(255, 255, 255));
 
         TBListar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -385,36 +394,36 @@ public class AdministradorResiduo extends javax.swing.JFrame {
         TBListar.setSelectionBackground(new java.awt.Color(0, 153, 153));
         jScrollPane1.setViewportView(TBListar);
 
-        javax.swing.GroupLayout pnListarLayout = new javax.swing.GroupLayout(pnListar);
-        pnListar.setLayout(pnListarLayout);
-        pnListarLayout.setHorizontalGroup(
-            pnListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnListarLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnListLayout = new javax.swing.GroupLayout(pnList);
+        pnList.setLayout(pnListLayout);
+        pnListLayout.setHorizontalGroup(
+            pnListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnListLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(40, Short.MAX_VALUE))
         );
-        pnListarLayout.setVerticalGroup(
-            pnListarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnListarLayout.createSequentialGroup()
+        pnListLayout.setVerticalGroup(
+            pnListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnListLayout.createSequentialGroup()
                 .addContainerGap(122, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
 
-        pnCambiante.addTab("", pnListar);
+        pnChanging.addTab("", pnList);
 
-        pnModificar.setBackground(new java.awt.Color(255, 255, 255));
+        pnUpdate.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel3.setText("Busqueda :");
+        jLabel3.setText("Search :");
 
-        txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtBusquedaKeyTyped(evt);
+                txtSearchKeyTyped(evt);
             }
         });
 
-        tbModificar.setModel(new javax.swing.table.DefaultTableModel(
+        tbUpdate.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -437,129 +446,129 @@ public class AdministradorResiduo extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tbModificar.setGridColor(new java.awt.Color(255, 255, 255));
-        tbModificar.setSelectionBackground(new java.awt.Color(0, 153, 0));
-        tbModificar.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbUpdate.setGridColor(new java.awt.Color(255, 255, 255));
+        tbUpdate.setSelectionBackground(new java.awt.Color(0, 153, 0));
+        tbUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbModificarMouseClicked(evt);
+                tbUpdateMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tbModificar);
+        jScrollPane2.setViewportView(tbUpdate);
 
-        btnBusqueda.addActionListener(new java.awt.event.ActionListener() {
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/search.png"))); // NOI18N
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBusquedaActionPerformed(evt);
+                btnSearchActionPerformed(evt);
             }
         });
 
         jLabel15.setText("Material:");
 
-        Material.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtMaterialU.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                MaterialKeyTyped(evt);
+                txtMaterialUKeyTyped(evt);
             }
         });
 
-        jLabel17.setText("Puntos:");
+        jLabel17.setText("Points:");
 
-        puntos.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtPointsU.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                puntosKeyTyped(evt);
+                txtPointsUKeyTyped(evt);
             }
         });
 
-        btnModificarInterno.setText("Modificar");
-        btnModificarInterno.addActionListener(new java.awt.event.ActionListener() {
+        btnInterUpdate.setText("UPDATE");
+        btnInterUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarInternoActionPerformed(evt);
+                btnInterUpdateActionPerformed(evt);
             }
         });
 
         jLabel21.setText("ID:");
 
-        jLabel23.setText("Codigo:");
+        jLabel23.setText("Code:");
 
-        javax.swing.GroupLayout pnModificarLayout = new javax.swing.GroupLayout(pnModificar);
-        pnModificar.setLayout(pnModificarLayout);
-        pnModificarLayout.setHorizontalGroup(
-            pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnModificarLayout.createSequentialGroup()
-                .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnModificarLayout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout pnUpdateLayout = new javax.swing.GroupLayout(pnUpdate);
+        pnUpdate.setLayout(pnUpdateLayout);
+        pnUpdateLayout.setHorizontalGroup(
+            pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnUpdateLayout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnUpdateLayout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnModificarLayout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnUpdateLayout.createSequentialGroup()
+                        .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Material)
-                            .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtMaterialU)
+                            .addComponent(txtIDU, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(37, 37, 37)
-                        .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnModificarLayout.createSequentialGroup()
+                        .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnUpdateLayout.createSequentialGroup()
                                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnModificarLayout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnUpdateLayout.createSequentialGroup()
                                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(4, 4, 4)))
-                        .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(puntos, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(83, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnModificarLayout.createSequentialGroup()
+                        .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPointsU, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCodeU, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(100, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnUpdateLayout.createSequentialGroup()
                 .addContainerGap(76, Short.MAX_VALUE)
-                .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnModificarLayout.createSequentialGroup()
+                .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnUpdateLayout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnModificarLayout.createSequentialGroup()
-                        .addComponent(btnModificarInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnUpdateLayout.createSequentialGroup()
+                        .addComponent(btnInterUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(186, 186, 186))))
         );
-        pnModificarLayout.setVerticalGroup(
-            pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnModificarLayout.createSequentialGroup()
-                .addContainerGap(115, Short.MAX_VALUE)
-                .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        pnUpdateLayout.setVerticalGroup(
+            pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnUpdateLayout.createSequentialGroup()
+                .addContainerGap(114, Short.MAX_VALUE)
+                .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3)))
                 .addGap(18, 18, 18)
-                .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnModificarLayout.createSequentialGroup()
-                        .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnUpdateLayout.createSequentialGroup()
+                        .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel23)
-                            .addComponent(Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtCodeU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel17)
-                            .addComponent(puntos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnModificarLayout.createSequentialGroup()
-                        .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPointsU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnUpdateLayout.createSequentialGroup()
+                        .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel21)
-                            .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtIDU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15)
-                            .addComponent(Material, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtMaterialU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addComponent(btnModificarInterno)
+                .addComponent(btnInterUpdate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        pnCambiante.addTab("", pnModificar);
+        pnChanging.addTab("", pnUpdate);
 
-        pnEliminar.setBackground(new java.awt.Color(255, 255, 255));
+        pnDelete.setBackground(new java.awt.Color(255, 255, 255));
 
         tbEliminar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -596,12 +605,12 @@ public class AdministradorResiduo extends javax.swing.JFrame {
             tbEliminar.getColumnModel().getColumn(0).setResizable(false);
         }
 
-        jLabel14.setText("Seleccione el residuo a eliminar");
+        jLabel14.setText("Select the waste to eliminate");
 
-        btnEliminarInterno.setText("Eliminar");
-        btnEliminarInterno.addActionListener(new java.awt.event.ActionListener() {
+        btnInterDelete.setText("Delete");
+        btnInterDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarInternoActionPerformed(evt);
+                btnInterDeleteActionPerformed(evt);
             }
         });
 
@@ -613,48 +622,45 @@ public class AdministradorResiduo extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout pnEliminarLayout = new javax.swing.GroupLayout(pnEliminar);
-        pnEliminar.setLayout(pnEliminarLayout);
-        pnEliminarLayout.setHorizontalGroup(
-            pnEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnEliminarLayout.createSequentialGroup()
-                .addGroup(pnEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(pnEliminarLayout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnEliminarLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnDeleteLayout = new javax.swing.GroupLayout(pnDelete);
+        pnDelete.setLayout(pnDeleteLayout);
+        pnDeleteLayout.setHorizontalGroup(
+            pnDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnDeleteLayout.createSequentialGroup()
+                .addGroup(pnDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnDeleteLayout.createSequentialGroup()
                         .addGap(98, 98, 98)
                         .addComponent(jLabel22)
-                        .addGroup(pnEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnEliminarLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCodeD, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnEliminarInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnEliminarLayout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(87, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCodeD, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnInterDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnDeleteLayout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addGroup(pnDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
-        pnEliminarLayout.setVerticalGroup(
-            pnEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnEliminarLayout.createSequentialGroup()
-                .addContainerGap(134, Short.MAX_VALUE)
+        pnDeleteLayout.setVerticalGroup(
+            pnDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnDeleteLayout.createSequentialGroup()
+                .addContainerGap(123, Short.MAX_VALUE)
                 .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(pnDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnEliminarInterno)
+                    .addGroup(pnDeleteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnInterDelete)
                         .addComponent(txtCodeD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45))
         );
 
-        pnCambiante.addTab("", pnEliminar);
+        pnChanging.addTab("", pnDelete);
 
-        jPanel1.add(pnCambiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, -30, 550, 530));
+        jPanel1.add(pnChanging, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, -30, 550, 530));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -670,70 +676,71 @@ public class AdministradorResiduo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+    private void btnListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListActionPerformed
         // TODO add your handling code here:
         ResidueController.ShowResidueController(TBListar);
-        pnCambiante.setSelectedIndex(1);
-    }//GEN-LAST:event_btnListarActionPerformed
+        pnChanging.setSelectedIndex(1);
+        JText.setText("LIST");
+    }//GEN-LAST:event_btnListActionPerformed
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:        
-        pnCambiante.setSelectedIndex(0);
-    }//GEN-LAST:event_btnRegistrarActionPerformed
+        pnChanging.setSelectedIndex(0);
+    }//GEN-LAST:event_btnRegisterActionPerformed
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         ResidueController.ShowResidueController(tbEliminar);
-        pnCambiante.setSelectedIndex(3);
-    }//GEN-LAST:event_btnEliminarActionPerformed
+        pnChanging.setSelectedIndex(3);
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        ResidueController.ShowResidueController(tbModificar);
-        pnCambiante.setSelectedIndex(2);
-    }//GEN-LAST:event_btnModificarActionPerformed
+        ResidueController.ShowResidueController(tbUpdate);
+        pnChanging.setSelectedIndex(2);
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void btnEliminarInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarInternoActionPerformed
+    private void btnInterDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInterDeleteActionPerformed
         // TODO add your handling code here:        
         String code = txtCodeD.getText();
         ResidueController.DeleteResidueController(new FindResidueDTO(code));
         ResidueController.ShowResidueController(tbEliminar);
-    }//GEN-LAST:event_btnEliminarInternoActionPerformed
+    }//GEN-LAST:event_btnInterDeleteActionPerformed
 
-    private void btnModificarInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarInternoActionPerformed
+    private void btnInterUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInterUpdateActionPerformed
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_btnModificarInternoActionPerformed
+    }//GEN-LAST:event_btnInterUpdateActionPerformed
 
-    private void puntosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_puntosKeyTyped
+    private void txtPointsUKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPointsUKeyTyped
 
-    }//GEN-LAST:event_puntosKeyTyped
+    }//GEN-LAST:event_txtPointsUKeyTyped
 
-    private void MaterialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MaterialKeyTyped
+    private void txtMaterialUKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaterialUKeyTyped
 
-    }//GEN-LAST:event_MaterialKeyTyped
+    }//GEN-LAST:event_txtMaterialUKeyTyped
 
-    private void btnBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusquedaActionPerformed
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        AddFilter(tbUpdate, txtSearch, 2);
+    }//GEN-LAST:event_btnSearchActionPerformed
 
-    }//GEN-LAST:event_btnBusquedaActionPerformed
-
-    private void txtBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyTyped
-    }//GEN-LAST:event_txtBusquedaKeyTyped
+    private void txtSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyTyped
+    }//GEN-LAST:event_txtSearchKeyTyped
 
     public void limpiar() {
-        txtCodigo.setText("");
+        txtCode.setText("");
         txtMaterial.setText("");
-        txtPuntos.setText("");
+        txtPoints.setText("");
     }
 
-    private void tbModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbModificarMouseClicked
+    private void tbUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbUpdateMouseClicked
         // TODO add your handling code here:
-        Residue residue = ResidueController.SelectResidueController(tbModificar);
-        Codigo.setText(residue.getCode());
-        Material.setText(residue.getType());
-        puntos.setText(String.valueOf(residue.getPoints()));
-        ID.setText(String.valueOf(residue.getId()));
-    }//GEN-LAST:event_tbModificarMouseClicked
+        Residue residue = ResidueController.SelectResidueController(tbUpdate);
+        txtCodeU.setText(residue.getCode());
+        txtMaterialU.setText(residue.getType());
+        txtPointsU.setText(String.valueOf(residue.getPoints()));
+        txtIDU.setText(String.valueOf(residue.getId()));
+    }//GEN-LAST:event_tbUpdateMouseClicked
 
     private void txtCodeDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCodeDMouseClicked
         // TODO add your handling code here:
@@ -745,14 +752,14 @@ public class AdministradorResiduo extends javax.swing.JFrame {
         txtCodeD.setText(rs.getCode());
     }//GEN-LAST:event_tbEliminarMouseClicked
 
-    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         this.dispose();
         AdministradorPanel pa = new AdministradorPanel();
         pa.setLocationRelativeTo(null);
         pa.setVisible(true);
 
-    }//GEN-LAST:event_btnVolverActionPerformed
+    }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         // TODO add your handling code here:
@@ -761,15 +768,15 @@ public class AdministradorResiduo extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        String code = txtCodigo.getText();
+        String code = txtCode.getText();
         String type = txtMaterial.getText();
-        int points = Integer.parseInt(txtPuntos.getText());
+        int points = Integer.parseInt(txtPoints.getText());
         ResidueController.CreateResidueController(new CreateResidueDTO(code, type, points));
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void txtPuntosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPuntosKeyTyped
+    private void txtPointsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPointsKeyTyped
 
-    }//GEN-LAST:event_txtPuntosKeyTyped
+    }//GEN-LAST:event_txtPointsKeyTyped
 
     private void txtMaterialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaterialKeyTyped
 
@@ -779,9 +786,9 @@ public class AdministradorResiduo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaterialActionPerformed
 
-    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+    private void txtCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoActionPerformed
+    }//GEN-LAST:event_txtCodeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -832,23 +839,52 @@ public class AdministradorResiduo extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void AddFilter(JTable table, JTextField textField, int columnIndex) {
+        
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
+        table.setRowSorter(rowSorter);
 
+        textField.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            @Override
+            public void insertUpdate(javax.swing.event.DocumentEvent e) {
+                filtrar();
+            }
+
+            @Override
+            public void removeUpdate(javax.swing.event.DocumentEvent e) {
+                filtrar();
+            }
+
+            @Override
+            public void changedUpdate(javax.swing.event.DocumentEvent e) {
+                filtrar();
+            }
+
+            private void filtrar() {
+                String searchText = textField.getText();
+                if (searchText.trim().isEmpty()) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchText, columnIndex)); 
+                }
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Codigo;
-    private javax.swing.JTextField ID;
-    private javax.swing.JTextField Material;
+    private javax.swing.JLabel JText;
     private javax.swing.JTable TBListar;
-    private javax.swing.JButton btnBusqueda;
-    private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnEliminarInterno;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnInterDelete;
+    private javax.swing.JButton btnInterUpdate;
     private javax.swing.JButton btnLimpiar;
-    private javax.swing.JButton btnListar;
-    private javax.swing.JButton btnModificar;
-    private javax.swing.JButton btnModificarInterno;
-    private javax.swing.JButton btnRegistrar;
-    private javax.swing.JButton btnVolver;
+    private javax.swing.JButton btnList;
+    private javax.swing.JButton btnRegister;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
@@ -860,7 +896,6 @@ public class AdministradorResiduo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
@@ -871,18 +906,21 @@ public class AdministradorResiduo extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTabbedPane pnCambiante;
-    private javax.swing.JPanel pnEliminar;
-    private javax.swing.JPanel pnListar;
-    private javax.swing.JPanel pnModificar;
-    private javax.swing.JPanel pnRegistrar;
-    private javax.swing.JTextField puntos;
+    private javax.swing.JTabbedPane pnChanging;
+    private javax.swing.JPanel pnDelete;
+    private javax.swing.JPanel pnList;
+    private javax.swing.JPanel pnRegister;
+    private javax.swing.JPanel pnUpdate;
     private javax.swing.JTable tbEliminar;
-    private javax.swing.JTable tbModificar;
-    private javax.swing.JTextField txtBusqueda;
+    private javax.swing.JTable tbUpdate;
+    private javax.swing.JTextField txtCode;
     private javax.swing.JTextField txtCodeD;
-    private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtCodeU;
+    private javax.swing.JTextField txtIDU;
     private javax.swing.JTextField txtMaterial;
-    private javax.swing.JTextField txtPuntos;
+    private javax.swing.JTextField txtMaterialU;
+    private javax.swing.JTextField txtPoints;
+    private javax.swing.JTextField txtPointsU;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
