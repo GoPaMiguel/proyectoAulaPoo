@@ -2,12 +2,14 @@ package controller;
 
 import database.ConnectionJDBC;
 import model.CORE.Award;
+import model.CORE.Residue;
 import model.DTO.AwardDTO.CreateAwardDTO;
 import model.DTO.AwardDTO.FindAwardDTO;
 import service.award.command.DeleteAwardHandler;
 import service.award.command.InsertAwardHandler;
 import service.award.query.FindAwardByIdHandler;
 import service.award.query.SelectAllAwardsHandler;
+import service.award.util.help.SelectAwardTableHandler;
 import service.award.util.help.ShowAndCreateAwardTable;
 
 import javax.swing.*;
@@ -26,7 +28,6 @@ public class AwardController {
             con.setAutoCommit(false);
             insertAwardHandler.insert(new Award(createAwardDTO));
             con.commit();
-            JOptionPane.showMessageDialog(null, "Award Created");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Cannot insert Award, because: " + e.getMessage());
             try {
@@ -56,7 +57,6 @@ public class AwardController {
             DeleteAwardHandler deleteAwardHandler = new DeleteAwardHandler(con);
             deleteAwardHandler.Delete(new Award(findAwardDTO));
             con.commit();
-            JOptionPane.showMessageDialog(null, "Award Deleted");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Cannot delete Award, because: " + e.getMessage());
             try {
@@ -142,5 +142,11 @@ public class AwardController {
             ShowAndCreateAwardTable showAndCreateAwardTable = new ShowAndCreateAwardTable();
             showAndCreateAwardTable.showTable(table, awards);
         }
+    }
+
+    public static Award SelectAwardController(JTable table) {
+        SelectAwardTableHandler selectAwardTableHandler = new SelectAwardTableHandler();
+
+        return selectAwardTableHandler.selectElement(table);
     }
 }
