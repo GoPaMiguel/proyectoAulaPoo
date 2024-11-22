@@ -5,10 +5,13 @@
 package view.privated.admin;
 
 import controller.AwardController;
-import java.awt.event.KeyEvent;
 import model.CORE.Award;
 import model.DTO.AwardDTO.CreateAwardDTO;
 import model.DTO.AwardDTO.FindAwardDTO;
+import model.DTO.AwardDTO.UpdateAwardDTO;
+
+import javax.swing.*;
+import java.awt.event.KeyEvent;
 
 public class AdministradorPrizes extends javax.swing.JFrame {
 
@@ -70,6 +73,7 @@ public class AdministradorPrizes extends javax.swing.JFrame {
         btnInterUpdate = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         txtCodeU = new javax.swing.JTextField();
+        CodeCurrent = new javax.swing.JLabel();
         pnDelete = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tbDelete = new javax.swing.JTable();
@@ -297,14 +301,12 @@ public class AdministradorPrizes extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\java\\resources\\ecology (3).png")); // NOI18N
-
         javax.swing.GroupLayout pnRegisterLayout = new javax.swing.GroupLayout(pnRegister);
         pnRegister.setLayout(pnRegisterLayout);
         pnRegisterLayout.setHorizontalGroup(
             pnRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnRegisterLayout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
+                    .addContainerGap(68, Short.MAX_VALUE)
                 .addGroup(pnRegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnRegisterLayout.createSequentialGroup()
                         .addComponent(btnKeep, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -320,7 +322,6 @@ public class AdministradorPrizes extends javax.swing.JFrame {
                                 .addComponent(txtAward, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtCode, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(9, 9, 9)))
-                .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
@@ -476,26 +477,22 @@ public class AdministradorPrizes extends javax.swing.JFrame {
 
         jLabel21.setText("Code:");
 
+        CodeCurrent.setText("NN");
+
         javax.swing.GroupLayout pnUpdateLayout = new javax.swing.GroupLayout(pnUpdate);
         pnUpdate.setLayout(pnUpdateLayout);
         pnUpdateLayout.setHorizontalGroup(
             pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnUpdateLayout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnUpdateLayout.createSequentialGroup()
-                .addGap(0, 65, Short.MAX_VALUE)
+                    .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49))
             .addGroup(pnUpdateLayout.createSequentialGroup()
                 .addGap(101, 101, 101)
-                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CodeCurrent, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnUpdateLayout.createSequentialGroup()
                         .addComponent(txtCodeU, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -503,13 +500,26 @@ public class AdministradorPrizes extends javax.swing.JFrame {
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtPointsU, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnUpdateLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAwardU, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(150, 150, 150))))
+                            .addContainerGap())
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnUpdateLayout.createSequentialGroup()
+                                .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(pnUpdateLayout.createSequentialGroup()
+                                                .addGap(70, 70, 70)
+                                                .addComponent(jLabel3))
+                                        .addGroup(pnUpdateLayout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnUpdateLayout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(txtAwardU, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(150, 150, 150))
+                                        .addGroup(pnUpdateLayout.createSequentialGroup()
+                                                .addGap(26, 26, 26)
+                                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnUpdateLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnInterUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -518,12 +528,13 @@ public class AdministradorPrizes extends javax.swing.JFrame {
         pnUpdateLayout.setVerticalGroup(
             pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnUpdateLayout.createSequentialGroup()
-                .addContainerGap(124, Short.MAX_VALUE)
+                    .addContainerGap(123, Short.MAX_VALUE)
                 .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3)))
+                            .addComponent(jLabel3)
+                            .addComponent(CodeCurrent)))
                 .addGap(18, 18, 18)
                 .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCodeU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -640,7 +651,7 @@ public class AdministradorPrizes extends javax.swing.JFrame {
     private void btnListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListActionPerformed
         // TODO add your handling code here:
         AwardController.ShowAwardController(tbList);
-        pnChanging.setSelectedIndex(3);
+        pnChanging.setSelectedIndex(1);
     }//GEN-LAST:event_btnListActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
@@ -651,13 +662,13 @@ public class AdministradorPrizes extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         AwardController.ShowAwardController(tbDelete);
-        pnChanging.setSelectedIndex(2);
+        pnChanging.setSelectedIndex(3);
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
         AwardController.ShowAwardController(tbUpdate);
-        pnChanging.setSelectedIndex(1);
+        pnChanging.setSelectedIndex(2);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void txtAwardUKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAwardUKeyTyped
@@ -698,6 +709,7 @@ public class AdministradorPrizes extends javax.swing.JFrame {
         txtCodeU.setText(award.getCode());
         txtAwardU.setText(award.getName());
         txtPointsU.setText(String.valueOf(award.getPoints()));
+        CodeCurrent.setText(award.getCode());
     }//GEN-LAST:event_tbUpdateMouseClicked
 
     private void tbDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDeleteMouseClicked
@@ -726,7 +738,29 @@ public class AdministradorPrizes extends javax.swing.JFrame {
 
     private void btnInterUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInterUpdateActionPerformed
         // TODO add your handling code here:
+        String code = txtCodeU.getText();
+        String name = txtAwardU.getText();
+        String pointsString = txtPointsU.getText();
+        String codeCurrent = CodeCurrent.getText();
+        if (code.isEmpty() || name.isEmpty() || pointsString.isEmpty() || codeCurrent.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+            return;
+        }
+        int points = Integer.parseInt(pointsString);
+        UpdateAwardDTO update = new UpdateAwardDTO(code, name, points);
+        FindAwardDTO dto = new FindAwardDTO(codeCurrent);
+        AwardController.UpdateAwardController(new Award(update), dto);
+        AwardController.ShowAwardController(tbUpdate);
+        clearUpdate();
     }//GEN-LAST:event_btnInterUpdateActionPerformed
+
+    private void clearUpdate() {
+        txtCodeU.setText("");
+        txtAwardU.setText("");
+        txtPointsU.setText("");
+        CodeCurrent.setText("");
+    }
+
 
     private void txtCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodeKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
@@ -780,6 +814,7 @@ public class AdministradorPrizes extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CodeCurrent;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnClean;
     private javax.swing.JButton btnDelete;
