@@ -25,9 +25,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
     public AdministradorStudent() {
         this.setLocationRelativeTo(null);
         initComponents();
-        txtIDM.setEnabled(false);
         txtIDe.setEnabled(false);
-        txtEmailM.setEnabled(false);
     }
 
     /**
