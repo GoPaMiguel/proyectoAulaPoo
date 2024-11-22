@@ -762,11 +762,29 @@ public class AdministradorResiduo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCleanActionPerformed
 
     private void btnKeepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeepActionPerformed
-        // TODO add your handling code here:
-        String code = txtCode.getText();
-        String type = txtMaterial.getText();
-        int points = Integer.parseInt(txtPoints.getText());
-        ResidueController.CreateResidueController(new CreateResidueDTO(code, type, points));
+
+        String code = txtCode.getText().trim();
+        String type = txtMaterial.getText().trim();
+        String pointsText = txtPoints.getText().trim();
+
+        if (code.isEmpty() || type.isEmpty() || pointsText.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "All fields must be filled, and points must be greater than 0.");
+        } else {
+            try {
+                
+        int points = Integer.parseInt(pointsText);
+
+        if (points <= 0) {
+            JOptionPane.showMessageDialog(null, "Points must be greater than 0.");
+        } else {
+            ResidueController.CreateResidueController(new CreateResidueDTO(code, type, points));
+            limpiar();
+            }
+        } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "The points field must contain a valid integer.");
+            }
+}
+    
     }//GEN-LAST:event_btnKeepActionPerformed
 
     private void txtPointsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPointsKeyTyped
@@ -887,6 +905,8 @@ public class AdministradorResiduo extends javax.swing.JFrame {
             }
         });
     }
+    
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CodeCurrent;
