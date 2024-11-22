@@ -10,6 +10,7 @@ import model.CORE.Residue;
 import model.CORE.User;
 import model.DTO.ResiduoDTO.CreateResidueDTO;
 import model.DTO.ResiduoDTO.FindResidueDTO;
+import model.DTO.ResiduoDTO.UpdateResidueDTO;
 
 import javax.swing.*;
 import javax.swing.table.TableModel;
@@ -23,7 +24,6 @@ public class AdministradorResiduo extends javax.swing.JFrame {
     public AdministradorResiduo() {
         this.setLocationRelativeTo(null);
         initComponents();
-        txtIDU.setEnabled(false);
         txtCodeD.setEnabled(false);
         txtCodeU.setEnabled(false);
     }
@@ -70,15 +70,14 @@ public class AdministradorResiduo extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tbUpdate = new javax.swing.JTable();
         btnSearch = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
-        txtMaterialU = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         txtPointsU = new javax.swing.JTextField();
         btnInterUpdate = new javax.swing.JButton();
-        jLabel21 = new javax.swing.JLabel();
-        txtIDU = new javax.swing.JTextField();
+        CodeCurrent = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         txtCodeU = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        TxtType = new javax.swing.JTextField();
         pnDelete = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tbEliminar = new javax.swing.JTable();
@@ -309,8 +308,6 @@ public class AdministradorResiduo extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\java\\resources\\ecology (4).png")); // NOI18N
-
         javax.swing.GroupLayout pnRegisterLayout = new javax.swing.GroupLayout(pnRegister);
         pnRegister.setLayout(pnRegisterLayout);
         pnRegisterLayout.setHorizontalGroup(
@@ -461,18 +458,9 @@ public class AdministradorResiduo extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tbUpdate);
 
-        btnSearch.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\java\\resources\\search.png")); // NOI18N
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSearchActionPerformed(evt);
-            }
-        });
-
-        jLabel15.setText("Material:");
-
-        txtMaterialU.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtMaterialUKeyTyped(evt);
             }
         });
 
@@ -491,32 +479,27 @@ public class AdministradorResiduo extends javax.swing.JFrame {
             }
         });
 
-        jLabel21.setText("ID:");
+        CodeCurrent.setText("NN");
 
         jLabel23.setText("Code:");
+
+        jLabel2.setText("Type:");
 
         javax.swing.GroupLayout pnUpdateLayout = new javax.swing.GroupLayout(pnUpdate);
         pnUpdate.setLayout(pnUpdateLayout);
         pnUpdateLayout.setHorizontalGroup(
             pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnUpdateLayout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnUpdateLayout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnUpdateLayout.createSequentialGroup()
-                        .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtMaterialU)
-                            .addComponent(txtIDU, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
+                        .addGap(120, 120, 120)
+                        .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CodeCurrent, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnUpdateLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TxtType, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(30, 30, 30)
                         .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnUpdateLayout.createSequentialGroup()
                                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -526,7 +509,14 @@ public class AdministradorResiduo extends javax.swing.JFrame {
                                 .addGap(4, 4, 4)))
                         .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPointsU, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCodeU, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtCodeU, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnUpdateLayout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(100, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnUpdateLayout.createSequentialGroup()
                 .addContainerGap(76, Short.MAX_VALUE)
@@ -541,7 +531,7 @@ public class AdministradorResiduo extends javax.swing.JFrame {
         pnUpdateLayout.setVerticalGroup(
             pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnUpdateLayout.createSequentialGroup()
-                .addContainerGap(114, Short.MAX_VALUE)
+                .addContainerGap(110, Short.MAX_VALUE)
                 .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -558,18 +548,16 @@ public class AdministradorResiduo extends javax.swing.JFrame {
                             .addComponent(jLabel17)
                             .addComponent(txtPointsU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(pnUpdateLayout.createSequentialGroup()
-                        .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel21)
-                            .addComponent(txtIDU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CodeCurrent)
+                        .addGap(18, 18, 18)
                         .addGroup(pnUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
-                            .addComponent(txtMaterialU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                            .addComponent(jLabel2)
+                            .addComponent(TxtType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(btnInterUpdate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pnChanging.addTab("", pnUpdate);
@@ -715,16 +703,18 @@ public class AdministradorResiduo extends javax.swing.JFrame {
 
     private void btnInterUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInterUpdateActionPerformed
         // TODO add your handling code here:
-
+        String code = txtCodeU.getText();
+       String type = TxtType.getText();
+        int points =  Integer.parseInt(txtPointsU.getText());
+        FindResidueDTO dto = new FindResidueDTO(CodeCurrent.getText());
+        UpdateResidueDTO dtoUpdate = new UpdateResidueDTO(code, type, points);
+        ResidueController.UpdateResidueController(new Residue(dtoUpdate), dto);
+        ResidueController.ShowResidueController(tbUpdate);
     }//GEN-LAST:event_btnInterUpdateActionPerformed
 
     private void txtPointsUKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPointsUKeyTyped
 
     }//GEN-LAST:event_txtPointsUKeyTyped
-
-    private void txtMaterialUKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaterialUKeyTyped
-
-    }//GEN-LAST:event_txtMaterialUKeyTyped
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         AddFilter(tbUpdate, txtSearch, 2);
@@ -743,9 +733,9 @@ public class AdministradorResiduo extends javax.swing.JFrame {
         // TODO add your handling code here:
         Residue residue = ResidueController.SelectResidueController(tbUpdate);
         txtCodeU.setText(residue.getCode());
-        txtMaterialU.setText(residue.getType());
+        TxtType.setText(residue.getType());
         txtPointsU.setText(String.valueOf(residue.getPoints()));
-        txtIDU.setText(String.valueOf(residue.getId()));
+        CodeCurrent.setText(residue.getCode());
     }//GEN-LAST:event_tbUpdateMouseClicked
 
     private void txtCodeDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCodeDMouseClicked
@@ -900,8 +890,10 @@ public class AdministradorResiduo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CodeCurrent;
     private javax.swing.JLabel JText;
     private javax.swing.JTable TBListar;
+    private javax.swing.JTextField TxtType;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnClean;
     private javax.swing.JButton btnDelete;
@@ -914,12 +906,11 @@ public class AdministradorResiduo extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -943,9 +934,7 @@ public class AdministradorResiduo extends javax.swing.JFrame {
     private javax.swing.JTextField txtCode;
     private javax.swing.JTextField txtCodeD;
     private javax.swing.JTextField txtCodeU;
-    private javax.swing.JTextField txtIDU;
     private javax.swing.JTextField txtMaterial;
-    private javax.swing.JTextField txtMaterialU;
     private javax.swing.JTextField txtPoints;
     private javax.swing.JTextField txtPointsU;
     private javax.swing.JTextField txtSearch;
