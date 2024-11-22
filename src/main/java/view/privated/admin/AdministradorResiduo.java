@@ -25,7 +25,6 @@ public class AdministradorResiduo extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         initComponents();
         txtCodeD.setEnabled(false);
-        txtCodeU.setEnabled(false);
     }
 
     /**
