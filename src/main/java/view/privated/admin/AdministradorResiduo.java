@@ -484,6 +484,12 @@ public class AdministradorResiduo extends javax.swing.JFrame {
 
         jLabel2.setText("Type:");
 
+        TxtType.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TxtTypeKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnUpdateLayout = new javax.swing.GroupLayout(pnUpdate);
         pnUpdate.setLayout(pnUpdateLayout);
         pnUpdateLayout.setHorizontalGroup(
@@ -712,7 +718,12 @@ public class AdministradorResiduo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInterUpdateActionPerformed
 
     private void txtPointsUKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPointsUKeyTyped
+        int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57;
 
+        if (!numero) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtPointsUKeyTyped
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
@@ -823,6 +834,13 @@ public class AdministradorResiduo extends javax.swing.JFrame {
             btnKeep.requestFocus();
         }
     }//GEN-LAST:event_txtPointsKeyPressed
+
+    private void TxtTypeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TxtTypeKeyTyped
+        if (!Character.isLetter(evt.getKeyChar())) {
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_TxtTypeKeyTyped
 
     /**
      * @param args the command line arguments
