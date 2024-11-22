@@ -43,6 +43,7 @@ public class UpdateAwardHandler implements IUpdate<Award, FindAwardDTO> {
             ps.setInt(3, award.getPoints());
             ps.setString(4, dto.code());
             ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Successfully Updated the award");
         } finally {
             if (ps != null) ConnectionJDBC.closeConecction(ps);
         }
