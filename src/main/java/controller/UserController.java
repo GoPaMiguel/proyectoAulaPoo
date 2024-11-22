@@ -5,7 +5,7 @@ import model.CORE.User;
 import model.DTO.userDTO.CreateUserDTO;
 import model.DTO.userDTO.FindUserOnlyByIdDTO;
 import model.DTO.userDTO.LoginUserDTO;
-import service.auth.LoginAuth;
+import service.auth.util.validation.LoginAuth;
 import service.user.command.DeleteUserHandler;
 import service.user.command.InsertUserHandler;
 import service.user.command.UpdateUserHandler;
