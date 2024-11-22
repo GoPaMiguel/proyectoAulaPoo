@@ -937,7 +937,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
     }
     
     public void agregarFiltroTiempoReal(JTable table, JTextField textField, int columnIndex) {
-        // Configurar un TableRowSorter
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
         table.setRowSorter(rowSorter);
 
@@ -960,9 +959,9 @@ public class AdministradorStudent extends javax.swing.JFrame {
             private void filtrar() {
                 String searchText = textField.getText();
                 if (searchText.trim().isEmpty()) {
-                    rowSorter.setRowFilter(null); // Sin filtro, muestra todos los datos
+                    rowSorter.setRowFilter(null);
                 } else {
-                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchText, columnIndex)); // Filtro en la columna especificada
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchText, columnIndex)); 
                 }
             }
         });
