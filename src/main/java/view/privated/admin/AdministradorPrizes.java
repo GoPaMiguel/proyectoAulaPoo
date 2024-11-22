@@ -5,6 +5,7 @@
 package view.privated.admin;
 
 import controller.AwardController;
+import controller.ResidueController;
 import model.CORE.Award;
 import model.DTO.AwardDTO.CreateAwardDTO;
 import model.DTO.AwardDTO.FindAwardDTO;
@@ -12,6 +13,7 @@ import model.DTO.AwardDTO.UpdateAwardDTO;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
+import model.DTO.ResiduoDTO.CreateResidueDTO;
 
 public class AdministradorPrizes extends javax.swing.JFrame {
 
@@ -692,9 +694,25 @@ public class AdministradorPrizes extends javax.swing.JFrame {
         // TODO add your handling code here:
         String code = txtCode.getText();
         String name = txtAward.getText();
-        int points = Integer.parseInt(txtPoints.getText());
-        AwardController.CreateAwardController(new CreateAwardDTO(code, name, points));
+        String points = txtPoints.getText().trim();
+        
+        if (code.isEmpty() || name.isEmpty() || points.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "All fields must be filled, and points must be greater than 0.");
+        } else {
+            try {
+                
+        int pointsInt = Integer.parseInt(points);
+
+        if (pointsInt <= 0) {
+            JOptionPane.showMessageDialog(null, "Points must be greater than 0.");
+        } else {
+            AwardController.CreateAwardController(new CreateAwardDTO(code, name, pointsInt));
         limpiar();
+            }
+        } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "The points field must contain a valid integer.");
+            }
+}
     }//GEN-LAST:event_btnKeepActionPerformed
 
     public void limpiar() {
