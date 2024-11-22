@@ -5,6 +5,11 @@
 package view.privated.admin;
 
 import controller.UserController;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import model.CORE.User;
 import model.DTO.userDTO.CreateUserDTO;
 import model.DTO.userDTO.FindUserOnlyByIdDTO;
@@ -65,10 +70,10 @@ public class AdministradorStudent extends javax.swing.JFrame {
         TBList = new javax.swing.JTable();
         pnModificar = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        txtBusqueda = new javax.swing.JTextField();
+        txtSearch = new javax.swing.JTextField();
         TableUpdate = new javax.swing.JScrollPane();
         tbUpdate = new javax.swing.JTable();
-        btnBusqueda = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         txtNameM = new javax.swing.JTextField();
@@ -264,19 +269,14 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
         txtName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNameKeyTyped(evt);
             }
         });
 
         txtLastName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtLastName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtLastName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLastNameActionPerformed(evt);
-            }
-        });
         txtLastName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtLastNameKeyTyped(evt);
@@ -448,9 +448,9 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
         jLabel3.setText("Busqueda :");
 
-        txtBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtBusquedaKeyTyped(evt);
+                txtSearchKeyTyped(evt);
             }
         });
 
@@ -486,9 +486,9 @@ public class AdministradorStudent extends javax.swing.JFrame {
         });
         TableUpdate.setViewportView(tbUpdate);
 
-        btnBusqueda.addActionListener(new java.awt.event.ActionListener() {
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBusquedaActionPerformed(evt);
+                btnSearchActionPerformed(evt);
             }
         });
 
@@ -502,11 +502,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
             }
         });
 
-        txtLastNameM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLastNameMActionPerformed(evt);
-            }
-        });
         txtLastNameM.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtLastNameMKeyTyped(evt);
@@ -563,7 +558,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
                                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(4, 4, 4)))
                         .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtCareerM, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCareerM, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtEmailM, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(105, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnModificarLayout.createSequentialGroup()
@@ -572,9 +567,9 @@ public class AdministradorStudent extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnModificarLayout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBusqueda)
+                        .addComponent(btnSearch)
                         .addGap(75, 75, 75))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnModificarLayout.createSequentialGroup()
                         .addComponent(TableUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -585,9 +580,9 @@ public class AdministradorStudent extends javax.swing.JFrame {
             .addGroup(pnModificarLayout.createSequentialGroup()
                 .addContainerGap(116, Short.MAX_VALUE)
                 .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3)))
                 .addGap(18, 18, 18)
                 .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -613,7 +608,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
                             .addGroup(pnModificarLayout.createSequentialGroup()
                                 .addGroup(pnModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel17)
-                                        .addComponent(txtCareerM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtCareerM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(35, 35, 35)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TableUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -762,27 +757,25 @@ public class AdministradorStudent extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModificarInternoActionPerformed
 
     private void txtCareerMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCareerMKeyTyped
-
+        if (!Character.isLetter(evt.getKeyChar())) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtCareerMKeyTyped
 
     private void txtLastNameMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLastNameMKeyTyped
-        
+    if (!Character.isLetter(evt.getKeyChar())) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtLastNameMKeyTyped
 
-    private void txtLastNameMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLastNameMActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLastNameMActionPerformed
-
     private void txtNameMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameMKeyTyped
-        
+    if (!Character.isLetter(evt.getKeyChar())) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtNameMKeyTyped
 
-    private void btnBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusquedaActionPerformed
-       
-    }//GEN-LAST:event_btnBusquedaActionPerformed
-
-    private void txtBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBusquedaKeyTyped
-    }//GEN-LAST:event_txtBusquedaKeyTyped
+    private void txtSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyTyped
+    }//GEN-LAST:event_txtSearchKeyTyped
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         // TODO add your handling code here:
@@ -804,7 +797,12 @@ public class AdministradorStudent extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyTyped
-       
+       int key = evt.getKeyChar();
+        boolean numero = key >= 48 && key <= 57;
+
+        if (!numero) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtIDKeyTyped
 
     private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
@@ -819,6 +817,8 @@ public class AdministradorStudent extends javax.swing.JFrame {
         txtEmail.setText("");
         txtID.setText("");
     }
+    
+    
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
@@ -829,14 +829,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtLastNameKeyTyped
-
-    private void txtLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLastNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLastNameActionPerformed
-
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
 
     private void tbUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbUpdateMouseClicked
         // TODO add your handling code here:
@@ -866,11 +858,23 @@ public class AdministradorStudent extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tbDeleteMouseClicked
 
+    private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
+        if (!Character.isLetter(evt.getKeyChar())) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNameKeyTyped
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+
+      agregarFiltroTiempoReal(tbUpdate, txtSearch, 1);
+    }//GEN-LAST:event_btnSearchActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
+        
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -931,6 +935,38 @@ public class AdministradorStudent extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void agregarFiltroTiempoReal(JTable table, JTextField textField, int columnIndex) {
+        // Configurar un TableRowSorter
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
+        table.setRowSorter(rowSorter);
+
+        textField.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            @Override
+            public void insertUpdate(javax.swing.event.DocumentEvent e) {
+                filtrar();
+            }
+
+            @Override
+            public void removeUpdate(javax.swing.event.DocumentEvent e) {
+                filtrar();
+            }
+
+            @Override
+            public void changedUpdate(javax.swing.event.DocumentEvent e) {
+                filtrar();
+            }
+
+            private void filtrar() {
+                String searchText = textField.getText();
+                if (searchText.trim().isEmpty()) {
+                    rowSorter.setRowFilter(null); // Sin filtro, muestra todos los datos
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchText, columnIndex)); // Filtro en la columna especificada
+                }
+            }
+        });
+    }
 
    
 
@@ -942,7 +978,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
     private javax.swing.JScrollPane TableDelete;
     private javax.swing.JScrollPane TableList;
     private javax.swing.JScrollPane TableUpdate;
-    private javax.swing.JButton btnBusqueda;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnEliminarInterno;
     private javax.swing.JButton btnGuardar;
@@ -951,6 +986,7 @@ public class AdministradorStudent extends javax.swing.JFrame {
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnModificarInterno;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel14;
@@ -981,7 +1017,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
     private javax.swing.JPanel pnRegistrar;
     private javax.swing.JTable tbDelete;
     private javax.swing.JTable tbUpdate;
-    private javax.swing.JTextField txtBusqueda;
     private javax.swing.JTextField txtCareerM;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEmailM;
@@ -992,5 +1027,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
     private javax.swing.JTextField txtLastNameM;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtNameM;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
