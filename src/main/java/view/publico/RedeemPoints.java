@@ -249,7 +249,7 @@ public class RedeemPoints extends javax.swing.JFrame {
         if (!validadorSudmit()) return;
         int points = Integer.parseInt(txtPointsYouNeeded.getText());
         int yourPoints = Integer.parseInt(txtYourPoints.getText());
-        int totalPoints = points - yourPoints;
+        int totalPoints =   yourPoints - points;
         UserPointsDTO dto = new UserPointsDTO(ProfileController.getCedula(), totalPoints);
         ProfileController.InsertPointsController(dto);
         JOptionPane.showMessageDialog(null, "Redeem sucessfully");
