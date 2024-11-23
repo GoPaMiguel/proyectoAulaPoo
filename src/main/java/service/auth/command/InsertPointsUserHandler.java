@@ -35,7 +35,6 @@ public class InsertPointsUserHandler implements IInsertPoints<User> {
             ps.setInt(1, user.getPoints());
             ps.setString(2, user.getIdUser());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Points inserted successfully");
         }finally {
             if(ps != null) ps.close();
         }

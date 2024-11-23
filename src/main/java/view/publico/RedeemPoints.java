@@ -8,6 +8,9 @@ import controller.AwardController;
 import controller.ProfileController;
 import model.CORE.Award;
 import model.CORE.User;
+import model.DTO.userDTO.UserPointsDTO;
+
+import javax.swing.*;
 
 /**
  *
@@ -56,7 +59,7 @@ public class RedeemPoints extends javax.swing.JFrame {
         txtYourPoints = new javax.swing.JTextField();
         txtAward = new javax.swing.JTextField();
         txtPointsYouNeeded = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        RedeemBtn = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -183,8 +186,13 @@ public class RedeemPoints extends javax.swing.JFrame {
         jPanel1.add(txtAward, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, 124, -1));
         jPanel1.add(txtPointsYouNeeded, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 335, 124, -1));
 
-        jButton3.setText("Redeem");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 150, 45));
+        RedeemBtn.setText("Redeem");
+        RedeemBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RedeemBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(RedeemBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 150, 45));
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(523, 179, -1, 261));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, 260, 260));
 
@@ -206,6 +214,22 @@ public class RedeemPoints extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtYourPointsActionPerformed
 
+    private boolean validadorSudmit() {
+        if (txtPointsYouNeeded.getText().isEmpty() || txtAward.getText().isEmpty() || txtYourPoints.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor llene todos los campos");
+            return false;
+        }
+        int points = Integer.parseInt(txtPointsYouNeeded.getText());
+        int yourPoints = Integer.parseInt(txtYourPoints.getText());
+        if (points > yourPoints) {
+            JOptionPane.showMessageDialog(null, "You cannot redeem this prize because you dont have enough points");
+            return false;
+        }
+        return true;
+    }
+
+
+
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         this.dispose();
         UsersView user = new UsersView();
@@ -219,6 +243,17 @@ public class RedeemPoints extends javax.swing.JFrame {
         txtAward.setText(award.getName());
         txtPointsYouNeeded.setText(String.valueOf(award.getPoints()));
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void RedeemBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RedeemBtnActionPerformed
+        // TODO add your handling code here:
+        if (!validadorSudmit()) return;
+        int points = Integer.parseInt(txtPointsYouNeeded.getText());
+        int yourPoints = Integer.parseInt(txtYourPoints.getText());
+        int totalPoints = points - yourPoints;
+        UserPointsDTO dto = new UserPointsDTO(ProfileController.getCedula(), totalPoints);
+        ProfileController.InsertPointsController(dto);
+        JOptionPane.showMessageDialog(null, "Redeem sucessfully");
+    }//GEN-LAST:event_RedeemBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,9 +294,9 @@ public class RedeemPoints extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton RedeemBtn;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
