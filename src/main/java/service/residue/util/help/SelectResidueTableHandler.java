@@ -22,7 +22,7 @@ public class SelectResidueTableHandler implements ISelectElementTable<Residue> {
                 ShowResidueDTO dto = new ShowResidueDTO(idSelected, code, type, pointsSelected);
                 residue = new Residue(dto);
             }else {
-                JOptionPane.showMessageDialog(null, "Seleccione una residue");
+                JOptionPane.showMessageDialog(null, "Select user");
             }
         } catch (RuntimeException e) {
             JOptionPane.showMessageDialog(null, "Error, "+e.getMessage());

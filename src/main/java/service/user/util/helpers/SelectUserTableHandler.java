@@ -32,7 +32,7 @@ public class SelectUserTableHandler implements ISelectElementTable<User> {
                 ShowUserDTO dto = new ShowUserDTO(idSelected, name, lastName, email, career, idUser, points, "");
                 selectedUser = new User(dto);
             }else{
-                JOptionPane.showMessageDialog(null, "Debe seleccionar un usuario");
+                JOptionPane.showMessageDialog(null, "You need to select a user");
             }
 
 

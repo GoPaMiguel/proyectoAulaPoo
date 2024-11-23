@@ -36,7 +36,7 @@ public class ShowUserAndCreateTableHandler implements IShowElementAndCreateTable
 
         try {
             if (list.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "No se ha encontrado ningun usuario");
+                JOptionPane.showMessageDialog(null, "Cannot select any user");
                 return;
             }else{
                for (User user : list) {

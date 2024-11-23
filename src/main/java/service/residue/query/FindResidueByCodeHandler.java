@@ -36,7 +36,7 @@ public class FindResidueByCodeHandler implements IFindById<Residue> {
             boolean ok = handler.exist(new FindResidueDTO(id.getCode()), con);
 
             if (!ok){
-                JOptionPane.showMessageDialog(null, "No se encontro el residue");
+                JOptionPane.showMessageDialog(null, "Cannot found residue");
                 return null;
             }
 

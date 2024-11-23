@@ -34,7 +34,7 @@ public class DeleteResidueHandler implements IDelete<Residue> {
             cx = connection != null ? connection : ConnectionJDBC.getConnection();
             boolean ok = existResidue.exist(new FindResidueDTO(id.getCode()), cx);
             if (!ok) {
-                JOptionPane.showMessageDialog(null, "No se puede eliminar el residue, porque no existe");
+                JOptionPane.showMessageDialog(null, "Cannot delete residue, because it does not exist");
                 return;
             }
             ps = cx.prepareStatement(DELETE);

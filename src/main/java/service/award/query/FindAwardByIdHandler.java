@@ -42,7 +42,7 @@ public class FindAwardByIdHandler implements IFindById<Award> {
                 int points = rs.getInt("points");
                 award = new Award(new ShowAwardDTO(id, code, name, points));
             }else{
-                JOptionPane.showMessageDialog(null, "No existe el Award");
+                JOptionPane.showMessageDialog(null, "Not exist in the database");
                 return null;
             }
         }finally {

@@ -22,7 +22,7 @@ public class SelectAwardTableHandler implements ISelectElementTable<Award> {
                 int pointsSelected = Integer.parseInt(points);
                 award = new Award(new ShowAwardDTO(idSelected, code, name, pointsSelected));
             }else{
-                JOptionPane.showMessageDialog(null, "Seleccione un elemento");
+                JOptionPane.showMessageDialog(null, "Select any element");
             }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,"Error, "+e.getMessage());

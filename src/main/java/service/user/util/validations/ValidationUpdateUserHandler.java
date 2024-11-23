@@ -33,7 +33,7 @@ public class ValidationUpdateUserHandler implements IValidateUpdate<User, FindUs
                 return true;
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+            JOptionPane.showMessageDialog(null, "User not found");
             return false;
         }
 

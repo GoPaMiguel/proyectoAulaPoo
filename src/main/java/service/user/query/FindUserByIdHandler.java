@@ -38,7 +38,7 @@ public class FindUserByIdHandler implements IFindById<User> {
             con = connection != null ? connection : ConnectionJDBC.getConnection();
             boolean ok = existUserHandler.exist(new UserEmailAndIdUserDTO(userId.getIdUser(), userId.getEmail()), con);
             if (!ok) {
-                JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+                JOptionPane.showMessageDialog(null, "Find User");
                 return null;
             }
             ps = con.prepareCall(SELECT_QUERY);

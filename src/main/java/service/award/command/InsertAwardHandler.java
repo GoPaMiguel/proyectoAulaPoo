@@ -33,7 +33,7 @@ public class InsertAwardHandler implements IInsert<Award> {
             conn = connection != null ? connection : ConnectionJDBC.getConnection();
             exist = existAwardHandler.exist(new FindAwardDTO(award.getCode()), conn);
             if (exist) {
-                JOptionPane.showMessageDialog(null, award.getCode() + " ya existe en el sistema");
+                JOptionPane.showMessageDialog(null, award.getCode() + " ready exist award");
                 return;
             }
             ps = conn.prepareStatement(INSERT);

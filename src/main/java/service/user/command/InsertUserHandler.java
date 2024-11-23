@@ -37,7 +37,7 @@ public class InsertUserHandler implements IInsert<User> {
             boolean UserExists = existUserHandler.exist(new UserEmailAndIdUserDTO(user.getIdUser(), user.getEmail()), ConnectionJDBC.getConnection());
             boolean validationField = validationUserFieldHandler.validate(user);
         if (UserExists) {
-            JOptionPane.showMessageDialog(null, "Ya existe un usuario con ese id o email");
+            JOptionPane.showMessageDialog(null, "Cannot Insert User, because User already exists");
             return;
         }else if (!validationField) return;
             preparedStatement = connection.prepareStatement(INSERT);
@@ -48,7 +48,7 @@ public class InsertUserHandler implements IInsert<User> {
             preparedStatement.setString(5, user.getIdUser());
             preparedStatement.setString(6, user.getEmail());
             preparedStatement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Usuario registrado con exito");
+            JOptionPane.showMessageDialog(null, "Inserted Successfully");
         } finally {
             if (preparedStatement != null) ConnectionJDBC.closeConecction(preparedStatement);
 

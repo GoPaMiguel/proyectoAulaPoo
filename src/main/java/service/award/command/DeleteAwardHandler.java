@@ -33,13 +33,13 @@ public class DeleteAwardHandler implements IDelete<Award> {
             conn = connection != null ? connection : ConnectionJDBC.getConnection();
             exist = existAwardHandler.exist(new FindAwardDTO(award.getCode()), conn);
             if (!exist) {
-                JOptionPane.showMessageDialog(null, award.getCode() + " no existe en la base de datos");
+                JOptionPane.showMessageDialog(null, award.getCode() + " Dont exist in db");
                 return;
             }
             ps = conn.prepareStatement(DELETE);
             ps.setString(1, award.getCode());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Award Eliminado Correctamente");
+            JOptionPane.showMessageDialog(null, "award deleted successfully");
         }finally {
             if(ps != null) ConnectionJDBC.closeConecction(ps);
         }
