@@ -6,10 +6,17 @@ import model.DTO.userDTO.CreateUserDTO;
 import model.DTO.userDTO.ShowUserDTO;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class SelectUserTableHandler implements ISelectElementTable<User> {
     @Override
     public User selectElement(JTable table) {
+        DefaultTableModel model = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false; // Evita la edición de las celdas
+        }
+    };
         User selectedUser = null;
 
             int selectedRow = table.getSelectedRow();

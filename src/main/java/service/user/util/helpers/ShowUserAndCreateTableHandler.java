@@ -14,7 +14,12 @@ public class ShowUserAndCreateTableHandler implements IShowElementAndCreateTable
     public void showTable(JTable table, List<User> list) {
 
         //table structure
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false; // Evita la edición de las celdas
+        }
+    };
         TableRowSorter<TableModel> alphabeticOrder = new TableRowSorter<TableModel>(model);
         table.setRowSorter(alphabeticOrder);
         model.addColumn("ID");

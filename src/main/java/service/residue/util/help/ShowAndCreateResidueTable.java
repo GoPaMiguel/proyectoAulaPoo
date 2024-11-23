@@ -12,7 +12,12 @@ import java.util.List;
 public class ShowAndCreateResidueTable implements IShowElementAndCreateTable<Residue> {
     @Override
     public void showTable(JTable table, List<Residue> list) {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel() {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+    };
         TableRowSorter<TableModel> alphabeticOrder = new TableRowSorter<TableModel>(model);
         table.setRowSorter(alphabeticOrder);
         model.addColumn("ID");
