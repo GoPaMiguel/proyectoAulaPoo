@@ -794,7 +794,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
             UserController.UpdateUserController(new User(userAdminDTO), dto);
 
             limpiar();
-        limpiar();
         } else {
             JOptionPane.showMessageDialog(null, "User ID must be between 8 and 10 digits");
             txtIDM.requestFocus();
