@@ -29,15 +29,13 @@ public class ViewInicial extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        btnContact = new javax.swing.JButton();
-        btnAboutUs = new javax.swing.JButton();
-        btnHome = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,32 +51,6 @@ public class ViewInicial extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("habit");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 140, 60));
-
-        btnContact.setBackground(new java.awt.Color(10, 49, 48));
-        btnContact.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
-        btnContact.setForeground(new java.awt.Color(255, 255, 255));
-        btnContact.setText("Contact");
-        btnContact.setBorder(null);
-        jPanel1.add(btnContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, 80, 30));
-
-        btnAboutUs.setBackground(new java.awt.Color(10, 49, 48));
-        btnAboutUs.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
-        btnAboutUs.setForeground(new java.awt.Color(255, 255, 255));
-        btnAboutUs.setText("About Us");
-        btnAboutUs.setBorder(null);
-        btnAboutUs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAboutUsActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnAboutUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, 90, 30));
-
-        btnHome.setBackground(new java.awt.Color(10, 49, 48));
-        btnHome.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
-        btnHome.setForeground(new java.awt.Color(255, 255, 255));
-        btnHome.setText("Home");
-        btnHome.setBorder(null);
-        jPanel1.add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, 80, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -111,7 +83,12 @@ public class ViewInicial extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("CODE");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 50, -1));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
+
+        jLabel8.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 20)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("HOME");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 60, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 800, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -126,10 +103,6 @@ public class ViewInicial extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAboutUsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutUsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAboutUsActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
@@ -176,9 +149,6 @@ public class ViewInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAboutUs;
-    private javax.swing.JButton btnContact;
-    private javax.swing.JButton btnHome;
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -187,6 +157,7 @@ public class ViewInicial extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
