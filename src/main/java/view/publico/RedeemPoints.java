@@ -139,7 +139,7 @@ public class RedeemPoints extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 822, 107));
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 22)); // NOI18N
-        jLabel1.setText("Busca tu premio:");
+        jLabel1.setText("Look for your prize :");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 138, 261, -1));
         jPanel1.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 170, 261, -1));
         jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 170, -1, 22));
