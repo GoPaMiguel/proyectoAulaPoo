@@ -8,7 +8,9 @@ import controller.AwardController;
 import controller.ProfileController;
 import model.CORE.Award;
 import model.CORE.User;
+import model.DTO.userDTO.FindUserOnlyByIdDTO;
 import model.DTO.userDTO.UserPointsDTO;
+import service.auth.util.help.RandomCodeRedeem;
 
 import javax.swing.*;
 
@@ -253,6 +255,8 @@ public class RedeemPoints extends javax.swing.JFrame {
         UserPointsDTO dto = new UserPointsDTO(ProfileController.getCedula(), totalPoints);
         ProfileController.InsertPointsController(dto);
         JOptionPane.showMessageDialog(null, "Redeem sucessfully");
+        String code = RandomCodeRedeem.generateId();
+        ProfileController.GeneratorQRController(ProfileController.getCedula(), code);
     }//GEN-LAST:event_RedeemBtnActionPerformed
 
     /**

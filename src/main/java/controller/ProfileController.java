@@ -6,6 +6,8 @@ import model.DTO.userDTO.FindUserOnlyByIdDTO;
 import model.DTO.userDTO.UserPointsDTO;
 import service.auth.command.InsertPointsUserHandler;
 import service.auth.command.UpdateProfileHandler;
+import service.auth.util.help.QRGenerator;
+import service.auth.util.help.RandomCode;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -80,6 +82,12 @@ public class ProfileController {
 
     public static void setCedula(String cedula) {
         ProfileController.cedula = cedula;
+    }
+
+    public static void GeneratorQRController(String idUser, String code){
+
+        String randomCode = RandomCode.generarCodigoAleatorio(idUser);
+        QRGenerator.QR(randomCode, code, idUser);
     }
 
 }
