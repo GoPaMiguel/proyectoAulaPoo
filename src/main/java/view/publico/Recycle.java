@@ -6,11 +6,14 @@ package view.publico;
 
 import controller.ProfileController;
 import controller.ResidueController;
+import java.awt.event.KeyEvent;
 import model.CORE.Residue;
 import model.CORE.User;
 import model.DTO.userDTO.UserPointsDTO;
 
 import javax.swing.*;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -25,7 +28,9 @@ public class Recycle extends javax.swing.JFrame {
         initComponents();
         ResidueController.ShowResidueController(tbResidues);
         YourPoints();
-
+        txtYourPoints.setEnabled(false);
+        txtRecyclePoints.setEnabled(false);
+        txtTotalPoints.setEnabled(false);
     }
 
     /**
@@ -110,6 +115,11 @@ public class Recycle extends javax.swing.JFrame {
         jPanel1.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 185, 260, -1));
 
         btnSearch.setPreferredSize(new java.awt.Dimension(33, 5));
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, -1, 30));
 
         tbResidues.setModel(new javax.swing.table.DefaultTableModel(
@@ -157,6 +167,12 @@ public class Recycle extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtYourPoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 88, -1));
+
+        txtWeight.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtWeightKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 88, -1));
         jPanel1.add(txtTotalPoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 88, -1));
         jPanel1.add(txtRecyclePoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, 88, -1));
@@ -249,6 +265,24 @@ public class Recycle extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Recycle sucessfully");
     }//GEN-LAST:event_btnRecycleActionPerformed
 
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        addFilter(tbResidues, txtSearch, 2);
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void txtWeightKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtWeightKeyTyped
+        char c = evt.getKeyChar();
+
+        // Permitir números, punto decimal y tecla de borrar
+        if (!Character.isDigit(c) && c != '.' && c != KeyEvent.VK_BACK_SPACE) {
+            evt.consume(); // Ignorar el evento si no cumple las condiciones
+        }
+
+        // Evitar múltiples puntos decimales
+        if (c == '.' && txtWeight.getText().contains(".")) {
+            evt.consume(); // Ignorar si ya hay un punto
+        }
+    }//GEN-LAST:event_txtWeightKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -281,6 +315,37 @@ public class Recycle extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Recycle().setVisible(true);
+            }
+        });
+    }
+    
+        public void addFilter(JTable table, JTextField textField, int columnIndex) {
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
+        table.setRowSorter(rowSorter);
+
+        textField.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            @Override
+            public void insertUpdate(javax.swing.event.DocumentEvent e) {
+                filtrar();
+            }
+
+            @Override
+            public void removeUpdate(javax.swing.event.DocumentEvent e) {
+                filtrar();
+            }
+
+            @Override
+            public void changedUpdate(javax.swing.event.DocumentEvent e) {
+                filtrar();
+            }
+
+            private void filtrar() {
+                String searchText = textField.getText();
+                if (searchText.trim().isEmpty()) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchText, columnIndex)); 
+                }
             }
         });
     }

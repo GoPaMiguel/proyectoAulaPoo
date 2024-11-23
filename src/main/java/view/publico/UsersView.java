@@ -194,12 +194,14 @@ public class UsersView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void btnRecycleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecycleActionPerformed
+        this.dispose();
         Recycle recycle = new Recycle();
         recycle.setLocationRelativeTo(null);
         recycle.setVisible(true);
     }//GEN-LAST:event_btnRecycleActionPerformed
 
     private void btnRedeemPointsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedeemPointsActionPerformed
+        this.dispose();
         RedeemPoints redeem = new RedeemPoints();
         redeem.setLocationRelativeTo(null);
         redeem.setVisible(true);

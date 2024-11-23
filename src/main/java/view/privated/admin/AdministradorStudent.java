@@ -461,12 +461,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
 
         jLabel3.setText("Search :");
 
-        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtSearchKeyTyped(evt);
-            }
-        });
-
         tbUpdate.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -832,9 +826,6 @@ public class AdministradorStudent extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtNameMKeyTyped
 
-    private void txtSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyTyped
-    }//GEN-LAST:event_txtSearchKeyTyped
-
     private void btnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanActionPerformed
         // TODO add your handling code here:
         txtName.setText("");
@@ -1084,6 +1075,8 @@ public class AdministradorStudent extends javax.swing.JFrame {
             }
         });
     }
+    
+    
 
    
 
