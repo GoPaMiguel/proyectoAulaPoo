@@ -26,9 +26,22 @@ public class QRGenerator {
         g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         Java2DRenderer renderer = new Java2DRenderer(g2d, 8, Color.WHITE, Color.BLACK);
         renderer.render(qrCode);
+        String url = "src/main/QRS/"+cedula+"/";
+        File file = new File(url);
+        String ruteComplete = url+codeRandom+".png";
+
+        if (!file.exists()) {
+            if (file.mkdirs()) {
+                System.out.println("Directorio creado: " + url);
+            } else {
+                System.err.println("Error al crear el file: " + url);
+                return;
+            }
+        }
+
         try {
-            String url = cedula+"/"+codeRandom+".png";
-            ImageIO.write(image, "png", new File(url));
+            ImageIO.write(image, "png", new File(ruteComplete));
+            JOptionPane.showMessageDialog(null, "Generated QR Code");
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }

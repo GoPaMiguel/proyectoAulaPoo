@@ -84,8 +84,8 @@ public class ProfileController {
         ProfileController.cedula = cedula;
     }
 
-    public static void GeneratorQRController(FindUserOnlyByIdDTO dto, String code){
-        String idUser = dto.idUser();
+    public static void GeneratorQRController(String idUser, String code){
+
         String randomCode = RandomCode.generarCodigoAleatorio(idUser);
         QRGenerator.QR(randomCode, code, idUser);
     }
