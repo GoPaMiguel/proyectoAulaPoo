@@ -5,6 +5,7 @@ import database.ConnectionJDBC;
 import model.CORE.User;
 import model.DTO.userDTO.FindUserOnlyByIdDTO;
 import service.user.util.validations.ValidationUpdateUserHandler;
+import service.user.util.validations.ValidationUserFieldHandler;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -29,17 +30,21 @@ public class UpdateUserHandler implements IUpdate<User, FindUserOnlyByIdDTO> {
         Connection cx = null;
         PreparedStatement ps = null;
         ValidationUpdateUserHandler validationUpdateUserHandler = new ValidationUpdateUserHandler();
+        ValidationUserFieldHandler validationUserFieldHandler = new ValidationUserFieldHandler();
         try {
             cx = connection_transactional != null ? connection_transactional : ConnectionJDBC.getConnection();
+            boolean validationFields = validationUserFieldHandler.validate(user);
             boolean exists = validationUpdateUserHandler.validateUpdate(user, dto, cx);
             if (!exists) {
                 JOptionPane.showMessageDialog(null, "Cannot update user, because it does exist");
                 return;
             }
+            if (!validationFields) {
+                return;
+            }
             ps = cx.prepareCall(UPDATE);
             ps.setString(1, user.getName());
             ps.setString(2, user.getLastName());
-            JOptionPane.showMessageDialog(null, ps.toString());
             ps.setString(3, user.getEmail());
             ps.setString(4, user.getCareer());
             ps.setString(5, user.getIdUser());

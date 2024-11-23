@@ -110,7 +110,7 @@ public class Recycle extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 110));
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed", 0, 22)); // NOI18N
-        jLabel1.setText("Busca el material que vas a reciclar");
+        jLabel1.setText("Look for the material you want to recycle");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 153, -1, -1));
         jPanel1.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 185, 260, -1));
 
