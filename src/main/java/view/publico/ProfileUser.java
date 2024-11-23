@@ -5,6 +5,12 @@
 package view.publico;
 
 import controller.ProfileController;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import model.CORE.User;
 import model.DTO.userDTO.FindUserOnlyByIdDTO;
 import model.DTO.userDTO.UpdateProfileDTO;
@@ -322,17 +328,37 @@ public class ProfileUser extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        FindUserOnlyByIdDTO dto = new FindUserOnlyByIdDTO(cedulaC.getText());
-        String name = txtName.getText();
-        String lastName = txtLastName.getText();
-        String email = txtEmail.getText();
-        String password = txtPassword.getText();
-        String career = BoxCarrer.getSelectedItem().toString();
-        String cedula = txtID.getText();
+        String name = txtName.getText().trim();
+        String lastName = txtLastName.getText().trim();
+        String email = txtEmail.getText().trim();
+        String password = txtPassword.getText().trim();
+        String career = BoxCarrer.getSelectedItem().toString().trim();
+        String cedula = txtID.getText().trim();
+        String cedulaCText = cedulaC.getText().trim();
 
-        UpdateProfileDTO profileDTO = new UpdateProfileDTO(name, lastName, email, password, career, cedula);
-        ProfileController.UpdateProfileController(new User(profileDTO), dto);
-         cedulaC.setText(cedula);
+    if (name.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || 
+        career.equals("Select") || cedula.isEmpty() || cedulaCText.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "All fields must be filled and career must be selected.", 
+                                  "Validation Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+    if (!EmailValid(email)) {
+        JOptionPane.showMessageDialog(
+            null, 
+            "The email address is invalid. Please provide a correct email format.", 
+            "Validation Error", 
+            JOptionPane.ERROR_MESSAGE
+        );
+        return; // Detener ejecución si el email es inválido
+    }
+    
+    FindUserOnlyByIdDTO dto = new FindUserOnlyByIdDTO(cedulaCText);
+    UpdateProfileDTO profileDTO = new UpdateProfileDTO(name, lastName, email, password, career, cedula);
+    ProfileController.UpdateProfileController(new User(profileDTO), dto);
+
+    cedulaC.setText(cedula);
+    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -366,6 +392,46 @@ public class ProfileUser extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ProfileUser().setVisible(true);
+            }
+        });
+    }
+    
+    public boolean EmailValid(String email) {
+        int cantidadArrobas = email.length() - email.replace("@", "").length();
+        if (cantidadArrobas != 1) {
+        return false;
+    }
+        String regex = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
+        return email.matches(regex);
+    }
+    
+    public void agregarFiltroTiempoReal(JTable table, JTextField textField, int columnIndex) {
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
+        table.setRowSorter(rowSorter);
+
+        textField.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            @Override
+            public void insertUpdate(javax.swing.event.DocumentEvent e) {
+                filtrar();
+            }
+
+            @Override
+            public void removeUpdate(javax.swing.event.DocumentEvent e) {
+                filtrar();
+            }
+
+            @Override
+            public void changedUpdate(javax.swing.event.DocumentEvent e) {
+                filtrar();
+            }
+
+            private void filtrar() {
+                String searchText = textField.getText();
+                if (searchText.trim().isEmpty()) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchText, columnIndex)); 
+                }
             }
         });
     }
