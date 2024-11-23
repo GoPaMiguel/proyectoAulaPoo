@@ -246,6 +246,7 @@ public class Recycle extends javax.swing.JFrame {
         String id = ProfileController.getCedula();
         int total = Calculate();
         ProfileController.InsertPointsController(new UserPointsDTO(id, total));
+        JOptionPane.showMessageDialog(null, "Recycle sucessfully");
     }//GEN-LAST:event_btnRecycleActionPerformed
 
     /**
