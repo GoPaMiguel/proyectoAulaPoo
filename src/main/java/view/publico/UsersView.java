@@ -109,8 +109,6 @@ public class UsersView extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\java\\resources\\user4.png")); // NOI18N
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -154,7 +152,7 @@ public class UsersView extends javax.swing.JFrame {
         jLabel3.setText("CLOSE");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, 30));
 
-        btnBack.setBackground(new java.awt.Color(255, 255, 255));
+        btnBack.setBackground(new java.awt.Color(85, 140, 54));
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setBorderPainted(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -167,8 +165,6 @@ public class UsersView extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel4.setText("WELCOME TO");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, -1, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\java\\resources\\user3.png")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 470, 330));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -208,7 +204,10 @@ public class UsersView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRedeemPointsActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+       this.dispose();
+       ViewInicial view = new ViewInicial();
+       view.setLocationRelativeTo(null);
+       view.setVisible(true);
    
     }//GEN-LAST:event_btnBackActionPerformed
 
