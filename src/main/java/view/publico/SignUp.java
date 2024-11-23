@@ -242,6 +242,10 @@ public class SignUp extends javax.swing.JFrame {
             if(idUser.matches("\\d{8,10}")) {
                 CreateUserDTO createUserDTO = new CreateUserDTO(name, lastName, email, career, idUser);
                 UserController.CreateUserController(createUserDTO);
+                this.dispose();
+                Login login = new Login();
+                login.setLocationRelativeTo(null);
+                login.setVisible(true);
                 limpiar();
             } else {
                 JOptionPane.showMessageDialog(null, "User ID must be between 8 and 10 digits");
