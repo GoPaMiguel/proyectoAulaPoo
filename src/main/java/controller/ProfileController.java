@@ -3,8 +3,9 @@ package controller;
 import database.ConnectionJDBC;
 import model.CORE.User;
 import model.DTO.userDTO.FindUserOnlyByIdDTO;
+import model.DTO.userDTO.UserPointsDTO;
+import service.auth.command.InsertPointsUserHandler;
 import service.auth.command.UpdateProfileHandler;
-import service.user.command.UpdateUserHandler;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -30,6 +31,32 @@ public class ProfileController {
             connection.commit();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Cannot update user, "+e.getMessage());
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+        } finally {
+            if (connection != null) {
+                try {
+                    ConnectionJDBC.closeConecction(connection);
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, e.getMessage());
+                }
+            }
+        }
+    }
+
+    public static void InsertPointsController(UserPointsDTO dto) {
+        Connection connection = null;
+        try {
+            connection = ConnectionJDBC.getConnection();
+            connection.setAutoCommit(false);
+            InsertPointsUserHandler insertPointsUserHandler = new InsertPointsUserHandler(connection);
+            insertPointsUserHandler.insertPoints(new User(dto));
+            connection.commit();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
             try {
                 connection.rollback();
             } catch (SQLException ex) {
