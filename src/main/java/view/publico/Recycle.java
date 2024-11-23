@@ -4,6 +4,14 @@
  */
 package view.publico;
 
+import controller.ProfileController;
+import controller.ResidueController;
+import model.CORE.Residue;
+import model.CORE.User;
+import model.DTO.userDTO.UserPointsDTO;
+
+import javax.swing.*;
+
 /**
  *
  * @author Breiner
@@ -15,6 +23,9 @@ public class Recycle extends javax.swing.JFrame {
      */
     public Recycle() {
         initComponents();
+        ResidueController.ShowResidueController(tbResidues);
+        YourPoints();
+
     }
 
     /**
@@ -38,15 +49,15 @@ public class Recycle extends javax.swing.JFrame {
         txtSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbResidues = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtYourPoints = new javax.swing.JTextField();
-        txtRecyclePoints = new javax.swing.JTextField();
-        txtTotalPoints = new javax.swing.JTextField();
         txtWeight = new javax.swing.JTextField();
+        txtTotalPoints = new javax.swing.JTextField();
+        txtRecyclePoints = new javax.swing.JTextField();
         btnCalculate = new javax.swing.JButton();
         btnRecycle = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -59,8 +70,6 @@ public class Recycle extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(10, 49, 48));
         jPanel2.setPreferredSize(new java.awt.Dimension(467, 117));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\java\\resources\\logo4.png")); // NOI18N
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 80, 110));
 
         btnBack.setBackground(new java.awt.Color(85, 140, 54));
@@ -103,7 +112,7 @@ public class Recycle extends javax.swing.JFrame {
         btnSearch.setPreferredSize(new java.awt.Dimension(33, 5));
         jPanel1.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, -1, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbResidues.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -114,7 +123,12 @@ public class Recycle extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tbResidues.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbResiduesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbResidues);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 217, 300, 242));
 
@@ -143,9 +157,9 @@ public class Recycle extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtYourPoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 88, -1));
-        jPanel1.add(txtRecyclePoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 88, -1));
+        jPanel1.add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 88, -1));
         jPanel1.add(txtTotalPoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 88, -1));
-        jPanel1.add(txtWeight, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, 88, -1));
+        jPanel1.add(txtRecyclePoints, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 220, 88, -1));
 
         btnCalculate.setText("CALCULATE");
         btnCalculate.addActionListener(new java.awt.event.ActionListener() {
@@ -156,9 +170,12 @@ public class Recycle extends javax.swing.JFrame {
         jPanel1.add(btnCalculate, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, 144, 45));
 
         btnRecycle.setText("RECYCLE");
+        btnRecycle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecycleActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnRecycle, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 390, 144, 45));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\java\\resources\\recicle.jpg")); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 250, 241));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -190,7 +207,47 @@ public class Recycle extends javax.swing.JFrame {
 
     private void btnCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateActionPerformed
         // TODO add your handling code here:
+        if (!validador()) return;
+        int total = Calculate();
+        txtTotalPoints.setText(total + "");
     }//GEN-LAST:event_btnCalculateActionPerformed
+
+    private void YourPoints() {
+        User u = ProfileController.GetProfileController();
+        txtYourPoints.setText(String.valueOf(u.getPoints()));
+    }
+
+    private boolean validador() {
+        if (txtYourPoints.getText().equals("") || txtRecyclePoints.getText().equals("") || txtWeight.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Ingrese un valor valido");
+            return false;
+        }
+        return true;
+    }
+
+    private int Calculate() {
+
+            int yourPoints = Integer.parseInt(txtYourPoints.getText());
+            int recyclePoints = Integer.parseInt(txtRecyclePoints.getText());
+            double weight = Double.parseDouble(txtWeight.getText());
+            return (int) Math.round(yourPoints + (recyclePoints * weight));
+
+    }
+
+    private void tbResiduesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbResiduesMouseClicked
+        // TODO add your handling code here:
+        Residue r = ResidueController.SelectResidueController(tbResidues);
+        txtRecyclePoints.setText(String.valueOf(r.getPoints()));
+    }//GEN-LAST:event_tbResiduesMouseClicked
+
+    private void btnRecycleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecycleActionPerformed
+        // TODO add your handling code here:
+        if (!validador()) return;
+        String id = ProfileController.getCedula();
+        int total = Calculate();
+        ProfileController.InsertPointsController(new UserPointsDTO(id, total));
+        JOptionPane.showMessageDialog(null, "Recycle sucessfully");
+    }//GEN-LAST:event_btnRecycleActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,7 +304,7 @@ public class Recycle extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbResidues;
     private javax.swing.JTextField txtRecyclePoints;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtTotalPoints;

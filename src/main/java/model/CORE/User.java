@@ -55,6 +55,7 @@ public class User {
 
     public User(UserPointsDTO userPointsDTO) {
         this.points = userPointsDTO.points();
+        this.idUser = userPointsDTO.idUser();
     }
 
     public User(UpdateProfileDTO updateProfileDTO) {

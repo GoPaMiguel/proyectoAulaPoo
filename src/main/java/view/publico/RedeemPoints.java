@@ -4,6 +4,14 @@
  */
 package view.publico;
 
+import controller.AwardController;
+import controller.ProfileController;
+import model.CORE.Award;
+import model.CORE.User;
+import model.DTO.userDTO.UserPointsDTO;
+
+import javax.swing.*;
+
 /**
  *
  * @author Breiner
@@ -15,6 +23,12 @@ public class RedeemPoints extends javax.swing.JFrame {
      */
     public RedeemPoints() {
         initComponents();
+        AwardController.ShowAwardController(jTable1);
+        txtYourPoints.setEditable(false);
+        txtAward.setEditable(false);
+        txtPointsYouNeeded.setEditable(false);
+        User u = ProfileController.GetProfileController();
+        txtYourPoints.setText(String.valueOf(u.getPoints()));
     }
 
     /**
@@ -45,7 +59,7 @@ public class RedeemPoints extends javax.swing.JFrame {
         txtYourPoints = new javax.swing.JTextField();
         txtAward = new javax.swing.JTextField();
         txtPointsYouNeeded = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        RedeemBtn = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -57,8 +71,6 @@ public class RedeemPoints extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(10, 49, 48));
         jPanel2.setPreferredSize(new java.awt.Dimension(467, 117));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\java\\resources\\logo4.png")); // NOI18N
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
@@ -141,6 +153,11 @@ public class RedeemPoints extends javax.swing.JFrame {
 
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 210, 301, 256));
@@ -169,11 +186,14 @@ public class RedeemPoints extends javax.swing.JFrame {
         jPanel1.add(txtAward, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, 124, -1));
         jPanel1.add(txtPointsYouNeeded, new org.netbeans.lib.awtextra.AbsoluteConstraints(373, 335, 124, -1));
 
-        jButton3.setText("Redeem");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 150, 45));
+        RedeemBtn.setText("Redeem");
+        RedeemBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RedeemBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(RedeemBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 150, 45));
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(523, 179, -1, 261));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Breiner\\OneDrive\\Escritorio\\PRO-AULA-2024-2\\proyectoAulaPoo\\src\\main\\java\\resources\\recicle2.jpg")); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, 260, 260));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -194,12 +214,46 @@ public class RedeemPoints extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtYourPointsActionPerformed
 
+    private boolean validadorSudmit() {
+        if (txtPointsYouNeeded.getText().isEmpty() || txtAward.getText().isEmpty() || txtYourPoints.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor llene todos los campos");
+            return false;
+        }
+        int points = Integer.parseInt(txtPointsYouNeeded.getText());
+        int yourPoints = Integer.parseInt(txtYourPoints.getText());
+        if (points > yourPoints) {
+            JOptionPane.showMessageDialog(null, "You cannot redeem this prize because you dont have enough points");
+            return false;
+        }
+        return true;
+    }
+
+
+
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         this.dispose();
         UsersView user = new UsersView();
         user.setLocationRelativeTo(null);
         user.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        Award award = AwardController.SelectAwardController(jTable1);
+        txtAward.setText(award.getName());
+        txtPointsYouNeeded.setText(String.valueOf(award.getPoints()));
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void RedeemBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RedeemBtnActionPerformed
+        // TODO add your handling code here:
+        if (!validadorSudmit()) return;
+        int points = Integer.parseInt(txtPointsYouNeeded.getText());
+        int yourPoints = Integer.parseInt(txtYourPoints.getText());
+        int totalPoints =   yourPoints - points;
+        UserPointsDTO dto = new UserPointsDTO(ProfileController.getCedula(), totalPoints);
+        ProfileController.InsertPointsController(dto);
+        JOptionPane.showMessageDialog(null, "Redeem sucessfully");
+    }//GEN-LAST:event_RedeemBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,9 +294,9 @@ public class RedeemPoints extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton RedeemBtn;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
