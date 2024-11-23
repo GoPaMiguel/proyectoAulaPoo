@@ -26,9 +26,9 @@ public class RedeemPoints extends javax.swing.JFrame {
     public RedeemPoints() {
         initComponents();
         AwardController.ShowAwardController(jTable1);
-        txtYourPoints.setEditable(false);
-        txtAward.setEditable(false);
-        txtPointsYouNeeded.setEditable(false);
+        txtYourPoints.setEnabled(false);
+        txtAward.setEnabled(false);
+        txtPointsYouNeeded.setEnabled(false);
         User u = ProfileController.GetProfileController();
         txtYourPoints.setText(String.valueOf(u.getPoints()));
     }
@@ -257,6 +257,10 @@ public class RedeemPoints extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Redeem sucessfully");
         String code = RandomCodeRedeem.generateId();
         ProfileController.GeneratorQRController(ProfileController.getCedula(), code);
+        this.dispose();
+        UsersView view = new UsersView();
+        view.setLocationRelativeTo(null);
+        view.setVisible(true);
     }//GEN-LAST:event_RedeemBtnActionPerformed
 
     /**

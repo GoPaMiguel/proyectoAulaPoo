@@ -236,18 +236,22 @@ public class SignUp extends javax.swing.JFrame {
         String idUser = txtID.getText();
         
         if(career.equals("Select")){
-            JOptionPane.showMessageDialog(null, "Debes de seleccionar una carrera");
-        }else{
+            JOptionPane.showMessageDialog(null, "You must select a career");
+        } else {
         if(EmailValid(email)){
-            CreateUserDTO createUserDTO = new CreateUserDTO(name, lastName, email, career, idUser);
-
-        UserController.CreateUserController(createUserDTO);
-        limpiar();
-        }else{
-           JOptionPane.showMessageDialog(null, "Email es Invalido");
-           txtEmail.requestFocus();
+            if(idUser.matches("\\d{8,10}")) {
+                CreateUserDTO createUserDTO = new CreateUserDTO(name, lastName, email, career, idUser);
+                UserController.CreateUserController(createUserDTO);
+                limpiar();
+            } else {
+                JOptionPane.showMessageDialog(null, "User ID must be between 8 and 10 digits");
+                txtID.requestFocus();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Invalid email");
+            txtEmail.requestFocus();
         }
-        }
+    }
 
     }//GEN-LAST:event_btnSingUpActionPerformed
 

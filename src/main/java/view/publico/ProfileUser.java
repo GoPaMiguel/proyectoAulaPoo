@@ -378,8 +378,15 @@ public class ProfileUser extends javax.swing.JFrame {
             "Validation Error", 
             JOptionPane.ERROR_MESSAGE
         );
-        return; // Detener ejecución si el email es inválido
+        return;
     }
+    
+    if (!cedula.matches("\\d{8,10}")) { 
+    JOptionPane.showMessageDialog(null, "Cedula (User ID) must be between 8 and 10 digits.", 
+     "Validation Error", JOptionPane.ERROR_MESSAGE);
+    txtID.requestFocus();
+    return;
+}
     
     FindUserOnlyByIdDTO dto = new FindUserOnlyByIdDTO(cedulaCText);
     UpdateProfileDTO profileDTO = new UpdateProfileDTO(name, lastName, email, password, career, cedula);

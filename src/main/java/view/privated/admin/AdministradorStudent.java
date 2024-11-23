@@ -786,19 +786,24 @@ public class AdministradorStudent extends javax.swing.JFrame {
         String cedula = IDCurrent.getText();
         FindUserOnlyByIdDTO dto = new FindUserOnlyByIdDTO(cedula);
         if(career.equals("Select")){
-            JOptionPane.showMessageDialog(null, "Debes de seleccionar una carrera");
+            JOptionPane.showMessageDialog(null, "You must select a career");
         }else{
         if(EmailValid(email)){
-        UpdateUserAdminDTO userAdminDTO = new UpdateUserAdminDTO(name,lastName,email,idUser,career);
-        UserController.UpdateUserController(new User(userAdminDTO), dto) ;
+        if(idUser.matches("\\d{8,10}")) {
+            UpdateUserAdminDTO userAdminDTO = new UpdateUserAdminDTO(name, lastName, email, idUser, career);
+            UserController.UpdateUserController(new User(userAdminDTO), dto);
 
+            limpiar();
         limpiar();
-        }else{
-           JOptionPane.showMessageDialog(null, "Email es Invalido");
-           txtEmail.requestFocus();
+        } else {
+            JOptionPane.showMessageDialog(null, "User ID must be between 8 and 10 digits");
+            txtIDM.requestFocus();
         }
-        }
-
+    } else {
+        JOptionPane.showMessageDialog(null, "Invalid email");
+        txtEmailM.requestFocus();
+    }
+}
         UserController.ShowUserController(tbUpdate);
 
 
@@ -843,18 +848,23 @@ public class AdministradorStudent extends javax.swing.JFrame {
         String id = txtID.getText();
         
         if(career.equals("Select")){
-            JOptionPane.showMessageDialog(null, "Debes de seleccionar una carrera");
+            JOptionPane.showMessageDialog(null, "You must select a career");
         }else{
         if(EmailValid(email)){
             
-        CreateUserDTO createUserDTO = new CreateUserDTO(name, lastName, email, career, id);
-        UserController.CreateUserController(createUserDTO);
-        limpiar();
-        }else{
-           JOptionPane.showMessageDialog(null, "Email es Invalido");
-           txtEmail.requestFocus();
+        if(id.matches("\\d{8,10}")) {
+            CreateUserDTO createUserDTO = new CreateUserDTO(name, lastName, email, career, id);
+            UserController.CreateUserController(createUserDTO);
+            limpiar();
+        } else {
+            JOptionPane.showMessageDialog(null, "User ID must be between 8 and 10 digits");
+            txtID.requestFocus();
         }
-        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Invalid email");
+        txtEmail.requestFocus();
+    }
+}
     }//GEN-LAST:event_btnKeepActionPerformed
 
     private void txtIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyTyped

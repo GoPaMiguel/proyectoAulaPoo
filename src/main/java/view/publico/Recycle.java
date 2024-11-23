@@ -263,6 +263,10 @@ public class Recycle extends javax.swing.JFrame {
         int total = Calculate();
         ProfileController.InsertPointsController(new UserPointsDTO(id, total));
         JOptionPane.showMessageDialog(null, "Recycle sucessfully");
+        this.dispose();
+        UsersView view = new UsersView();
+        view.setLocationRelativeTo(null);
+        view.setVisible(true);
     }//GEN-LAST:event_btnRecycleActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
