@@ -52,7 +52,8 @@ public class FindUserByIdHandler implements IFindById<User> {
                 String career = rs.getString("career");
                 String idUser = rs.getString("cedula");
                 int points = rs.getInt("points");
-                ShowUserDTO showUserDTO = new ShowUserDTO(id, name, lastname, email, career, idUser, points);
+                String pass = rs.getString("password");
+                ShowUserDTO showUserDTO = new ShowUserDTO(id, name, lastname, email, career, idUser, points, pass);
                 user = new User(showUserDTO);
             }
 

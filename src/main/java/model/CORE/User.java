@@ -32,6 +32,7 @@ public class User {
         this.career = showUserDTO.career();
         this.idUser = showUserDTO.idUser();
         this.points = showUserDTO.points();
+        this.password = showUserDTO.pass();
     }
 
     public User(LoginUserDTO loginUserDTO) {

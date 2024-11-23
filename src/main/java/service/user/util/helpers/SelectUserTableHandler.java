@@ -22,7 +22,7 @@ public class SelectUserTableHandler implements ISelectElementTable<User> {
                 String career = table.getValueAt(selectedRow, 4).toString();
                 String idUser = table.getValueAt(selectedRow, 5).toString();
                 int points = Integer.parseInt(table.getValueAt(selectedRow, 6).toString());
-                ShowUserDTO dto = new ShowUserDTO(idSelected, name, lastName, email, career, idUser, points);
+                ShowUserDTO dto = new ShowUserDTO(idSelected, name, lastName, email, career, idUser, points, "");
                 selectedUser = new User(dto);
             }else{
                 JOptionPane.showMessageDialog(null, "Debe seleccionar un usuario");

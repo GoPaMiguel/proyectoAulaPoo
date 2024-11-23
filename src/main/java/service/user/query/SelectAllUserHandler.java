@@ -42,7 +42,8 @@ public class SelectAllUserHandler implements ISelectAll<User> {
                 String career = rs.getString("career");
                 String idUser = rs.getString("cedula");
                 int points = rs.getInt("points");
-                ShowUserDTO showUserDTO = new ShowUserDTO(id, username, lastname, email, career, idUser, points);
+                String password = rs.getString("password");
+                ShowUserDTO showUserDTO = new ShowUserDTO(id, username, lastname, email, career, idUser, points, password);
                 users.add(new User(showUserDTO));
             }
         } finally {

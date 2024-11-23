@@ -6,6 +6,7 @@ package view.publico;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import controller.ProfileController;
 import controller.UserController;
 import model.DTO.userDTO.LoginUserDTO;
 import view.privated.admin.AdministradorPanel;
@@ -229,6 +230,10 @@ public class Login extends javax.swing.JFrame {
         }else if (response.equalsIgnoreCase("user")){
             this.dispose();
             JOptionPane.showMessageDialog(null, "You have successfully logged in");
+            ProfileController.setCedula(txtId.getText());
+            UsersView usersView = new UsersView();
+            usersView.setLocationRelativeTo(null);
+            usersView.setVisible(true);
         }
     }
 

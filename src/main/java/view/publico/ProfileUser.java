@@ -4,6 +4,12 @@
  */
 package view.publico;
 
+import controller.ProfileController;
+import model.CORE.User;
+import model.DTO.userDTO.FindUserOnlyByIdDTO;
+import model.DTO.userDTO.UpdateProfileDTO;
+import service.user.query.FindUserByIdHandler;
+
 /**
  *
  * @author Breiner
@@ -15,7 +21,20 @@ public class ProfileUser extends javax.swing.JFrame {
      */
     public ProfileUser() {
         initComponents();
+        LoadFilds();
         txtPoints.setEnabled(false);
+    }
+
+    private void LoadFilds(){
+        User profile = ProfileController.GetProfileController();
+        cedulaC.setText(profile.getIdUser());
+        txtEmail.setText(profile.getEmail());
+        txtName.setText(profile.getName());
+        txtID.setText(profile.getIdUser());
+        txtPassword.setText(profile.getPassword());
+        txtLastName.setText(profile.getLastName());
+        txtPoints.setText(String.valueOf(profile.getPoints()));
+        BoxCarrer.setSelectedItem(profile.getCareer());
     }
 
     /**
@@ -41,11 +60,11 @@ public class ProfileUser extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         cedulaC = new javax.swing.JLabel();
         BoxCarrer = new javax.swing.JComboBox<>();
+        txtPassword = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -108,6 +127,11 @@ public class ProfileUser extends javax.swing.JFrame {
         jLabel9.setText("Password:");
 
         jButton1.setText("MODIFY");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jPanel4.setPreferredSize(new java.awt.Dimension(280, 6));
 
@@ -127,6 +151,8 @@ public class ProfileUser extends javax.swing.JFrame {
         cedulaC.setText("CEDULA");
 
         BoxCarrer.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Tec. en Sistemas", "Tec. en Gestión de Calidad", "Adm. Turística y Hotelera", "Ing. en Sistemas", "Ing. Industrial", "Derecho", "Adm. de Empresas", "Contaduría", "Lic. en Bilingüismo", "Inglés Diario", "Inglés Intensivo", "Inglés Semestral", "Inglés Sábados", "Inglés Niños y Adolescentes", "Prog. de Traducción", "Prog. Aux. Administrativo", "Especializacion" }));
+
+        txtPassword.setText("jPasswordField1");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -158,7 +184,7 @@ public class ProfileUser extends javax.swing.JFrame {
                             .addComponent(txtName, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(BoxCarrer, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPassword)))
+                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(cedulaC)))
@@ -196,12 +222,12 @@ public class ProfileUser extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         btnBack.setBackground(new java.awt.Color(85, 140, 54));
@@ -291,7 +317,23 @@ public class ProfileUser extends javax.swing.JFrame {
         UsersView user = new UsersView();
         user.setLocationRelativeTo(null);
         user.setVisible(true);
+        ProfileController.setCedula(cedulaC.getText());
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        FindUserOnlyByIdDTO dto = new FindUserOnlyByIdDTO(cedulaC.getText());
+        String name = txtName.getText();
+        String lastName = txtLastName.getText();
+        String email = txtEmail.getText();
+        String password = txtPassword.getText();
+        String career = BoxCarrer.getSelectedItem().toString();
+        String cedula = txtID.getText();
+
+        UpdateProfileDTO profileDTO = new UpdateProfileDTO(name, lastName, email, password, career, cedula);
+        ProfileController.UpdateProfileController(new User(profileDTO), dto);
+         cedulaC.setText(cedula);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -351,7 +393,7 @@ public class ProfileUser extends javax.swing.JFrame {
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtPoints;
     // End of variables declaration//GEN-END:variables
 }
