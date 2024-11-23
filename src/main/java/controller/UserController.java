@@ -54,7 +54,6 @@ public class UserController {
             connection.setAutoCommit(false);
             deleteUserHandler.Delete(new User(userCode));
             connection.commit();
-            JOptionPane.showMessageDialog(null, "Usuario eliminado correctamente");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Cannot delete user, because:" + e.getMessage());
             try {

@@ -229,7 +229,6 @@ public class Login extends javax.swing.JFrame {
             adminPanel.setVisible(true);
         }else if (response.equalsIgnoreCase("user")){
             this.dispose();
-            JOptionPane.showMessageDialog(null, "You have successfully logged in");
             ProfileController.setCedula(txtId.getText());
             UsersView usersView = new UsersView();
             usersView.setLocationRelativeTo(null);

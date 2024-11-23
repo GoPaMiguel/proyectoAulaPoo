@@ -72,7 +72,6 @@ public class ResidueController {
             con.setAutoCommit(false);
             deleteResidueHandler.Delete(new Residue(findResidueDTO));
             con.commit();
-            JOptionPane.showMessageDialog(null, "Residue deleted");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al eliminar residue");
             try {
